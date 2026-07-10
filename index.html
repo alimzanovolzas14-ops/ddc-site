@@ -1609,7 +1609,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   // ── video upgrade (activates when encoded metamorphosis video is deployed) ──
   var SRC={ small:{webm:'img/xform-720.webm', mp4:'img/xform-720.mp4'},
             large:{webm:'img/xform-1080.webm', mp4:'img/xform-1080.mp4'} };
-  var VIDEO_READY=false; // flip to true when encoded files are deployed
+  var VIDEO_READY=true; // encoded loop files are in img/ (xform-1080/720 webm+mp4)
   if(!VIDEO_READY) return;
   var conn=navigator.connection||{};
   if(conn.saveData) return;
