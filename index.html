@@ -1607,25 +1607,38 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   var rto; addEventListener('resize',function(){ clearTimeout(rto); rto=setTimeout(function(){ if(!killed){parts=null; t0=0; ready(build);} },350); });
 
   // ── video upgrade (activates when encoded metamorphosis video is deployed) ──
-  var SRC={ portrait:{webm:'img/xform-916.webm', mp4:'img/xform-916.mp4'},
-            landscape:{webm:'img/xform-169.webm', mp4:'img/xform-169.mp4'} };
-  var VIDEO_READY=true; // encoded loop files are in img/ (xform-169/916 webm+mp4)
+  // Tier ladder: hi (720p) → lo (480p) on stalls/errors → canvas only if even lo fails.
+  // effectiveType/downlink estimates are unreliable behind proxies, so constrained
+  // connections (saveData / hard 2g) just START on lo instead of skipping the video.
+  var SRC={ portrait:{hi:['img/xform-916.webm','img/xform-916.mp4'],
+                      lo:['img/xform-916-lo.webm','img/xform-916-lo.mp4']},
+            landscape:{hi:['img/xform-169.webm','img/xform-169.mp4'],
+                       lo:['img/xform-169-lo.webm','img/xform-169-lo.mp4']} };
+  var VIDEO_READY=true; // encoded loop files are in img/ (xform-169/916 + -lo, webm+mp4)
   if(!VIDEO_READY) return;
   var conn=navigator.connection||{};
-  if(conn.saveData) return;
   var et=(conn.effectiveType||'');
-  if(et==='2g'||et==='slow-2g'||et==='3g') return;
-  if(typeof conn.downlink==='number'&&conn.downlink<1.5) return;
   var portrait=(window.matchMedia&&matchMedia('(orientation:portrait)').matches)||window.innerHeight>window.innerWidth;
   var pk=portrait?SRC.portrait:SRC.landscape;
+  var level=(conn.saveData||et==='2g'||et==='slow-2g')?'lo':'hi';
   var v=document.createElement('video');
   v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('muted',''); v.setAttribute('playsinline','');
   v.preload='auto';
-  v.innerHTML='<source src="'+pk.webm+'" type="video/webm"><source src="'+pk.mp4+'" type="video/mp4">';
   var stalls=0, vdead=false;
+  function setSrc(){
+    v.innerHTML='<source src="'+pk[level][0]+'" type="video/webm"><source src="'+pk[level][1]+'" type="video/mp4">';
+    // with <source> children the error lands on the last source, not the element
+    v.lastElementChild.addEventListener('error',degrade);
+  }
   function vkill(){ if(vdead)return; vdead=true; try{v.pause();}catch(e){} v.classList.remove('on'); setTimeout(function(){v.remove();},900); }
-  v.addEventListener('error',vkill);
-  ['waiting','stalled'].forEach(function(ev){ v.addEventListener(ev,function(){ if(++stalls>=3) vkill(); }); });
+  function degrade(){
+    if(vdead) return;
+    if(level==='hi'){ level='lo'; stalls=0; setSrc(); v.load(); v.play().catch(function(){}); }
+    else vkill();
+  }
+  setSrc();
+  v.addEventListener('error',degrade);
+  ['waiting','stalled'].forEach(function(ev){ v.addEventListener(ev,function(){ if(++stalls>=3) degrade(); }); });
   v.addEventListener('playing',function(){ v.classList.add('on'); window.__xformStop(); gold.style.opacity=0; cyan.style.opacity=0; });
   band.querySelector('.xform-stage').insertBefore(v, band.querySelector('.xform-vig'));
   // hero is above the fold: start fetching immediately (browser streams via range
