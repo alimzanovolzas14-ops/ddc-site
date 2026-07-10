@@ -461,6 +461,11 @@ main section[id]{scroll-margin-top:64px}
 .brand{gap:10px}
 
 /* ─────────── PERFORMANCE / SMOOTHNESS ─────────── */
+/* soft scroll magnet: proximity snapping settles scrolling onto section edges,
+   never traps tall sections (no nearby snap point mid-section) */
+html{scroll-snap-type:y proximity}
+main>section{scroll-snap-align:start;scroll-margin-top:48px}
+
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .hero-gl{will-change:transform}
@@ -1144,7 +1149,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <h2 class="sec-title">Чем занимается ЦЦР</h2>
     <p class="sec-desc">Ключевые функции для Национального Банка, его филиалов, организаций и финансового регулятора (АРРФР).</p></div>
   <div class="bento">
-    <a class="tile dark wide reveal" href="activity.html"><div class="tile-glow" style="background:#166f43;right:-80px;top:-80px"></div>
+    <a class="tile dark wide reveal" href="activity.html#infra"><div class="tile-glow" style="background:#166f43;right:-80px;top:-80px"></div>
       <div class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r="0.7" fill="currentColor"/><circle cx="7" cy="17" r="0.7" fill="currentColor"/></svg></div><div class="tile-cat">Инфраструктура</div><h3>Защищённая ИКТ-инфраструктура</h3>
       <p>Серверные помещения и центры обработки данных, телекоммуникационная инфраструктура, эксплуатация и системно-техническое обслуживание.</p>
       <div class="tile-foot"><span class="tile-more">Подробнее</span></div></a>
@@ -1152,11 +1157,11 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
       <div class="tile-art"><img src="img/dir-cyber.svg" alt="" loading="lazy"></div><div class="tile-cat">Безопасность</div><h3>Кибербезопасность и ИБ</h3>
       <p>Защита информации и выявление технических каналов её утечки.</p>
       <div class="tile-foot"><span class="tile-more">Подробнее</span></div></a>
-    <a class="tile reveal" href="activity.html"><div class="tile-glow" style="background:#3fa06b;right:-90px;top:-90px;opacity:.2"></div>
+    <a class="tile reveal" href="activity.html#dev"><div class="tile-glow" style="background:#3fa06b;right:-90px;top:-90px;opacity:.2"></div>
       <div class="tile-art"><img src="img/dir-dev.svg" alt="" loading="lazy"></div><div class="tile-cat">Разработка</div><h3>Программные продукты</h3>
       <p>Разработка, внедрение и сопровождение ПО для НБРК и АРРФР.</p>
       <div class="tile-foot"><span class="tile-more">Подробнее</span></div></a>
-    <a class="tile reveal" href="activity.html"><div class="tile-glow" style="background:#57bd8b;left:-80px;bottom:-90px;opacity:.16"></div>
+    <a class="tile reveal" href="activity.html#net"><div class="tile-glow" style="background:#57bd8b;left:-80px;bottom:-90px;opacity:.16"></div>
       <div class="tile-art"><img src="img/dir-net.svg" alt="" loading="lazy"></div><div class="tile-cat">Сеть</div><h3>Защищённая корпоративная сеть</h3>
       <p>Единая защищённая сеть передачи данных НБРК, ДО, ТФ и АРРФР.</p>
       <div class="tile-foot"><span class="tile-more">Подробнее</span></div></a>
@@ -1374,23 +1379,73 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
       g.shadowBlur=0;
       g.drawImage(t,Math.round(cx-t.width/2),Math.round(cy-t.height/2));
     }
-    // gold pin-traces from the hexagon's slanted side edges (45° bends, node/pad tips)
-    var rows=MOB?[-0.15,0.15]:[-0.17,0,0.17];
+    // extended pin-trace network (mirrors frameB): 5-segment branched traces
+    function traceX(sx,sy,dir,bend,u,i,col,lw,end){
+      var L1=u*(0.9+0.22*(i%3)), L2=bend?u*0.55:0, b2=(i%2)?-bend:bend,
+          L3=u*(1.15+0.3*((i*3)%2)), L4=b2?u*0.4:0, L5=u*(0.8+0.25*((i*7)%3));
+      stroke(col,lw,7); g.beginPath(); g.moveTo(sx,sy);
+      var x=sx+dir*L1, y=sy; g.lineTo(x,y);
+      x+=dir*L2; y+=bend*L2; g.lineTo(x,y);
+      x+=dir*L3; g.lineTo(x,y);
+      x+=dir*L4; y+=b2*L4; g.lineTo(x,y);
+      x+=dir*L5; g.lineTo(x,y); g.stroke(); g.shadowBlur=0;
+      if(end==='n') node(x,y,3.2,BR); else pad(x,y,7,col);
+      if(bend){ // branch stub off the first bend, smaller node
+        var Lb=u*(0.5+0.2*(i%2));
+        stroke(col,Math.max(1,lw-1),5); g.beginPath(); g.moveTo(sx+dir*L1,sy);
+        var x2=sx+dir*(L1+Lb), y2=sy-bend*Lb; g.lineTo(x2,y2); x2+=dir*u*0.45; g.lineTo(x2,y2);
+        g.stroke(); g.shadowBlur=0; node(x2,y2,2.2,col);
+      }
+    }
+    function vtap(x,y0,vdir,uv,sway,i,col,lw){
+      var L1=uv*(0.55+0.2*(i%2)), L2=uv*0.4, L3=uv*(0.5+0.25*((i*3)%2));
+      stroke(col,lw,6); g.beginPath(); g.moveTo(x,y0);
+      var y=y0+vdir*L1; g.lineTo(x,y);
+      var x2=x+sway*L2; y+=vdir*L2; g.lineTo(x2,y);
+      y+=vdir*L3; g.lineTo(x2,y); g.stroke(); g.shadowBlur=0;
+      node(x2,y,2.6,col);
+    }
+    var u=Math.min(mw*.11,(cx-mw*.485-Math.max(20,w*.03))/4.6);
+    var rows=MOB?[-0.24,-0.08,0.08,0.24]:[-0.30,-0.15,0,0.15,0.30];
     for(var i=0;i<rows.length;i++){
       var fr=rows[i], py=cy+fr*mh;
-      var edge=mw*(.485-.09*Math.abs(fr)/.17);
+      var edge=mw*(.485-.282*Math.abs(fr));
       var bd=fr<0?-1:(fr>0?1:0);
-      var L1=mw*(.13+.04*i), L2=bd?mw*.09:0, L3=mw*(.16+.05*(i%2));
-      traceH(cx-edge,py,-1,bd,L1,L2,L3,i%2?GOLD:C,MOB?2:2.6,i%2?'n':'p');
-      traceH(cx+edge,py, 1,bd?-bd:0,L1,L2,L3,i%2?C:GOLD,MOB?2:2.6,i%2?'p':'n');
+      traceX(cx-edge,py,-1,bd,u,i,i%2?GOLD:C,MOB?2:2.6,i%2?'n':'p');
+      traceX(cx+edge,py, 1,bd,u,i+1,i%2?C:GOLD,MOB?2:2.6,i%2?'p':'n');
     }
-    // via dots on a loose grid — gold city lights, clear of the mark
-    var G=Math.max(26,m*.07);
-    g.fillStyle='rgba(233,200,107,.7)'; g.shadowColor=GOLD; g.shadowBlur=4;
+    // secondary thin counter-bend traces between the primary rows
+    var rows2=MOB?[-0.16,0.16]:[-0.225,-0.075,0.075,0.225];
+    for(var i=0;i<rows2.length;i++){
+      var fr2=rows2[i], py2=cy+fr2*mh;
+      var edge2=mw*(.485-.282*Math.abs(fr2));
+      var bd2=fr2<0?1:-1;
+      var L1=u*(0.7+0.2*(i%2)), L2=u*0.35, L3=u*(0.9+0.3*((i*5)%2));
+      traceH(cx-edge2,py2,-1,bd2,L1,L2,L3,'rgba(233,200,107,.42)',MOB?1.2:1.4,'n');
+      traceH(cx+edge2,py2, 1,-bd2,L1,L2,L3,'rgba(233,200,107,.42)',MOB?1.2:1.4,'n');
+    }
+    // vertical taps off the hexagon's top/bottom edges
+    var uv=mh*.10, taps=MOB?[-0.16,0.16]:[-0.13,0.13];
+    for(var ti=0;ti<taps.length;ti++){
+      var fx=taps[ti], tx=cx+fx*mw, sw=fx<0?-1:1;
+      vtap(tx,cy-mh*.485,-1,uv,sw,ti,'rgba(233,200,107,.6)',MOB?1.4:1.8);
+      vtap(tx,cy+mh*.485, 1,uv,-sw,ti+1,'rgba(233,200,107,.6)',MOB?1.4:1.8);
+    }
+    // via dots on a loose grid — gold city lights, clear of the mark — plus faint mesh
+    var G=Math.max(26,m*.07), dots=[];
     for(var gx=G;gx<w;gx+=G)for(var gy=G;gy<h;gy+=G){
       if(Math.abs(gx-cx)<mw*.72&&Math.abs(gy-cy)<mh*.65) continue;
-      if(Math.random()<.14){ g.beginPath(); g.arc(gx+Math.random()*8-4,gy+Math.random()*8-4,1.7,0,6.2832); g.fill(); }
+      if(Math.random()<.14) dots.push({x:gx+Math.random()*8-4,y:gy+Math.random()*8-4});
     }
+    g.strokeStyle='rgba(233,200,107,.10)'; g.lineWidth=1; g.shadowBlur=0;
+    for(var a=0;a<dots.length;a++)for(var b=a+1;b<dots.length;b++){
+      var dxm=dots[a].x-dots[b].x, dym=dots[a].y-dots[b].y;
+      if(dxm*dxm+dym*dym<G*G*2.6&&((a*7+b*13)%3===0)){
+        g.beginPath(); g.moveTo(dots[a].x,dots[a].y); g.lineTo(dots[b].x,dots[b].y); g.stroke();
+      }
+    }
+    g.fillStyle='rgba(233,200,107,.7)'; g.shadowColor=GOLD; g.shadowBlur=4;
+    for(var di=0;di<dots.length;di++){ g.beginPath(); g.arc(dots[di].x,dots[di].y,1.7,0,6.2832); g.fill(); }
     g.shadowBlur=0;
     return oc;
   }
@@ -2293,6 +2348,49 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 <script>
 (function(){var b=document.getElementById('readbar');if(b){var tk=false;function upd(){var h=document.documentElement,st=h.scrollTop||document.body.scrollTop||0,sh=(h.scrollHeight-h.clientHeight)||1;b.style.width=Math.max(0,Math.min(100,st/sh*100))+'%';}window.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){upd();tk=false;});},{passive:true});window.addEventListener('resize',upd);upd();}})();
 (function(){var t=document.getElementById('toggle3d');if(!t)return;function lbl(){var off=false;try{off=localStorage.getItem('ddc_no3d')==='1';}catch(e){}t.textContent=off?'Включить 3D-фон':'Отключить 3D-фон';}lbl();t.addEventListener('click',function(){try{var on=localStorage.getItem('ddc_no3d')==='1';localStorage.setItem('ddc_no3d',on?'0':'1');}catch(e){}location.reload();});})();
+</script>
+<style>
+.site-banner{position:relative;z-index:1200;font-size:13.5px;line-height:1.45;padding:9px 40px 9px 16px;text-align:center;color:var(--ink,#1c2a22)}
+.site-banner--info{background:#dcebe2;border-bottom:1px solid rgba(22,111,67,.25)}
+.site-banner--warn{background:#f3e8c8;border-bottom:1px solid rgba(154,116,3,.3)}
+.site-banner--alert{background:#f4d9d9;border-bottom:1px solid rgba(160,45,45,.3)}
+.site-banner button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:17px;line-height:1;cursor:pointer;color:inherit;opacity:.55;padding:6px}
+.site-banner button:hover{opacity:1}
+</style>
+<script>
+// ── SITE ANNOUNCEMENT BANNER (Netlify Function /api/settings; silently absent on any failure) ──
+(function(){
+  if(location.protocol==='file:'||location.port==='8923') return;
+  var KEY='ddc_banner_v1', TTL=600000;
+  function show(b){
+    if(!b||!b.on||!b.text) return;
+    try{ if(sessionStorage.getItem('ddc_banner_dismissed')===b.text) return; }catch(e){}
+    var d=document.createElement('div');
+    d.className='site-banner site-banner--'+(['info','warn','alert'].indexOf(b.type)>=0?b.type:'info');
+    d.setAttribute('role','status');
+    var hd=document.querySelector('.site-head');
+    if(hd&&getComputedStyle(hd).position==='fixed') d.style.marginTop=hd.offsetHeight+'px';
+    var s=document.createElement('span'); s.textContent=b.text; d.appendChild(s);
+    var x=document.createElement('button'); x.type='button'; x.setAttribute('aria-label','Скрыть'); x.innerHTML='&times;';
+    x.addEventListener('click',function(){ try{sessionStorage.setItem('ddc_banner_dismissed',b.text);}catch(e){} d.remove(); });
+    d.appendChild(x);
+    document.body.insertBefore(d,document.body.firstChild);
+  }
+  try{
+    var c=JSON.parse(sessionStorage.getItem(KEY)||'null');
+    if(c&&c.t&&(Date.now()-c.t)<TTL){ show(c.b); return; }
+  }catch(e){}
+  var ac=(typeof AbortController!=='undefined')?new AbortController():null;
+  var to=setTimeout(function(){ if(ac) ac.abort(); },6000);
+  fetch('/api/settings',ac?{signal:ac.signal}:{})
+    .then(function(r){ clearTimeout(to); if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){
+      var b=(j&&j.public&&j.public.banner)||null;
+      try{ sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),b:b})); }catch(e){}
+      show(b);
+    })
+    .catch(function(){ clearTimeout(to); });
+})();
 </script>
 </body>
 </html>

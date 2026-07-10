@@ -383,6 +383,10 @@ footer{background:var(--paper-2);border-top:1px solid var(--line-gold);box-shado
 /* ─────────── SERVICE CARDS ─────────── */
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .svc-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column}
+.svc-card[id]{scroll-margin-top:24px}
+.svc-card:target{animation:svcPing 1.8s ease-out 1}
+@keyframes svcPing{0%{box-shadow:0 0 0 0 rgba(217,178,74,.55);border-color:#d9b24a}70%{box-shadow:0 0 0 16px rgba(217,178,74,0);border-color:#d9b24a}100%{box-shadow:0 0 0 0 rgba(217,178,74,0)}}
+@media(prefers-reduced-motion:reduce){.svc-card:target{animation:none;border-color:#d9b24a}}
 .svc-ic{width:52px;height:52px;border-radius:15px;background:rgba(22,111,67,.08);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
 .svc-card h3{font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.2;margin-bottom:10px}
 .svc-tag{font-size:15px;color:var(--ink-2);line-height:1.5;margin-bottom:20px}
@@ -438,6 +442,11 @@ footer{background:var(--paper-2);border-top:1px solid var(--line-gold);box-shado
 .brand{gap:10px}
 
 /* ─────────── PERFORMANCE / SMOOTHNESS ─────────── */
+/* soft scroll magnet: proximity snapping settles scrolling onto section edges,
+   never traps tall sections (no nearby snap point mid-section) */
+html{scroll-snap-type:y proximity}
+main>section{scroll-snap-align:start;scroll-margin-top:8px}
+
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .hero-gl{will-change:transform}
@@ -1086,6 +1095,18 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
       <div class="svc-channel" data-i18n-html="svc_ch_infra">Поддержка пользователей · контакт-центр <b>1477</b></div>
     </div>
 
+    <div class="svc-card" id="net"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-5.6 6.3M12 11l5.6 6.3M7 19h10"/></svg></div>
+      <h3>Защищённая корпоративная сеть</h3>
+      <p class="svc-tag">Единая защищённая корпоративная сеть передачи данных, объединяющая НБРК, его дочерние организации, территориальные филиалы и АРРФР в общий закрытый контур.</p>
+      <div class="svc-block"><h4>Кому предоставляется</h4><div class="svc-who">НБРК, дочерним организациям, территориальным филиалам и АРРФР.</div></div>
+      <div class="svc-block"><h4>Состав работ</h4><ul class="svc-list">
+        <li>Построение и эксплуатация сегментированной сети передачи данных</li>
+        <li>Защищённые каналы связи и VPN между объектами НБРК</li>
+        <li>Защита периметра сети и противодействие DDoS-атакам</li>
+        <li>Круглосуточный мониторинг доступности и производительности</li></ul></div>
+      <div class="svc-channel">Единый закрытый контур НБРК, ДО, ТФ и АРРФР · мониторинг 24/7</div>
+    </div>
+
     <div class="svc-card" id="data"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6"/></svg></div>
       <h3>Управление данными</h3>
       <p class="svc-tag">С 2021 года ЦЦР — технологический оператор данных НБРК. Профессиональная обработка, хранение и управление информацией в защищённой цифровой среде.</p>
@@ -1490,6 +1511,14 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "Единый контакт-центр (1477)":["Unified contact center (1477)","Бірыңғай байланыс орталығы (1477)"],
    "Поддержка ИТ-инфраструктуры":["IT infrastructure support","АТ-инфрақұрылымды қолдау"],
    "Кому предоставляется":["Who it is for","Кімге ұсынылады"],"Состав работ":["Scope of work","Жұмыс құрамы"],
+   // secure corporate network service
+   "Единая защищённая корпоративная сеть передачи данных, объединяющая НБРК, его дочерние организации, территориальные филиалы и АРРФР в общий закрытый контур.":["A unified secure corporate data network connecting the NBK, its subsidiaries, regional branches and the ARDFM into a single closed loop.","ҚР ҰБ-ны, оның еншілес ұйымдарын, аумақтық филиалдарын және ҚРДА-ны біртұтас жабық контурға біріктіретін қорғалған корпоративтік деректер желісі."],
+   "НБРК, дочерним организациям, территориальным филиалам и АРРФР.":["The NBK, its subsidiaries, regional branches and the ARDFM.","ҚР ҰБ-ға, еншілес ұйымдарға, аумақтық филиалдарға және ҚРДА-ға."],
+   "Построение и эксплуатация сегментированной сети передачи данных":["Building and operating a segmented data transmission network","Сегменттелген деректер желісін құру және пайдалану"],
+   "Защищённые каналы связи и VPN между объектами НБРК":["Secure communication channels and VPN between NBK facilities","ҚР ҰБ нысандары арасындағы қорғалған байланыс арналары мен VPN"],
+   "Защита периметра сети и противодействие DDoS-атакам":["Network perimeter protection and DDoS mitigation","Желі периметрін қорғау және DDoS-шабуылдарға қарсы іс-қимыл"],
+   "Круглосуточный мониторинг доступности и производительности":["Round-the-clock availability and performance monitoring","Қолжетімділік пен өнімділікті тәулік бойы мониторингтеу"],
+   "Единый закрытый контур НБРК, ДО, ТФ и АРРФР · мониторинг 24/7":["A single closed loop for the NBK, subsidiaries, branches and the ARDFM · 24/7 monitoring","ҚР ҰБ, ЕҰ, АФ және ҚРДА біртұтас жабық контуры · 24/7 мониторинг"],
    // media page
    "Актуальные новости":["Latest news","Өзекті жаңалықтар"],"Частые вопросы":["FAQ","Жиі қойылатын сұрақтар"],
    "Как связаться с контакт-центром?":["How do I reach the contact center?","Байланыс орталығына қалай хабарласуға болады?"],
@@ -1997,6 +2026,49 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 <script>
 (function(){var b=document.getElementById('readbar');if(b){var tk=false;function upd(){var h=document.documentElement,st=h.scrollTop||document.body.scrollTop||0,sh=(h.scrollHeight-h.clientHeight)||1;b.style.width=Math.max(0,Math.min(100,st/sh*100))+'%';}window.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){upd();tk=false;});},{passive:true});window.addEventListener('resize',upd);upd();}})();
 (function(){var t=document.getElementById('toggle3d');if(!t)return;function lbl(){var off=false;try{off=localStorage.getItem('ddc_no3d')==='1';}catch(e){}t.textContent=off?'Включить 3D-фон':'Отключить 3D-фон';}lbl();t.addEventListener('click',function(){try{var on=localStorage.getItem('ddc_no3d')==='1';localStorage.setItem('ddc_no3d',on?'0':'1');}catch(e){}location.reload();});})();
+</script>
+<style>
+.site-banner{position:relative;z-index:1200;font-size:13.5px;line-height:1.45;padding:9px 40px 9px 16px;text-align:center;color:var(--ink,#1c2a22)}
+.site-banner--info{background:#dcebe2;border-bottom:1px solid rgba(22,111,67,.25)}
+.site-banner--warn{background:#f3e8c8;border-bottom:1px solid rgba(154,116,3,.3)}
+.site-banner--alert{background:#f4d9d9;border-bottom:1px solid rgba(160,45,45,.3)}
+.site-banner button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:17px;line-height:1;cursor:pointer;color:inherit;opacity:.55;padding:6px}
+.site-banner button:hover{opacity:1}
+</style>
+<script>
+// ── SITE ANNOUNCEMENT BANNER (Netlify Function /api/settings; silently absent on any failure) ──
+(function(){
+  if(location.protocol==='file:'||location.port==='8923') return;
+  var KEY='ddc_banner_v1', TTL=600000;
+  function show(b){
+    if(!b||!b.on||!b.text) return;
+    try{ if(sessionStorage.getItem('ddc_banner_dismissed')===b.text) return; }catch(e){}
+    var d=document.createElement('div');
+    d.className='site-banner site-banner--'+(['info','warn','alert'].indexOf(b.type)>=0?b.type:'info');
+    d.setAttribute('role','status');
+    var hd=document.querySelector('.site-head');
+    if(hd&&getComputedStyle(hd).position==='fixed') d.style.marginTop=hd.offsetHeight+'px';
+    var s=document.createElement('span'); s.textContent=b.text; d.appendChild(s);
+    var x=document.createElement('button'); x.type='button'; x.setAttribute('aria-label','Скрыть'); x.innerHTML='&times;';
+    x.addEventListener('click',function(){ try{sessionStorage.setItem('ddc_banner_dismissed',b.text);}catch(e){} d.remove(); });
+    d.appendChild(x);
+    document.body.insertBefore(d,document.body.firstChild);
+  }
+  try{
+    var c=JSON.parse(sessionStorage.getItem(KEY)||'null');
+    if(c&&c.t&&(Date.now()-c.t)<TTL){ show(c.b); return; }
+  }catch(e){}
+  var ac=(typeof AbortController!=='undefined')?new AbortController():null;
+  var to=setTimeout(function(){ if(ac) ac.abort(); },6000);
+  fetch('/api/settings',ac?{signal:ac.signal}:{})
+    .then(function(r){ clearTimeout(to); if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){
+      var b=(j&&j.public&&j.public.banner)||null;
+      try{ sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),b:b})); }catch(e){}
+      show(b);
+    })
+    .catch(function(){ clearTimeout(to); });
+})();
 </script>
 </body>
 </html>

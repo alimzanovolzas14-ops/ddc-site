@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>DDC · Консоль интеграций</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#06100b;--obsidian-2:#0b1a12;--paper:#f7f9fa;--ink:#1c2a22;--ink-2:#51625a;
+  --green:#166f43;--green-mid:#20844a;--green-bright:#7dcd9f;
+  --gold:#9a7403;--gold-bright:#ffe092;--line-d:rgba(255,224,146,.16);
+  --font:"Inter",system-ui,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-display:"Prata",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:radial-gradient(1200px 700px at 50% -10%,#0d2417 0%,var(--obsidian) 60%);min-height:100vh;color:#e8efe9;line-height:1.5;-webkit-font-smoothing:antialiased;padding:32px 16px}
+.wrap{max-width:860px;margin:0 auto}
+header.top{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+header.top img{width:40px;height:auto}
+header.top h1{font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:.01em}
+header.top .sub{font-size:12.5px;color:#9ab3a3;margin-top:2px}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold) 70%,transparent);opacity:.5;margin:6px 0 26px}
+.card{background:rgba(11,26,18,.85);border:1px solid var(--line-d);border-radius:16px;padding:24px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.card h2{font-size:16px;font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.card h2 svg{width:20px;height:20px;stroke:var(--gold-bright);flex:none}
+.card .desc{font-size:13px;color:#9ab3a3;margin-bottom:16px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+label.f{font-size:12px;color:#9ab3a3;display:block;margin-bottom:4px}
+input[type=text],input[type=password],select{background:#07130c;border:1px solid rgba(125,205,159,.25);border-radius:10px;color:#e8efe9;padding:10px 12px;font:inherit;font-size:14px;min-width:0}
+input:focus,select:focus{outline:none;border-color:var(--green-bright)}
+.grow{flex:1 1 220px}
+.btn{background:var(--green);border:none;border-radius:10px;color:#fff;padding:10px 18px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--green-mid)}
+.btn.ghost{background:transparent;border:1px solid rgba(125,205,159,.35);color:var(--green-bright)}
+.btn.ghost:hover{border-color:var(--green-bright)}
+.btn:disabled{opacity:.5;cursor:default}
+.switch{position:relative;width:46px;height:26px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.switch i{position:absolute;inset:0;background:#122b1d;border:1px solid rgba(125,205,159,.3);border-radius:13px;transition:.2s;cursor:pointer}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#9ab3a3;transition:.2s}
+.switch input:checked+i{background:var(--green);border-color:var(--green)}
+.switch input:checked+i::after{left:23px;background:#fff}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;border:1px solid var(--line-d);border-radius:999px;padding:4px 12px;color:#c7d6cb}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:#5a6b60;flex:none}
+.chip.ok .dot{background:#42c876;box-shadow:0 0 8px rgba(66,200,118,.7)}
+.chip.bad .dot{background:#e05c5c;box-shadow:0 0 8px rgba(224,92,92,.6)}
+.msg{font-size:13px;margin-top:8px;min-height:18px}
+.msg.ok{color:var(--green-bright)}
+.msg.err{color:#ff9d9d}
+.hint{font-size:12.5px;color:#7f9689;line-height:1.55;margin-top:10px}
+.hint a{color:var(--green-bright)}
+#login{max-width:420px;margin:10vh auto 0}
+#login h1{font-family:var(--font-display);font-weight:400;font-size:26px;text-align:center;margin-bottom:4px}
+#login .desc{text-align:center}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#panels,#localNote{display:none}
+.preview{border:1px dashed rgba(125,205,159,.3);border-radius:10px;padding:10px 14px;font-size:13.5px;margin-top:10px}
+.preview.info{background:rgba(22,111,67,.25)}
+.preview.warn{background:rgba(154,116,3,.28)}
+.preview.alert{background:rgba(160,45,45,.3)}
+ul.vprev{list-style:none;margin-top:10px;font-size:13px;color:#c7d6cb}
+ul.vprev li{padding:6px 0;border-top:1px solid rgba(255,224,146,.08)}
+ul.vprev li b{color:#e8efe9;font-weight:600}
+footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
+@media(max-width:560px){body{padding:20px 10px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="img/ddc_mark_green.png" alt="">
+    <div><h1>Консоль интеграций</h1><div class="sub">Центр цифрового развития · служебная страница</div></div>
+  </header>
+  <div class="hairline"></div>
+
+  <div id="localNote" class="card">
+    <h2>Локальный режим</h2>
+    <p class="desc">Функции Netlify недоступны на локальном сервере. Откройте эту страницу на деплое Netlify (превью ветки или продакшен), чтобы управлять интеграциями.</p>
+  </div>
+
+  <div id="login" class="card">
+    <h1>Вход</h1>
+    <p class="desc">Введите служебный ключ доступа</p>
+    <div class="row" style="margin-top:14px">
+      <input id="pw" class="grow" type="password" autocomplete="current-password" placeholder="Ключ доступа">
+      <button id="loginBtn" class="btn">Войти</button>
+    </div>
+    <div class="row" style="margin-bottom:0"><label style="font-size:12.5px;color:#9ab3a3;display:flex;gap:8px;align-items:center"><input type="checkbox" id="remember"> Запомнить до закрытия вкладки</label></div>
+    <div id="loginMsg" class="msg"></div>
+  </div>
+
+  <div id="panels">
+    <div class="card" id="p-tg">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l6 2 2 6 3.5-4.5L19 17l2-13z"/></svg>Новости · Telegram</h2>
+      <p class="desc">Лента канала показывается на странице «Медиа». Источник — публичный канал Telegram.</p>
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="tgOn"><i></i></label>
+        <div class="grow"><label class="f">Канал (t.me/…)</label><input type="text" id="tgChannel" class="grow" style="width:100%" placeholder="nationalbankofkazakhstan"></div>
+      </div>
+      <div class="row">
+        <span class="chip" id="tgHealth"><span class="dot"></span><span>нет данных</span></span>
+        <button class="btn" data-save="tg">Сохранить</button>
+        <button class="btn ghost" data-purge="news">Обновить сейчас</button>
+      </div>
+      <div class="msg" id="tgMsg"></div>
+    </div>
+
+    <div class="card" id="p-hh">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Вакансии · HeadHunter</h2>
+      <p class="desc">Актуальные вакансии компании с hh.kz показываются на странице «Карьера». Идентификатор работодателя — число из адреса hh.kz/employer/&lt;ID&gt;.</p>
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="hhOn"><i></i></label>
+        <div class="grow"><label class="f">ID работодателя на hh.kz</label><input type="text" id="hhId" inputmode="numeric" style="width:100%" placeholder="например 1234567"></div>
+      </div>
+      <div class="row">
+        <span class="chip" id="hhHealth"><span class="dot"></span><span>нет данных</span></span>
+        <button class="btn" data-save="hh">Сохранить</button>
+        <button class="btn ghost" data-purge="vacancies">Обновить сейчас</button>
+        <button class="btn ghost" id="hhPreviewBtn">Проверить ленту</button>
+      </div>
+      <ul class="vprev" id="hhPreview"></ul>
+      <div class="msg" id="hhMsg"></div>
+    </div>
+
+    <div class="card" id="p-insta">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>Новости · Instagram</h2>
+      <p class="desc">Прямое чтение Instagram с серверов невозможно — используется JSON-лента (Behold или Graph API с долгоживущим токеном).</p>
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="inOn"><i></i></label>
+        <div class="grow"><label class="f">URL JSON-ленты (https://…)</label><input type="text" id="inUrl" style="width:100%" placeholder="https://feeds.behold.so/…"></div>
+      </div>
+      <div class="row">
+        <span class="chip" id="inHealth"><span class="dot"></span><span>нет данных</span></span>
+        <button class="btn" data-save="insta">Сохранить</button>
+        <button class="btn ghost" data-purge="instagram">Обновить сейчас</button>
+      </div>
+      <div class="hint">Как подключить: создайте ленту на <a href="https://behold.so" target="_blank" rel="noopener">behold.so</a> (бесплатный тариф) для аккаунта компании и вставьте URL ленты, либо укажите адрес Graph API вида graph.instagram.com/me/media?fields=…&amp;access_token=… — токен хранится только на сервере.</div>
+      <div class="msg" id="inMsg"></div>
+    </div>
+
+    <div class="card" id="p-banner">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4V5z"/></svg>Объявление на сайте</h2>
+      <p class="desc">Строка-объявление показывается вверху всех страниц сайта. Используйте для важных уведомлений.</p>
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="bnOn"><i></i></label>
+        <div class="grow"><label class="f">Текст объявления</label><input type="text" id="bnText" maxlength="300" style="width:100%" placeholder="Например: 15 июля сервисы будут недоступны с 22:00 до 23:00"></div>
+        <div><label class="f">Тип</label><select id="bnType"><option value="info">Информация</option><option value="warn">Внимание</option><option value="alert">Важно</option></select></div>
+      </div>
+      <div class="preview info" id="bnPreview">Предпросмотр объявления</div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" data-save="banner">Сохранить</button>
+      </div>
+      <div class="msg" id="bnMsg"></div>
+    </div>
+  </div>
+
+  <footer>Служебная страница · доступ по ключу · не публикуется в навигации и поисковых системах</footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var API='/api/settings';
+  var TOKEN='';
+  var $=function(id){return document.getElementById(id)};
+
+  if(location.port==='8923'||location.protocol==='file:'){
+    $('localNote').style.display='block';
+    $('login').style.display='none';
+    return;
+  }
+
+  function req(method,body){
+    return fetch(API,{
+      method:method,
+      headers:Object.assign({'x-admin-token':TOKEN},body?{'content-type':'application/json'}:{}),
+      body:body?JSON.stringify(body):undefined,
+      cache:'no-store'
+    }).then(function(r){return r.json()});
+  }
+
+  function chip(el,h){
+    el.classList.remove('ok','bad');
+    var t=el.querySelector('span:last-child');
+    if(!h||!h.lastFetch){t.textContent='нет данных';return}
+    var mins=Math.max(0,Math.round((Date.now()-new Date(h.lastFetch).getTime())/60000));
+    if(h.ok){el.classList.add('ok');t.textContent='работает · '+h.count+' зап. · '+mins+' мин назад'}
+    else{el.classList.add('bad');t.textContent='ошибка · '+mins+' мин назад'+(h.err?' · '+h.err.slice(0,60):'')}
+  }
+
+  function fill(d){
+    var s=d.settings,h=d.health||{};
+    $('tgOn').checked=!!s.tg.on; $('tgChannel').value=s.tg.channel||'';
+    $('hhOn').checked=!!s.hh.on; $('hhId').value=s.hh.employerId||'';
+    $('inOn').checked=!!s.insta.on; $('inUrl').value=s.insta.feedUrl||'';
+    $('bnOn').checked=!!s.banner.on; $('bnText').value=s.banner.text||''; $('bnType').value=s.banner.type||'info';
+    chip($('tgHealth'),h.news); chip($('hhHealth'),h.vacancies); chip($('inHealth'),h.instagram);
+    bnPrev();
+  }
+
+  function bnPrev(){
+    var p=$('bnPreview');
+    p.className='preview '+$('bnType').value;
+    p.textContent=$('bnText').value||'Предпросмотр объявления';
+  }
+  $('bnText').addEventListener('input',bnPrev);
+  $('bnType').addEventListener('change',bnPrev);
+
+  function login(){
+    var pw=$('pw').value.trim();
+    if(!pw)return;
+    TOKEN=pw;
+    $('loginBtn').disabled=true;
+    req('GET').then(function(d){
+      $('loginBtn').disabled=false;
+      if(d&&d.admin){
+        if($('remember').checked)sessionStorage.setItem('ddc_ops',pw);
+        $('login').style.display='none';
+        $('panels').style.display='block';
+        fill(d);
+      }else{
+        TOKEN='';
+        $('login').classList.remove('shake');void $('login').offsetWidth;$('login').classList.add('shake');
+        $('loginMsg').className='msg err';$('loginMsg').textContent='Неверный ключ или сервер недоступен';
+      }
+    }).catch(function(){
+      $('loginBtn').disabled=false;
+      $('loginMsg').className='msg err';$('loginMsg').textContent='Сеть недоступна';
+    });
+  }
+  $('loginBtn').addEventListener('click',login);
+  $('pw').addEventListener('keydown',function(e){if(e.key==='Enter')login()});
+
+  var saved=sessionStorage.getItem('ddc_ops');
+  if(saved){$('pw').value=saved;$('remember').checked=true;login()}
+
+  function payload(kind){
+    if(kind==='tg')return{tg:{on:$('tgOn').checked,channel:$('tgChannel').value.trim()}};
+    if(kind==='hh')return{hh:{on:$('hhOn').checked,employerId:$('hhId').value.trim()}};
+    if(kind==='insta')return{insta:{on:$('inOn').checked,feedUrl:$('inUrl').value.trim()}};
+    if(kind==='banner')return{banner:{on:$('bnOn').checked,text:$('bnText').value.trim(),type:$('bnType').value}};
+  }
+  var MSG={tg:'tgMsg',hh:'hhMsg',insta:'inMsg',banner:'bnMsg'};
+
+  document.querySelectorAll('[data-save]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var kind=b.getAttribute('data-save'),m=$(MSG[kind]);
+      b.disabled=true;
+      req('POST',payload(kind)).then(function(d){
+        b.disabled=false;
+        if(d.ok){m.className='msg ok';m.textContent='Сохранено'}
+        else{m.className='msg err';m.textContent='Ошибка: '+(d.err||'не сохранено')}
+        setTimeout(function(){m.textContent=''},4000);
+      }).catch(function(){b.disabled=false;m.className='msg err';m.textContent='Сеть недоступна'});
+    });
+  });
+
+  document.querySelectorAll('[data-purge]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var feed=b.getAttribute('data-purge');
+      b.disabled=true;
+      req('POST',{action:'purge',feed:feed}).then(function(){
+        return fetch('/api/'+(feed==='news'?'news':feed),{cache:'reload'});
+      }).then(function(){return req('GET')}).then(function(d){
+        b.disabled=false; if(d&&d.admin)fill(d);
+      }).catch(function(){b.disabled=false});
+    });
+  });
+
+  $('hhPreviewBtn').addEventListener('click',function(){
+    var ul=$('hhPreview');ul.innerHTML='<li>Загрузка…</li>';
+    fetch('/api/vacancies',{cache:'reload'}).then(function(r){return r.json()}).then(function(d){
+      if(!d.ok||!d.items.length){ul.innerHTML='<li>'+(d.off?'Интеграция выключена или не настроена':'Лента пуста: '+(d.err||''))+'</li>';return}
+      ul.innerHTML=d.items.slice(0,5).map(function(v){
+        var sal=v.salary?(' · '+(v.salary.from?'от '+v.salary.from:'')+(v.salary.to?' до '+v.salary.to:'')+' '+(v.salary.currency||'')):'';
+        return '<li><b>'+v.name+'</b> · '+v.area+sal+'</li>';
+      }).join('');
+    }).catch(function(){ul.innerHTML='<li>Сеть недоступна</li>'});
+  });
+})();
+</script>
+</body>
+</html>

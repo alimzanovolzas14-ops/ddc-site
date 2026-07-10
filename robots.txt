@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /portal.html
-Disallow: /dashboard.html
 
 Sitemap: https://melodic-frangollo-49ddb8.netlify.app/sitemap.xml

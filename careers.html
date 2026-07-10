@@ -442,6 +442,11 @@ a.org-card:hover .org-more{gap:8px}
 .brand{gap:10px}
 
 /* ─────────── PERFORMANCE / SMOOTHNESS ─────────── */
+/* soft scroll magnet: proximity snapping settles scrolling onto section edges,
+   never traps tall sections (no nearby snap point mid-section) */
+html{scroll-snap-type:y proximity}
+main>section{scroll-snap-align:start;scroll-margin-top:8px}
+
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .hero-gl{will-change:transform}
@@ -916,6 +921,18 @@ h1,.phero h1,.sec-title{font-family:var(--font-display);font-weight:400;letter-s
 .phero h1{font-size:clamp(36px,5.6vw,60px)}
 @media(max-width:560px){.sec-title{font-size:clamp(24px,7vw,36px)}}
 .eyebrow,.sec-eyebrow{letter-spacing:.14em}
+/* ─────────── live hh.kz rail ─────────── */
+.tg-rail{margin-top:36px}
+.tg-rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.tg-rail-h{font-size:17px;font-weight:600}
+.tg-scroll{display:grid;grid-auto-flow:column;grid-auto-columns:min(320px,78vw);gap:14px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+.hh-card{scroll-snap-align:start;display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);
+  border-radius:14px;padding:16px;font-size:13.5px;color:var(--ink-2);line-height:1.45;transition:border-color .2s;text-decoration:none}
+.hh-card:hover{border-color:var(--green)}
+.hh-card b{font-size:15px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.hh-sal{color:var(--gold-ink);font-weight:600;margin-bottom:4px}
+.hh-card time{display:block;font-size:11.5px;color:var(--ink-3);margin-top:auto;padding-top:10px}
 </style>
 <style id="bg3d-css">#siteBg3d{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}html,body{overflow-x:hidden;max-width:100%}@media(max-width:820px){#siteBg3d{display:none!important}.hero-gl{display:none!important}.bot{right:12px;left:12px;width:auto;max-width:none}}.band-gray{background:var(--paper-2)}</style>
 <script>try{if(localStorage.getItem('ddc_no3d')==='1')document.documentElement.classList.add('no3d');}catch(e){}</script>
@@ -1049,6 +1066,13 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 <section class="band" id="jobs"><div class="wrap">
   <div class="sec-head reveal"><div class="sec-eyebrow">Вакансии</div><h2 class="sec-title">Открытые позиции</h2></div>
   <div class="jobs reveal"><button type="button" class="job" data-vac="soc"><div class="job-main"><h3>SOC Analyst L2/L3</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-eng"><div class="job-main"><h3>Старший инженер по информационной безопасности</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-ml"><div class="job-main"><h3>Инженер по данным (ML/NLP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="backend"><div class="job-main"><h3>Backend-разработчик (банковские системы)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Разработка</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="devsecops"><div class="job-main"><h3>DevSecOps инженер</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-analyst"><div class="job-main"><h3>Аналитик данных</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="chief-eng"><div class="job-main"><h3>Главный инженер (Zabbix)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="telecom-eng"><div class="job-main"><h3>Lead Telecom Engineer (Cisco, VoIP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="dc-eng"><div class="job-main"><h3>Главный эксперт-инженер по строительству и развитию ЦОД</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-senior"><div class="job-main"><h3>Senior Information Security Specialist</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="intern-ib"><div class="job-main"><h3>Стажёр — информационная безопасность</h3><div class="job-meta">Астана · Стажировка</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button></div>
+  <div class="tg-rail" id="hhRail" hidden>
+    <div class="tg-rail-head">
+      <h3 class="tg-rail-h">Актуальные вакансии на hh.kz</h3>
+      <a class="tlink" id="hhAll" href="https://hh.kz" target="_blank" rel="noopener">Открыть на hh.kz</a>
+    </div>
+    <div class="tg-scroll" id="hhScroll"></div>
+  </div>
 </div></section>
 
 <section class="band band-gray" id="life"><div class="wrap">
@@ -1413,6 +1437,8 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "Стать партнёром":["Become a partner","Серіктес болу"],"Хотите стать партнёром DDC?":["Want to become a DDC partner?","ЦДО серіктесі болғыңыз келе ме?"],
    // careers
    "Вакансии":["Vacancies","Бос орындар"],"Открытые позиции":["Open positions","Ашық позициялар"],
+   "Актуальные вакансии на hh.kz":["Current vacancies on hh.kz","hh.kz сайтындағы өзекті бос орындар"],
+   "Открыть на hh.kz":["Open on hh.kz","hh.kz сайтында ашу"],
    "Жизнь в DDC":["Life at DDC","ЦДО-дағы өмір"],"Почему DDC":["Why DDC","Неліктен ЦДО"],
    "Масштаб":["Scale","Ауқым"],"Развитие":["Growth","Даму"],"Стабильность":["Stability","Тұрақтылық"],
    "Смотреть вакансии":["View vacancies","Бос орындарды қарау"],
@@ -1571,7 +1597,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    hf4:["Astana","Астана"]
   };
   var IDX={ru:-1,en:0,kz:1};
-  var SEL='.nav-links a,.nav-cta,.brand small,.eyebrow,.hero-sub,.tlink,.hero-fact,.sec-eyebrow,.sec-title,.sec-desc,.lede,.mm-h,.mm-main-link,.mm-link,.btn,.tile-cat,.tile h3,.tile p,.tile-more,.svc-card h3,.svc-tag,.svc-who,.svc-block h4,.svc-list li,.faq-a-in,.role-row h3,.num span,.num em,.mv-card h4,.mv-card p,.about-lead h3,.about-lead p,.tl-text,.org-card h3,.org-card p,.foot-cols h5,.foot-cols a,.foot-bottom span,.lead-card .pos,.fstat span,.job-dept,.job h3,.job-meta,.person-pos,.person-badge,.contact-card h3,.cp-tx b,.cp-tx span,.cp-social-h,.form-label,.cp-form option,.faq-q,.phero p,.news-card .more,.wxc,[data-bot],.bot-head b,.bot-head span,#tmodalLink,.bot-chip';
+  var SEL='.nav-links a,.nav-cta,.brand small,.eyebrow,.hero-sub,.tlink,.hero-fact,.sec-eyebrow,.sec-title,.sec-desc,.lede,.mm-h,.mm-main-link,.mm-link,.btn,.tile-cat,.tile h3,.tile p,.tile-more,.svc-card h3,.svc-tag,.svc-who,.svc-block h4,.svc-list li,.faq-a-in,.role-row h3,.num span,.num em,.mv-card h4,.mv-card p,.about-lead h3,.about-lead p,.tl-text,.org-card h3,.org-card p,.foot-cols h5,.foot-cols a,.foot-bottom span,.lead-card .pos,.fstat span,.job-dept,.job h3,.job-meta,.person-pos,.person-badge,.contact-card h3,.cp-tx b,.cp-tx span,.cp-social-h,.form-label,.cp-form option,.faq-q,.phero p,.news-card .more,.wxc,[data-bot],.bot-head b,.bot-head span,#tmodalLink,.bot-chip,.tg-rail-h';
   function apply(lang){
     document.querySelectorAll('[data-i18n-html]').forEach(function(el){
       var k=el.getAttribute('data-i18n-html'); if(!MARK[k])return;
@@ -1939,6 +1965,45 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   document.addEventListener('visibilitychange',function(){ if(document.hidden){if(raf)cancelAnimationFrame(raf);} else loop(); });
 })();
 </script>
+<script>
+// ── LIVE HH.KZ VACANCIES RAIL (Netlify Function /api/vacancies; silently hidden on any failure) ──
+(function(){
+  var rail=document.getElementById('hhRail'), box=document.getElementById('hhScroll'); if(!rail||!box) return;
+  if(location.protocol==='file:'||location.port==='8923') return; // no function on the local dev server
+  var KEY='ddc_hh_v1', TTL=600000;
+  function esc(t){var d=document.createElement('div');d.textContent=t||'';return d.innerHTML;}
+  function sal(s){
+    if(!s||(!s.from&&!s.to)) return '';
+    var cur=(s.currency==='KZT'?'₸':s.currency||'');
+    var t=(s.from?'от '+Number(s.from).toLocaleString('ru-RU'):'')+(s.to?' до '+Number(s.to).toLocaleString('ru-RU'):'');
+    return '<span class="hh-sal">'+esc(t.trim()+' '+cur)+'</span>';
+  }
+  function render(items){
+    box.innerHTML=items.slice(0,8).map(function(v){
+      return '<a class="hh-card" href="'+esc(v.url)+'" target="_blank" rel="noopener">'+
+        '<b>'+esc(v.name)+'</b>'+sal(v.salary)+
+        (v.req?'<span>'+esc(v.req)+'</span>':'')+
+        '<time>'+esc(v.area||'')+(v.published?' · '+esc(String(v.published).slice(0,10)):'')+'</time></a>';
+    }).join('');
+    rail.hidden=false;
+    if(window.__applyLang) window.__applyLang();
+  }
+  try{
+    var c=JSON.parse(sessionStorage.getItem(KEY)||'null');
+    if(c&&c.t&&(Date.now()-c.t)<TTL&&c.items&&c.items.length){ render(c.items); return; }
+  }catch(e){}
+  var ac=(typeof AbortController!=='undefined')?new AbortController():null;
+  var to=setTimeout(function(){ if(ac) ac.abort(); },6000);
+  fetch('/api/vacancies',ac?{signal:ac.signal}:{})
+    .then(function(r){ clearTimeout(to); if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){
+      if(!j||!j.ok||!(j.items&&j.items.length)) throw 0;
+      try{ sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),items:j.items})); }catch(e){}
+      render(j.items);
+    })
+    .catch(function(){ clearTimeout(to); });
+})();
+</script>
 <button id="toTop" class="to-top" aria-label="Наверх" title="Наверх">↑</button>
 <style>.to-top{position:fixed;right:28px;bottom:90px;width:44px;height:44px;border-radius:50%;background:var(--green,#166f43);color:#fff;border:0;font-size:20px;line-height:44px;text-align:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .3s,transform .3s;z-index:975;box-shadow:0 10px 26px -8px rgba(22,111,67,.55)}.to-top.show{opacity:1;visibility:visible;transform:none}.to-top:hover{transform:translateY(-3px)}@media(max-width:820px){.to-top{display:none!important}}</style>
 <script>(function(){var b=document.getElementById('toTop');if(!b)return;var tk=false;function upd(){b.classList.toggle('show',(window.scrollY||window.pageYOffset||0)>420);}window.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){upd();tk=false;});},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});upd();})();</script>
@@ -1946,6 +2011,49 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 <script>
 (function(){var b=document.getElementById('readbar');if(b){var tk=false;function upd(){var h=document.documentElement,st=h.scrollTop||document.body.scrollTop||0,sh=(h.scrollHeight-h.clientHeight)||1;b.style.width=Math.max(0,Math.min(100,st/sh*100))+'%';}window.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){upd();tk=false;});},{passive:true});window.addEventListener('resize',upd);upd();}})();
 (function(){var t=document.getElementById('toggle3d');if(!t)return;function lbl(){var off=false;try{off=localStorage.getItem('ddc_no3d')==='1';}catch(e){}t.textContent=off?'Включить 3D-фон':'Отключить 3D-фон';}lbl();t.addEventListener('click',function(){try{var on=localStorage.getItem('ddc_no3d')==='1';localStorage.setItem('ddc_no3d',on?'0':'1');}catch(e){}location.reload();});})();
+</script>
+<style>
+.site-banner{position:relative;z-index:1200;font-size:13.5px;line-height:1.45;padding:9px 40px 9px 16px;text-align:center;color:var(--ink,#1c2a22)}
+.site-banner--info{background:#dcebe2;border-bottom:1px solid rgba(22,111,67,.25)}
+.site-banner--warn{background:#f3e8c8;border-bottom:1px solid rgba(154,116,3,.3)}
+.site-banner--alert{background:#f4d9d9;border-bottom:1px solid rgba(160,45,45,.3)}
+.site-banner button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:17px;line-height:1;cursor:pointer;color:inherit;opacity:.55;padding:6px}
+.site-banner button:hover{opacity:1}
+</style>
+<script>
+// ── SITE ANNOUNCEMENT BANNER (Netlify Function /api/settings; silently absent on any failure) ──
+(function(){
+  if(location.protocol==='file:'||location.port==='8923') return;
+  var KEY='ddc_banner_v1', TTL=600000;
+  function show(b){
+    if(!b||!b.on||!b.text) return;
+    try{ if(sessionStorage.getItem('ddc_banner_dismissed')===b.text) return; }catch(e){}
+    var d=document.createElement('div');
+    d.className='site-banner site-banner--'+(['info','warn','alert'].indexOf(b.type)>=0?b.type:'info');
+    d.setAttribute('role','status');
+    var hd=document.querySelector('.site-head');
+    if(hd&&getComputedStyle(hd).position==='fixed') d.style.marginTop=hd.offsetHeight+'px';
+    var s=document.createElement('span'); s.textContent=b.text; d.appendChild(s);
+    var x=document.createElement('button'); x.type='button'; x.setAttribute('aria-label','Скрыть'); x.innerHTML='&times;';
+    x.addEventListener('click',function(){ try{sessionStorage.setItem('ddc_banner_dismissed',b.text);}catch(e){} d.remove(); });
+    d.appendChild(x);
+    document.body.insertBefore(d,document.body.firstChild);
+  }
+  try{
+    var c=JSON.parse(sessionStorage.getItem(KEY)||'null');
+    if(c&&c.t&&(Date.now()-c.t)<TTL){ show(c.b); return; }
+  }catch(e){}
+  var ac=(typeof AbortController!=='undefined')?new AbortController():null;
+  var to=setTimeout(function(){ if(ac) ac.abort(); },6000);
+  fetch('/api/settings',ac?{signal:ac.signal}:{})
+    .then(function(r){ clearTimeout(to); if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){
+      var b=(j&&j.public&&j.public.banner)||null;
+      try{ sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),b:b})); }catch(e){}
+      show(b);
+    })
+    .catch(function(){ clearTimeout(to); });
+})();
 </script>
 </body>
 </html>
