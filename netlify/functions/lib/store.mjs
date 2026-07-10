@@ -5,6 +5,7 @@
 export const DEFAULTS = {
   banner: { on: false, text: '', type: 'info' },
   tg:     { on: true,  channel: 'nationalbankofkazakhstan' },
+  tgJobs: { on: false, channel: 'TALENT_BSBNB' },
   hh:     { on: false, employerId: '' },
   insta:  { on: false, feedUrl: '' },
   updatedAt: '',

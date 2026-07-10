@@ -10,10 +10,10 @@ export default async (req) => {
     if (req.method === 'GET') {
       const s = await getSettings();
       if (!isAdmin(req)) return json({ ok: true, public: { banner: s.banner } });
-      const [news, vacancies, instagram] = await Promise.all([
-        readJSON('health/news.json'), readJSON('health/vacancies.json'), readJSON('health/instagram.json'),
+      const [news, vacancies, instagram, talent] = await Promise.all([
+        readJSON('health/news.json'), readJSON('health/vacancies.json'), readJSON('health/instagram.json'), readJSON('health/talent.json'),
       ]);
-      return json({ ok: true, admin: true, settings: s, health: { news, vacancies, instagram } });
+      return json({ ok: true, admin: true, settings: s, health: { news, vacancies, instagram, talent } });
     }
 
     if (req.method === 'POST') {
@@ -22,7 +22,7 @@ export default async (req) => {
 
       if (body.action === 'purge') {
         const feed = String(body.feed || '');
-        if (!['news', 'vacancies', 'instagram'].includes(feed)) return json({ ok: false, err: 'bad feed' });
+        if (!['news', 'vacancies', 'instagram', 'talent'].includes(feed)) return json({ ok: false, err: 'bad feed' });
         await deleteKey('cache/' + feed + '.json');
         await deleteKey('health/' + feed + '.json');
         return json({ ok: true, purged: feed });
@@ -40,6 +40,11 @@ export default async (req) => {
         const ch = String(body.tg.channel || '').trim();
         if (ch && !RE.channel.test(ch)) return json({ ok: false, err: 'bad channel' });
         patch.tg = { on: !!body.tg.on, ...(ch ? { channel: ch } : {}) };
+      }
+      if (body.tgJobs) {
+        const ch = String(body.tgJobs.channel || '').trim();
+        if (ch && !RE.channel.test(ch)) return json({ ok: false, err: 'bad channel' });
+        patch.tgJobs = { on: !!body.tgJobs.on, ...(ch ? { channel: ch } : {}) };
       }
       if (body.hh) {
         const id = String(body.hh.employerId || '').trim();

@@ -128,6 +128,23 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
       <div class="msg" id="hhMsg"></div>
     </div>
 
+    <div class="card" id="p-tgjobs">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l6 2 2 6 3.5-4.5L19 17l2-13z"/></svg>Карьера · Telegram</h2>
+      <p class="desc">Лента карьерного канала показывается на странице «Карьера» рядом с вакансиями. Источник — публичный канал Telegram (например t.me/TALENT_BSBNB).</p>
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="tjOn"><i></i></label>
+        <div class="grow"><label class="f">Канал (t.me/…)</label><input type="text" id="tjChannel" class="grow" style="width:100%" placeholder="TALENT_BSBNB"></div>
+      </div>
+      <div class="row">
+        <span class="chip" id="tjHealth"><span class="dot"></span><span>нет данных</span></span>
+        <button class="btn" data-save="tgJobs">Сохранить</button>
+        <button class="btn ghost" data-purge="talent">Обновить сейчас</button>
+        <button class="btn ghost" id="tjPreviewBtn">Проверить ленту</button>
+      </div>
+      <ul class="vprev" id="tjPreview"></ul>
+      <div class="msg" id="tjMsg"></div>
+    </div>
+
     <div class="card" id="p-insta">
       <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>Новости · Instagram</h2>
       <p class="desc">Прямое чтение Instagram с серверов невозможно — используется JSON-лента (Behold или Graph API с долгоживущим токеном).</p>
@@ -197,10 +214,11 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
   function fill(d){
     var s=d.settings,h=d.health||{};
     $('tgOn').checked=!!s.tg.on; $('tgChannel').value=s.tg.channel||'';
+    var tj=s.tgJobs||{}; $('tjOn').checked=!!tj.on; $('tjChannel').value=tj.channel||'';
     $('hhOn').checked=!!s.hh.on; $('hhId').value=s.hh.employerId||'';
     $('inOn').checked=!!s.insta.on; $('inUrl').value=s.insta.feedUrl||'';
     $('bnOn').checked=!!s.banner.on; $('bnText').value=s.banner.text||''; $('bnType').value=s.banner.type||'info';
-    chip($('tgHealth'),h.news); chip($('hhHealth'),h.vacancies); chip($('inHealth'),h.instagram);
+    chip($('tgHealth'),h.news); chip($('tjHealth'),h.talent); chip($('hhHealth'),h.vacancies); chip($('inHealth'),h.instagram);
     bnPrev();
   }
 
@@ -242,11 +260,12 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
 
   function payload(kind){
     if(kind==='tg')return{tg:{on:$('tgOn').checked,channel:$('tgChannel').value.trim()}};
+    if(kind==='tgJobs')return{tgJobs:{on:$('tjOn').checked,channel:$('tjChannel').value.trim()}};
     if(kind==='hh')return{hh:{on:$('hhOn').checked,employerId:$('hhId').value.trim()}};
     if(kind==='insta')return{insta:{on:$('inOn').checked,feedUrl:$('inUrl').value.trim()}};
     if(kind==='banner')return{banner:{on:$('bnOn').checked,text:$('bnText').value.trim(),type:$('bnType').value}};
   }
-  var MSG={tg:'tgMsg',hh:'hhMsg',insta:'inMsg',banner:'bnMsg'};
+  var MSG={tg:'tgMsg',tgJobs:'tjMsg',hh:'hhMsg',insta:'inMsg',banner:'bnMsg'};
 
   document.querySelectorAll('[data-save]').forEach(function(b){
     b.addEventListener('click',function(){
@@ -271,6 +290,17 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
         b.disabled=false; if(d&&d.admin)fill(d);
       }).catch(function(){b.disabled=false});
     });
+  });
+
+  $('tjPreviewBtn').addEventListener('click',function(){
+    var ul=$('tjPreview');ul.innerHTML='<li>Загрузка…</li>';
+    fetch('/api/talent',{cache:'reload'}).then(function(r){return r.json()}).then(function(d){
+      if(!d.ok||!d.posts.length){ul.innerHTML='<li>'+(d.off?'Интеграция выключена':'Лента пуста: '+(d.err||''))+'</li>';return}
+      ul.innerHTML=d.posts.slice(0,5).map(function(p){
+        var t=document.createElement('div');t.textContent=(p.text||'').slice(0,120);
+        return '<li><b>'+(p.date?String(p.date).slice(0,10):'')+'</b> · '+t.innerHTML+'</li>';
+      }).join('');
+    }).catch(function(){ul.innerHTML='<li>Сеть недоступна</li>'});
   });
 
   $('hhPreviewBtn').addEventListener('click',function(){

@@ -574,11 +574,13 @@ a.logo-cell{text-decoration:none}
 .tile.dark::after{opacity:.06}
 
 /* ─────────── CAREERS: clickable job + vacancy modal ─────────── */
-button.job{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);
+button.job,a.job{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);
   display:flex;align-items:center;gap:18px;padding:26px 6px;cursor:pointer;font-family:inherit;transition:.2s}
-button.job:first-child{border-top:0}
-button.job:hover{padding-left:14px;padding-right:0}
-button.job:hover h3{color:var(--green)}
+a.job{text-decoration:none;color:inherit}
+button.job:first-child,a.job:first-child{border-top:0}
+button.job:hover,a.job:hover{padding-left:14px;padding-right:0}
+button.job:hover h3,a.job:hover h3{color:var(--green)}
+.hh-more{max-width:820px;margin:14px auto 0;text-align:right}
 .job-main{flex:1;min-width:0}
 .job-main h3{font-size:21px;font-weight:600;letter-spacing:-.01em;transition:color .2s}
 .job-meta{font-size:14px;color:var(--ink-3);margin-top:5px}
@@ -1065,13 +1067,17 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 
 <section class="band" id="jobs"><div class="wrap">
   <div class="sec-head reveal"><div class="sec-eyebrow">Вакансии</div><h2 class="sec-title">Открытые позиции</h2></div>
-  <div class="jobs reveal"><button type="button" class="job" data-vac="soc"><div class="job-main"><h3>SOC Analyst L2/L3</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-eng"><div class="job-main"><h3>Старший инженер по информационной безопасности</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-ml"><div class="job-main"><h3>Инженер по данным (ML/NLP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="backend"><div class="job-main"><h3>Backend-разработчик (банковские системы)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Разработка</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="devsecops"><div class="job-main"><h3>DevSecOps инженер</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-analyst"><div class="job-main"><h3>Аналитик данных</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="chief-eng"><div class="job-main"><h3>Главный инженер (Zabbix)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="telecom-eng"><div class="job-main"><h3>Lead Telecom Engineer (Cisco, VoIP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="dc-eng"><div class="job-main"><h3>Главный эксперт-инженер по строительству и развитию ЦОД</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-senior"><div class="job-main"><h3>Senior Information Security Specialist</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="intern-ib"><div class="job-main"><h3>Стажёр — информационная безопасность</h3><div class="job-meta">Астана · Стажировка</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button></div>
-  <div class="tg-rail" id="hhRail" hidden>
+  <div class="jobs reveal" id="staticJobs"><button type="button" class="job" data-vac="soc"><div class="job-main"><h3>SOC Analyst L2/L3</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-eng"><div class="job-main"><h3>Старший инженер по информационной безопасности</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-ml"><div class="job-main"><h3>Инженер по данным (ML/NLP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="backend"><div class="job-main"><h3>Backend-разработчик (банковские системы)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Разработка</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="devsecops"><div class="job-main"><h3>DevSecOps инженер</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-analyst"><div class="job-main"><h3>Аналитик данных</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="chief-eng"><div class="job-main"><h3>Главный инженер (Zabbix)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="telecom-eng"><div class="job-main"><h3>Lead Telecom Engineer (Cisco, VoIP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="dc-eng"><div class="job-main"><h3>Главный эксперт-инженер по строительству и развитию ЦОД</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-senior"><div class="job-main"><h3>Senior Information Security Specialist</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="intern-ib"><div class="job-main"><h3>Стажёр — информационная безопасность</h3><div class="job-meta">Астана · Стажировка</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button></div>
+  <div class="jobs reveal" id="hhJobs" hidden></div>
+  <div class="hh-more" id="hhMore" hidden>
+    <a class="tlink" id="hhAll" href="https://hh.kz" target="_blank" rel="noopener">Все вакансии на hh.kz</a>
+  </div>
+  <div class="tg-rail" id="tgJobsRail" hidden>
     <div class="tg-rail-head">
-      <h3 class="tg-rail-h">Актуальные вакансии на hh.kz</h3>
-      <a class="tlink" id="hhAll" href="https://hh.kz" target="_blank" rel="noopener">Открыть на hh.kz</a>
+      <h3 class="tg-rail-h">Карьерный Telegram-канал</h3>
+      <a class="tlink" id="tgJobsAll" href="https://t.me/TALENT_BSBNB" target="_blank" rel="noopener">Открыть в Telegram</a>
     </div>
-    <div class="tg-scroll" id="hhScroll"></div>
+    <div class="tg-scroll" id="tgJobsScroll"></div>
   </div>
 </div></section>
 
@@ -1439,6 +1445,9 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "Вакансии":["Vacancies","Бос орындар"],"Открытые позиции":["Open positions","Ашық позициялар"],
    "Актуальные вакансии на hh.kz":["Current vacancies on hh.kz","hh.kz сайтындағы өзекті бос орындар"],
    "Открыть на hh.kz":["Open on hh.kz","hh.kz сайтында ашу"],
+   "Все вакансии на hh.kz":["All vacancies on hh.kz","hh.kz сайтындағы барлық бос орындар"],
+   "Карьерный Telegram-канал":["Career Telegram channel","Мансап Telegram-арнасы"],
+   "Открыть в Telegram":["Open in Telegram","Telegram-да ашу"],
    "Жизнь в DDC":["Life at DDC","ЦДО-дағы өмір"],"Почему DDC":["Why DDC","Неліктен ЦДО"],
    "Масштаб":["Scale","Ауқым"],"Развитие":["Growth","Даму"],"Стабильность":["Stability","Тұрақтылық"],
    "Смотреть вакансии":["View vacancies","Бос орындарды қарау"],
@@ -1966,42 +1975,75 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 })();
 </script>
 <script>
-// ── LIVE HH.KZ VACANCIES RAIL (Netlify Function /api/vacancies; silently hidden on any failure) ──
+// ── LIVE VACANCIES (Netlify Functions; both fail silently) ──
+// /api/vacancies: hh.kz becomes the PRIMARY list, apply goes to hh.kz; the static
+// hand-written list stays as the fallback whenever hh is off/empty/unreachable.
+// /api/talent: career Telegram channel rail, complementary to either list.
 (function(){
-  var rail=document.getElementById('hhRail'), box=document.getElementById('hhScroll'); if(!rail||!box) return;
-  if(location.protocol==='file:'||location.port==='8923') return; // no function on the local dev server
-  var KEY='ddc_hh_v1', TTL=600000;
+  if(location.protocol==='file:'||location.port==='8923') return; // no functions on the local dev server
+  var TTL=600000;
   function esc(t){var d=document.createElement('div');d.textContent=t||'';return d.innerHTML;}
-  function sal(s){
+  function cached(key){ try{ var c=JSON.parse(sessionStorage.getItem(key)||'null'); if(c&&c.t&&(Date.now()-c.t)<TTL) return c; }catch(e){} return null; }
+  function keep(key,val){ try{ val.t=Date.now(); sessionStorage.setItem(key,JSON.stringify(val)); }catch(e){} }
+  function get(url,ok){
+    var ac=(typeof AbortController!=='undefined')?new AbortController():null;
+    var to=setTimeout(function(){ if(ac) ac.abort(); },6000);
+    fetch(url,ac?{signal:ac.signal}:{})
+      .then(function(r){ clearTimeout(to); if(!r.ok) throw 0; return r.json(); })
+      .then(ok)
+      .catch(function(){ clearTimeout(to); });
+  }
+  function salTxt(s){
     if(!s||(!s.from&&!s.to)) return '';
     var cur=(s.currency==='KZT'?'₸':s.currency||'');
-    var t=(s.from?'от '+Number(s.from).toLocaleString('ru-RU'):'')+(s.to?' до '+Number(s.to).toLocaleString('ru-RU'):'');
-    return '<span class="hh-sal">'+esc(t.trim()+' '+cur)+'</span>';
+    return ((s.from?'от '+Number(s.from).toLocaleString('ru-RU'):'')+(s.to?' до '+Number(s.to).toLocaleString('ru-RU'):'')).trim()+' '+cur;
   }
-  function render(items){
-    box.innerHTML=items.slice(0,8).map(function(v){
-      return '<a class="hh-card" href="'+esc(v.url)+'" target="_blank" rel="noopener">'+
-        '<b>'+esc(v.name)+'</b>'+sal(v.salary)+
-        (v.req?'<span>'+esc(v.req)+'</span>':'')+
-        '<time>'+esc(v.area||'')+(v.published?' · '+esc(String(v.published).slice(0,10)):'')+'</time></a>';
+
+  // hh.kz primary jobs grid
+  var stat=document.getElementById('staticJobs'), grid=document.getElementById('hhJobs'),
+      more=document.getElementById('hhMore'), allLnk=document.getElementById('hhAll');
+  function renderJobs(items,employerUrl){
+    if(!grid||!items.length) return;
+    grid.innerHTML=items.map(function(v){
+      var meta=esc(v.area||'')+(v.published?' · '+esc(String(v.published).slice(0,10)):'');
+      var badge=salTxt(v.salary)||'hh.kz';
+      return '<a class="job" href="'+esc(v.url)+'" target="_blank" rel="noopener">'+
+        '<div class="job-main"><h3>'+esc(v.name)+'</h3><div class="job-meta">'+meta+'</div></div>'+
+        '<span class="job-dept">'+esc(badge)+'</span><span class="job-go">›</span></a>';
     }).join('');
+    grid.hidden=false; grid.classList.add('in');
+    if(stat) stat.hidden=true;
+    if(more){ more.hidden=false; if(allLnk&&/^https:\/\//.test(employerUrl||'')) allLnk.href=employerUrl; }
+    if(window.__applyLang) window.__applyLang();
+  }
+  var ch=cached('ddc_hh_v2');
+  if(ch&&ch.items&&ch.items.length){ renderJobs(ch.items,ch.employerUrl); }
+  else get('/api/vacancies',function(j){
+    if(!j||!j.ok||!(j.items&&j.items.length)) return;
+    keep('ddc_hh_v2',{items:j.items,employerUrl:j.employerUrl||''});
+    renderJobs(j.items,j.employerUrl||'');
+  });
+
+  // career Telegram rail
+  var rail=document.getElementById('tgJobsRail'), box=document.getElementById('tgJobsScroll'), railLnk=document.getElementById('tgJobsAll');
+  function renderTg(posts,channel){
+    if(!rail||!box||!posts.length) return;
+    box.innerHTML=posts.slice(0,8).map(function(p){
+      return '<a class="hh-card" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+
+        (p.text?'<span>'+esc(p.text)+'</span>':'')+
+        '<time>'+(p.date?esc(String(p.date).slice(0,10)):'')+'</time></a>';
+    }).join('');
+    if(railLnk&&/^[A-Za-z0-9_]{3,64}$/.test(channel||'')) railLnk.href='https://t.me/'+channel;
     rail.hidden=false;
     if(window.__applyLang) window.__applyLang();
   }
-  try{
-    var c=JSON.parse(sessionStorage.getItem(KEY)||'null');
-    if(c&&c.t&&(Date.now()-c.t)<TTL&&c.items&&c.items.length){ render(c.items); return; }
-  }catch(e){}
-  var ac=(typeof AbortController!=='undefined')?new AbortController():null;
-  var to=setTimeout(function(){ if(ac) ac.abort(); },6000);
-  fetch('/api/vacancies',ac?{signal:ac.signal}:{})
-    .then(function(r){ clearTimeout(to); if(!r.ok) throw 0; return r.json(); })
-    .then(function(j){
-      if(!j||!j.ok||!(j.items&&j.items.length)) throw 0;
-      try{ sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),items:j.items})); }catch(e){}
-      render(j.items);
-    })
-    .catch(function(){ clearTimeout(to); });
+  var ct=cached('ddc_tgjobs_v1');
+  if(ct&&ct.posts&&ct.posts.length){ renderTg(ct.posts,ct.channel); }
+  else get('/api/talent',function(j){
+    if(!j||!j.ok||!(j.posts&&j.posts.length)) return;
+    keep('ddc_tgjobs_v1',{posts:j.posts,channel:j.channel||''});
+    renderTg(j.posts,j.channel||'');
+  });
 })();
 </script>
 <button id="toTop" class="to-top" aria-label="Наверх" title="Наверх">↑</button>

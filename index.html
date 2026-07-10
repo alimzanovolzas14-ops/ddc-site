@@ -178,12 +178,12 @@ img,svg{display:block;max-width:100%}
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;min-height:300px;display:flex;flex-direction:column}
 .tile:hover{transform:translateY(-6px);box-shadow:0 22px 48px -18px rgba(0,0,0,.16)}
 .tile.wide{grid-column:span 2}
-.tile.dark{background:radial-gradient(130% 130% at 78% 12%,#16203c 0%,#0c0c16 46%,#060609 100%);color:#f5f5f7}
+.tile.dark{background:radial-gradient(130% 130% at 78% 12%,#14361f 0%,var(--obsidian-2) 46%,var(--obsidian) 100%);color:#f5f5f7}
 .tile-cat{font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
 .tile.dark .tile-cat{color:var(--green-bright)}
 .tile h3{font-size:26px;font-weight:700;letter-spacing:-.018em;line-height:1.12;margin-bottom:10px}
 .tile p{font-size:15.5px;color:var(--ink-2);line-height:1.5;max-width:34ch}
-.tile.dark p{color:#a1a1a8}
+.tile.dark p{color:#a2b3a9}
 .tile-foot{margin-top:auto;padding-top:22px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .tile-stat{font-size:34px;font-weight:700;letter-spacing:-.02em;color:var(--green)}
 .tile.dark .tile-stat{color:var(--green-bright)}
@@ -1607,20 +1607,20 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   var rto; addEventListener('resize',function(){ clearTimeout(rto); rto=setTimeout(function(){ if(!killed){parts=null; t0=0; ready(build);} },350); });
 
   // ── video upgrade (activates when encoded metamorphosis video is deployed) ──
-  var SRC={ small:{webm:'img/xform-720.webm', mp4:'img/xform-720.mp4'},
-            large:{webm:'img/xform-1080.webm', mp4:'img/xform-1080.mp4'} };
-  var VIDEO_READY=true; // encoded loop files are in img/ (xform-1080/720 webm+mp4)
+  var SRC={ portrait:{webm:'img/xform-916.webm', mp4:'img/xform-916.mp4'},
+            landscape:{webm:'img/xform-169.webm', mp4:'img/xform-169.mp4'} };
+  var VIDEO_READY=true; // encoded loop files are in img/ (xform-169/916 webm+mp4)
   if(!VIDEO_READY) return;
   var conn=navigator.connection||{};
   if(conn.saveData) return;
   var et=(conn.effectiveType||'');
-  if(et==='2g'||et==='slow-2g') return;
-  var slow=(typeof conn.downlink==='number'&&conn.downlink<1.5);
-  var small=window.innerWidth<=820||et==='3g'||slow;
-  var pk=small?SRC.small:SRC.large;
+  if(et==='2g'||et==='slow-2g'||et==='3g') return;
+  if(typeof conn.downlink==='number'&&conn.downlink<1.5) return;
+  var portrait=(window.matchMedia&&matchMedia('(orientation:portrait)').matches)||window.innerHeight>window.innerWidth;
+  var pk=portrait?SRC.portrait:SRC.landscape;
   var v=document.createElement('video');
   v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('muted',''); v.setAttribute('playsinline','');
-  v.preload='none';
+  v.preload='auto';
   v.innerHTML='<source src="'+pk.webm+'" type="video/webm"><source src="'+pk.mp4+'" type="video/mp4">';
   var stalls=0, vdead=false;
   function vkill(){ if(vdead)return; vdead=true; try{v.pause();}catch(e){} v.classList.remove('on'); setTimeout(function(){v.remove();},900); }
@@ -1628,12 +1628,15 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   ['waiting','stalled'].forEach(function(ev){ v.addEventListener(ev,function(){ if(++stalls>=3) vkill(); }); });
   v.addEventListener('playing',function(){ v.classList.add('on'); window.__xformStop(); gold.style.opacity=0; cyan.style.opacity=0; });
   band.querySelector('.xform-stage').insertBefore(v, band.querySelector('.xform-vig'));
-  var started=false;
+  // hero is above the fold: start fetching immediately (browser streams via range
+  // requests; the canvas covers the wait), observer only pauses/resumes off-screen
+  var started=true;
+  v.load(); v.play().catch(function(){});
   try{
     new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(vdead) return;
-        if(e.isIntersecting){ if(!started){started=true; v.load();} v.play().catch(function(){}); }
+        if(e.isIntersecting){ v.play().catch(function(){}); }
         else{ try{v.pause();}catch(err){} }
       });
     },{rootMargin:'600px 0px'}).observe(band);
