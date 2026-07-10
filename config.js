@@ -24,8 +24,8 @@ window.DDC_APPLY_ENDPOINT = ''; // напр. 'https://ваш-бэкенд.worker
      • anon public key  → SUPABASE_KEY   (публичный ключ, его можно держать в коде)
    ВАЖНО: вставляйте именно anon/публичный ключ, НЕ service_role (секретный).
    Перед включением выполните SQL из DB_SETUP.md (создание таблиц + политики). */
-window.SUPABASE_URL = 'https://htzitobzbcjtggjltdkx.supabase.co';  // напр. 'https://abcdxyz.supabase.co'
-window.SUPABASE_KEY = 'sb_publishable_R2pMn3BFE0velbtO0vT3Vw_kfGX7IJ9';  // anon public key (eyJ... или sb_publishable_...)
+window.SUPABASE_URL = '';  // напр. 'https://abcdxyz.supabase.co'
+window.SUPABASE_KEY = '';  // anon public key (eyJ... или sb_publishable_...)
 
 /* ───────── ИИ-ассистент (умные ответы на любые вопросы) ─────────
    Впишите адрес прокси (Cloudflare Worker), который хранит ваш API-ключ.

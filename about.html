@@ -3,36 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>О нас — DDC | Цифровой центр развития</title>
-<meta name="description" content="АО «Центр цифрового развития Национального Банка Казахстана» — ИКТ-инфраструктура, кибербезопасность, цифровые сервисы, портал закупок и контакт-центр НБРК.">
+<meta name="theme-color" content="#0e4c28">
+<title>О нас — DDC | Центр цифрового развития</title>
+<meta name="description" content="О компании АО «Центр цифрового развития Национального Банка Казахстана»: история с 1995 года, миссия, руководство, стратегия и структура технологического центра НБРК.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://melodic-frangollo-49ddb8.netlify.app/about.html">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Центр цифрового развития НБ РК">
+<meta property="og:title" content="О нас — Центр цифрового развития НБ РК">
+<meta property="og:description" content="О компании АО «Центр цифрового развития Национального Банка Казахстана»: история с 1995 года, миссия, руководство, стратегия и структура технологического центра НБРК.">
+<meta property="og:url" content="https://melodic-frangollo-49ddb8.netlify.app/about.html">
+<meta property="og:image" content="https://melodic-frangollo-49ddb8.netlify.app/img/ddc_mark_green.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="О нас — Центр цифрового развития НБ РК">
+<meta name="twitter:description" content="О компании АО «Центр цифрового развития Национального Банка Казахстана»: история с 1995 года, миссия, руководство, стратегия и структура технологического центра НБРК.">
+<meta name="twitter:image" content="https://melodic-frangollo-49ddb8.netlify.app/img/ddc_mark_green.png">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/favicon.png">
 <style>
 :root{
-  --paper:#fbfbfd;        /* base light bg (Apple) */
-  --paper-2:#f5f5f7;      /* section gray */
-  --ink:#1d1d1f;          /* near-black text */
-  --ink-2:#6e6e73;        /* secondary gray */
-  --ink-3:#86868b;        /* tertiary gray */
-  --obsidian:#000000;     /* dark band bg */
-  --obsidian-2:#0a0a0f;
-  --blue:#0071e3;         /* accent on light */
-  --blue-d:#0058b8;
-  --blue-bright:#2997ff;  /* accent on dark */
-  --line:rgba(0,0,0,.10);
-  --line-d:rgba(255,255,255,.14);
+  --paper:#f7f9fa;        /* base light bg (NBK paper) */
+  --paper-2:#eef3ef;      /* section wash, faint green */
+  --wash:#d5e5dc;         /* NBK light green */
+  --ink:#1c2a22;          /* green-black text */
+  --ink-2:#51625a;        /* secondary */
+  --ink-3:#6f7f76;        /* tertiary */
+  --obsidian:#06100b;     /* dark band bg */
+  --obsidian-2:#0b1a12;
+  --green:#166f43;        /* primary accent on light */
+  --green-d:#0e4c28;      /* hover / deepest */
+  --green-mid:#20844a;
+  --green-brand:#399c62;  /* decorative / large only */
+  --green-bright:#7dcd9f; /* accent on dark */
+  --gold:#9a7403;
+  --gold-ink:#7a5c02;     /* small gold text on light */
+  --gold-bright:#ffe092;  /* gold on dark */
+  --line:rgba(14,76,40,.14);
+  --line-gold:rgba(154,116,3,.28);
+  --line-d:rgba(255,224,146,.16);
   --maxw:980px;
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,"Segoe UI",sans-serif;
+  --font:"Inter",system-ui,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-display:"Prata","Literata",Georgia,"Times New Roman",serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
-::selection{background:var(--blue);color:#fff}
+::selection{background:var(--green);color:#fff}
 
 /* ─────────── NAV ─────────── */
 .nav{position:relative;z-index:1000;height:48px;
@@ -41,13 +63,13 @@ img,svg{display:block;max-width:100%}
 .nav.scrolled{border-bottom-color:transparent}
 .nav-in{max-width:1024px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px;letter-spacing:-.01em}
-.brand-mark{width:24px;height:24px;border-radius:6px;background:linear-gradient(140deg,#2997ff,#0071e3);display:grid;place-items:center;color:#fff;font-size:13px;font-weight:700}
+.brand-mark{width:24px;height:24px;border-radius:6px;background:linear-gradient(140deg,#2f9e63,#0e4c28);display:grid;place-items:center;color:#fff;font-size:13px;font-weight:700}
 .brand small{display:block;font-size:9px;font-weight:500;color:var(--ink-3);letter-spacing:.02em;line-height:1}
 .nav-links{display:flex;gap:30px;list-style:none}
 .nav-links a{font-size:13px;color:var(--ink);opacity:.86;transition:opacity .2s;font-weight:400}
-.nav-links a:hover{opacity:1;color:var(--blue)}
-.nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--blue);padding:5px 14px;border-radius:980px;transition:background .2s}
-.nav-cta:hover{background:var(--blue-d)}
+.nav-links a:hover{opacity:1;color:var(--green)}
+.nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--green);padding:5px 14px;border-radius:980px;transition:background .2s}
+.nav-cta:hover{background:var(--green-d)}
 .burger{display:none;width:24px;height:24px;background:none;border:0;cursor:pointer;flex-direction:column;justify-content:center;gap:5px}
 .burger span{height:1.5px;background:var(--ink);border-radius:2px;transition:.3s}
 .nav-links a[data-menu]{cursor:pointer}
@@ -69,33 +91,33 @@ img,svg{display:block;max-width:100%}
 .mm-h{font-size:12px;font-weight:600;color:var(--ink-3);margin:14px 0 12px;letter-spacing:.01em}
 .mm-main-link{display:block;font-size:26px;font-weight:600;letter-spacing:-.016em;color:var(--ink);
   padding:6px 0;transition:color .2s;opacity:0;transform:translateY(12px)}
-.mm-main-link:hover{color:var(--blue)}
+.mm-main-link:hover{color:var(--green)}
 .mm-link{display:block;font-size:13px;font-weight:600;color:var(--ink);padding:6px 0;
   transition:color .2s;opacity:0;transform:translateY(12px)}
-.mm-link:hover{color:var(--blue)}
+.mm-link:hover{color:var(--green)}
 .mm.open .mm-panel.active .mm-main-link,
 .mm.open .mm-panel.active .mm-link{opacity:1;transform:none;
   transition:opacity .5s ease,transform .55s cubic-bezier(.22,1,.36,1),color .2s}
 
 /* ─────────── AI ASSISTANT BOT ─────────── */
 .bot-fab{position:fixed;right:22px;bottom:22px;z-index:980;width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(140deg,#2997ff,#0071e3);color:#fff;border:0;cursor:pointer;
-  box-shadow:0 12px 30px -8px rgba(0,113,227,.55);display:grid;place-items:center;
+  background:linear-gradient(140deg,#2f9e63,#0e4c28);color:#fff;border:0;cursor:pointer;
+  box-shadow:0 12px 30px -8px rgba(22,111,67,.55);display:grid;place-items:center;
   transition:transform .25s,box-shadow .25s}
-.bot-fab:hover{transform:scale(1.07);box-shadow:0 16px 38px -8px rgba(0,113,227,.7)}
+.bot-fab:hover{transform:scale(1.07);box-shadow:0 16px 38px -8px rgba(22,111,67,.7)}
 .bot-fab svg{width:26px;height:26px}
 .bot{position:fixed;right:22px;bottom:90px;z-index:981;width:384px;max-width:calc(100vw - 28px);
   height:556px;max-height:calc(100vh - 120px);background:#fff;border:1px solid var(--line);
-  border-radius:22px;box-shadow:0 36px 80px -24px rgba(0,0,0,.4);display:flex;flex-direction:column;
+  border-radius:16px;box-shadow:0 36px 80px -24px rgba(0,0,0,.4);display:flex;flex-direction:column;
   overflow:hidden;opacity:0;visibility:hidden;transform:translateY(18px) scale(.97);
   transform-origin:bottom right;transition:opacity .32s,transform .32s cubic-bezier(.22,1,.36,1),visibility .32s}
 .bot.open{opacity:1;visibility:visible;transform:none}
 .bot-head{padding:15px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:11px}
-.bot-ava{width:36px;height:36px;border-radius:11px;background:linear-gradient(140deg,#2997ff,#0071e3);
+.bot-ava{width:36px;height:36px;border-radius:11px;background:linear-gradient(140deg,#2f9e63,#0e4c28);
   display:grid;place-items:center;color:#fff;font-size:18px;flex-shrink:0}
 .bot-head b{font-size:15px;font-weight:600;letter-spacing:-.01em;display:block;line-height:1.2}
 .bot-head span{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:5px}
-.bot-head span::before{content:"";width:6px;height:6px;border-radius:50%;background:#30d158}
+.bot-head span::before{content:"";width:6px;height:6px;border-radius:50%;background:#4fc07a}
 .bot-x{margin-left:auto;background:none;border:0;font-size:17px;color:var(--ink-3);cursor:pointer;
   width:30px;height:30px;border-radius:8px;transition:.2s}
 .bot-x:hover{background:var(--paper-2);color:var(--ink)}
@@ -104,18 +126,18 @@ img,svg{display:block;max-width:100%}
   animation:botin .35s cubic-bezier(.22,1,.36,1)}
 @keyframes botin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .bot-msg.b{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px}
-.bot-msg.me{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.bot-msg.me{background:var(--green);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
 .bot-chips{display:flex;flex-wrap:wrap;gap:7px;padding:10px 14px;background:var(--paper-2);border-top:1px solid var(--line)}
-.bot-chip{font-size:12.5px;font-weight:500;color:var(--blue);background:#fff;border:1px solid var(--line);
+.bot-chip{font-size:12.5px;font-weight:500;color:var(--green);background:#fff;border:1px solid var(--line);
   border-radius:980px;padding:6px 12px;cursor:pointer;transition:.15s}
-.bot-chip:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.bot-chip:hover{background:var(--green);color:#fff;border-color:var(--green)}
 .bot-foot{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff}
 .bot-foot input{flex:1;border:1px solid var(--line);border-radius:980px;padding:10px 16px;font-size:14px;
   font-family:inherit;outline:none;transition:border-color .2s}
-.bot-foot input:focus{border-color:var(--blue)}
-.bot-foot button{background:var(--blue);color:#fff;border:0;border-radius:50%;width:38px;height:38px;
+.bot-foot input:focus{border-color:var(--green)}
+.bot-foot button{background:var(--green);color:#fff;border:0;border-radius:50%;width:38px;height:38px;
   cursor:pointer;flex-shrink:0;display:grid;place-items:center;transition:background .2s}
-.bot-foot button:hover{background:var(--blue-d)}
+.bot-foot button:hover{background:var(--green-d)}
 .bot-foot button svg{width:18px;height:18px}
 @media(max-width:520px){.bot{bottom:84px;height:calc(100vh - 110px)}}
 
@@ -123,12 +145,12 @@ img,svg{display:block;max-width:100%}
 
 /* ─────────── HERO ─────────── */
 .hero{text-align:center;padding:72px 22px 0;background:var(--paper);position:relative;overflow:hidden}
-.eyebrow{font-size:19px;font-weight:600;color:var(--blue);letter-spacing:-.01em;margin-bottom:6px}
+.eyebrow{font-size:19px;font-weight:600;color:var(--green);letter-spacing:-.01em;margin-bottom:6px}
 .hero h1{font-size:clamp(40px,7vw,80px);font-weight:700;letter-spacing:-.025em;line-height:1.03;margin:0 auto 18px;max-width:880px}
-.hero h1 .grad{background:linear-gradient(120deg,#2997ff,#0071e3 60%,#7c4dff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .grad{background:linear-gradient(120deg,#3fa06b,#166f43 60%,#9a7403);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero-sub{font-size:clamp(18px,2.4vw,23px);color:var(--ink-2);font-weight:400;max-width:600px;margin:0 auto 26px;line-height:1.45}
 .hero-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
-.tlink{font-size:18px;color:var(--blue);font-weight:400;display:inline-flex;align-items:center;gap:2px}
+.tlink{font-size:18px;color:var(--green);font-weight:400;display:inline-flex;align-items:center;gap:2px}
 .tlink:hover{text-decoration:underline}
 .tlink::after{content:"›";font-size:20px;transform:translateY(-1px)}
 .hero-vis{margin:40px auto -2px;max-width:760px;position:relative}
@@ -137,35 +159,39 @@ img,svg{display:block;max-width:100%}
 /* ─────────── SECTION SCAFFOLD ─────────── */
 .band{padding:96px 22px}
 .band-gray{background:var(--paper-2)}
-.band-dark{background:linear-gradient(rgba(8,10,26,.60),rgba(8,10,26,.60)),url(img/bg-texture.jpg);background-size:cover;background-position:center;color:#f5f5f7}
+.band-dark{background:linear-gradient(rgba(6,17,11,.60),rgba(6,17,11,.60)),url(img/bg-texture.webp);background-size:cover;background-position:center;color:#f5f5f7}
+@media(max-width:820px){.band-dark{background:linear-gradient(rgba(6,17,11,.74),rgba(6,17,11,.74)),url(img/bg-texture.webp);background-size:cover;background-position:center}}
 .wrap{max-width:1024px;margin:0 auto}
 .sec-head{text-align:center;max-width:720px;margin:0 auto 56px}
-.sec-eyebrow{font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--blue);text-transform:uppercase;margin-bottom:12px}
-.band-dark .sec-eyebrow{color:var(--blue-bright)}
+.sec-eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--gold-ink);text-transform:uppercase;margin-bottom:12px}
+.sec-eyebrow::before{content:"";display:inline-block;width:22px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));margin-right:10px;vertical-align:middle}
+.sec-eyebrow::after{content:"";display:inline-block;width:22px;height:1px;background:linear-gradient(270deg,transparent,var(--gold));margin-left:10px;vertical-align:middle}
+.band-dark .sec-eyebrow{color:var(--gold-bright)}
 .sec-title{font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:-.022em;line-height:1.08}
+.sec-title::after{content:"";display:block;width:64px;height:4px;margin:16px auto 0;border-top:1px solid var(--line-gold);border-bottom:1px solid var(--line-gold)}
 .sec-desc{font-size:clamp(17px,2vw,21px);color:var(--ink-2);margin-top:16px;line-height:1.45}
 .band-dark .sec-desc{color:var(--ink-3)}
 
 /* ─────────── BENTO ─────────── */
 .bento{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.tile{background:var(--paper);border-radius:24px;padding:34px 34px 30px;position:relative;overflow:hidden;
+.tile{background:var(--paper);border-radius:18px;padding:34px 34px 30px;position:relative;overflow:hidden;
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;min-height:300px;display:flex;flex-direction:column}
 .tile:hover{transform:translateY(-6px);box-shadow:0 22px 48px -18px rgba(0,0,0,.16)}
 .tile.wide{grid-column:span 2}
 .tile.dark{background:linear-gradient(165deg,#16161c,#000);color:#f5f5f7}
 .tile-cat{font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
-.tile.dark .tile-cat{color:var(--blue-bright)}
+.tile.dark .tile-cat{color:var(--green-bright)}
 .tile h3{font-size:26px;font-weight:700;letter-spacing:-.018em;line-height:1.12;margin-bottom:10px}
 .tile p{font-size:15.5px;color:var(--ink-2);line-height:1.5;max-width:34ch}
 .tile.dark p{color:#a1a1a8}
 .tile-foot{margin-top:auto;padding-top:22px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.tile-stat{font-size:34px;font-weight:700;letter-spacing:-.02em;color:var(--blue)}
-.tile.dark .tile-stat{color:var(--blue-bright)}
+.tile-stat{font-size:34px;font-weight:700;letter-spacing:-.02em;color:var(--green)}
+.tile.dark .tile-stat{color:var(--green-bright)}
 .tile-stat small{display:block;font-size:13px;font-weight:500;color:var(--ink-3);letter-spacing:0;margin-top:2px}
-.tile-more{font-size:15px;color:var(--blue);white-space:nowrap}
-.tile.dark .tile-more{color:var(--blue-bright)}
+.tile-more{font-size:15px;color:var(--green);white-space:nowrap}
+.tile.dark .tile-more{color:var(--green-bright)}
 .tile-more::after{content:" ›"}
-.tile-glow{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0}
+.tile-glow{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none;z-index:0}
 .tile>*{position:relative;z-index:1}
 
 /* ─────────── FLAGSHIP DARK BAND ─────────── */
@@ -173,33 +199,33 @@ img,svg{display:block;max-width:100%}
 .flag .wrap{position:relative;z-index:2;max-width:780px}
 .flag-glow{position:absolute;inset:0;z-index:1;pointer-events:none}
 .flag-glow::before{content:"";position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:680px;height:520px;border-radius:50%;filter:blur(90px);opacity:.55}
-.flag.tenge .flag-glow::before{background:radial-gradient(circle,#2997ff,transparent 70%)}
-.flag.soc .flag-glow::before{background:radial-gradient(circle,#0071e3,transparent 70%);opacity:.42}
+.flag.tenge .flag-glow::before{background:radial-gradient(circle,#3fa06b,transparent 70%)}
+.flag.soc .flag-glow::before{background:radial-gradient(circle,#166f43,transparent 70%);opacity:.42}
 .flag h2{font-size:clamp(34px,5.5vw,62px);font-weight:700;letter-spacing:-.024em;line-height:1.05}
 .flag .lede{font-size:clamp(18px,2.3vw,23px);color:#c7c7cf;max-width:560px;margin:20px auto 8px;line-height:1.5}
 .flag-links{margin-top:24px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
-.flag-links .tlink{color:var(--blue-bright);font-size:19px}
+.flag-links .tlink{color:var(--green-bright);font-size:19px}
 .flag-stats{display:flex;gap:56px;justify-content:center;flex-wrap:wrap;margin-top:54px}
 .fstat b{display:block;font-size:clamp(38px,5vw,58px);font-weight:700;letter-spacing:-.02em;
-  background:linear-gradient(120deg,#fff,#9fcaff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  background:linear-gradient(120deg,#fff,#ffe092);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .fstat span{font-size:14px;color:var(--ink-3)}
 
 /* ─────────── NUMBERS ─────────── */
-.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border-radius:24px;overflow:hidden}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border-radius:18px;overflow:hidden}
 .num{background:var(--paper);padding:42px 26px;text-align:center}
 .num b{display:block;font-size:clamp(34px,4.4vw,52px);font-weight:700;letter-spacing:-.022em;color:var(--ink)}
-.num b em{font-style:normal;color:var(--blue)}
+.num b em{font-style:normal;color:var(--green)}
 .num span{font-size:15px;color:var(--ink-2);margin-top:8px;display:block}
 
 /* ─────────── HISTORY / ABOUT ─────────── */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .tl{position:relative;padding-left:26px}
-.tl::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),transparent)}
+.tl::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--green),transparent)}
 .tl-item{position:relative;padding-bottom:26px}
 .tl-item:last-child{padding-bottom:0}
-.tl-item::before{content:"";position:absolute;left:-26px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px var(--paper-2)}
+.tl-item::before{content:"";position:absolute;left:-26px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--paper-2)}
 .band-gray .tl-item::before{box-shadow:0 0 0 4px var(--paper-2)}
-.tl-year{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.01em}
+.tl-year{font-size:14px;font-weight:700;color:var(--green);letter-spacing:.01em}
 .tl-text{font-size:15.5px;color:var(--ink-2);margin-top:3px;line-height:1.5}
 .about-lead h3{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-bottom:16px}
 .about-lead p{font-size:17px;color:var(--ink-2);line-height:1.6;margin-bottom:18px}
@@ -214,19 +240,20 @@ img,svg{display:block;max-width:100%}
 .cta{text-align:center}
 .cta h2{font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:-.022em;line-height:1.08}
 .cta p{font-size:19px;color:var(--ink-2);margin:16px auto 30px;max-width:520px}
-.btn{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:500;padding:13px 26px;border-radius:980px;transition:.2s}
-.btn-primary{background:var(--blue);color:#fff}
-.btn-primary:hover{background:var(--blue-d)}
-.btn-ghost{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:500;padding:13px 26px;border-radius:12px;transition:.2s}
+.btn-primary{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),inset 0 1px 0 rgba(255,255,255,.22)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-d)}
+.btn-ghost{color:var(--green)}
 .btn-ghost::after{content:"›"}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center}
 
-footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);padding:40px 22px}
+footer{background:var(--paper-2);border-top:1px solid var(--line-gold);box-shadow:0 -4px 0 -3px var(--line-gold);font-size:12px;color:var(--ink-3);padding:40px 22px}
 .foot-in{max-width:1024px;margin:0 auto}
 .foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;padding-bottom:26px;border-bottom:1px solid var(--line)}
-.foot-cols h5{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:12px}
+.foot-cols h5{font-size:11px;font-weight:600;color:var(--gold-ink);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
 .foot-cols a{display:block;color:var(--ink-3);margin-bottom:9px;transition:color .2s}
-.foot-cols a:hover{color:var(--blue)}
+.foot-cols a:hover{color:var(--green)}
 @media(max-width:640px){.foot-cols{grid-template-columns:repeat(2,1fr);gap:24px 18px}footer{padding:32px 18px}}
 .foot-bottom{padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
@@ -243,7 +270,7 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px
   .tile.wide{grid-column:span 1}
   .nums{grid-template-columns:1fr;gap:1px}
   .about-grid{grid-template-columns:1fr;gap:44px}
-  .band{padding:72px 20px}
+  .band{padding:56px 20px}
   .flag-stats{gap:34px}
   .mv{flex-direction:column}
 }
@@ -262,23 +289,23 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px
 }
 
 /* ─────────── PAGE HERO ─────────── */
-.phero{text-align:center;padding:96px 22px 8px;background:var(--paper)}
-.phero .eyebrow{font-size:15px;font-weight:600;color:var(--blue);letter-spacing:.02em;text-transform:uppercase;margin-bottom:14px}
+.phero{text-align:center;padding:96px 22px 8px;background:radial-gradient(80% 70% at 50% 0%,var(--wash),transparent 70%),var(--paper)}
+.phero .eyebrow{font-size:15px;font-weight:600;color:var(--green);letter-spacing:.02em;text-transform:uppercase;margin-bottom:14px}
 .phero h1{font-size:clamp(40px,6vw,68px);font-weight:700;letter-spacing:-.024em;line-height:1.04;margin:0 auto 18px;max-width:840px}
 .phero p{font-size:clamp(18px,2.3vw,22px);color:var(--ink-2);max-width:640px;margin:0 auto;line-height:1.45}
 @media(max-width:560px){.phero{padding:72px 20px 0}.phero h1{font-size:clamp(31px,8.6vw,44px)}}
 
 /* ─────────── NEWS ─────────── */
 .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.news-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;display:flex;flex-direction:column;
+.news-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;cursor:pointer}
 .news-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,0,0,.16)}
-.news-tag{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);
-  background:rgba(0,113,227,.08);padding:5px 11px;border-radius:980px;margin-bottom:16px}
+.news-tag{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--green);
+  background:rgba(22,111,67,.08);padding:5px 11px;border-radius:980px;margin-bottom:16px}
 .news-date{font-size:13px;color:var(--ink-3);margin-bottom:8px}
 .news-card h3{font-size:20px;font-weight:600;letter-spacing:-.015em;line-height:1.25;margin-bottom:10px}
 .news-card p{font-size:14.5px;color:var(--ink-2);line-height:1.5;flex:1}
-.news-card .more{font-size:14px;color:var(--blue);margin-top:16px}
+.news-card .more{font-size:14px;color:var(--green);margin-top:16px}
 .news-card .more::after{content:" ›"}
 
 /* ─────────── FAQ ─────────── */
@@ -287,7 +314,7 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px
 .faq-q{width:100%;background:none;border:0;text-align:left;padding:22px 4px;font-size:18px;font-weight:600;letter-spacing:-.01em;
   color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit}
 .faq-q .ic{flex-shrink:0;width:22px;height:22px;position:relative;transition:transform .3s}
-.faq-q .ic::before,.faq-q .ic::after{content:"";position:absolute;background:var(--blue);border-radius:2px}
+.faq-q .ic::before,.faq-q .ic::after{content:"";position:absolute;background:var(--green);border-radius:2px}
 .faq-q .ic::before{top:10px;left:3px;right:3px;height:2px}
 .faq-q .ic::after{left:10px;top:3px;bottom:3px;width:2px;transition:opacity .3s}
 .faq-item.open .faq-q .ic::after{opacity:0}
@@ -296,11 +323,11 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px
 
 /* ─────────── CONTACTS ─────────── */
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.contact-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;text-align:left}
-.contact-card .cc-ic{width:46px;height:46px;border-radius:13px;background:rgba(0,113,227,.08);display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+.contact-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px;text-align:left}
+.contact-card .cc-ic{width:46px;height:46px;border-radius:13px;background:rgba(22,111,67,.08);display:grid;place-items:center;font-size:22px;margin-bottom:16px}
 .contact-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
 .contact-card p{font-size:15px;color:var(--ink-2);line-height:1.55}
-.contact-card a{color:var(--blue)}
+.contact-card a{color:var(--green)}
 
 /* ─────────── JOBS ─────────── */
 .jobs{max-width:820px;margin:0 auto;border-top:1px solid var(--line)}
@@ -309,14 +336,14 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px
 .job-main{flex:1;min-width:0}
 .job-main h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
 .job-meta{font-size:13.5px;color:var(--ink-3);margin-top:4px}
-.job-dept{font-size:12px;font-weight:600;color:var(--blue);background:rgba(0,113,227,.08);padding:6px 12px;border-radius:980px;white-space:nowrap}
-.job-go{color:var(--blue);font-size:20px}
+.job-dept{font-size:12px;font-weight:600;color:var(--green);background:rgba(22,111,67,.08);padding:6px 12px;border-radius:980px;white-space:nowrap}
+.job-go{color:var(--green);font-size:20px}
 
 /* ─────────── BOARD / TEAM ─────────── */
 .board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.board-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;text-align:center}
+.board-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px;text-align:center}
 .board-ava{width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;color:#fff;
-  font-size:24px;font-weight:600;background:linear-gradient(140deg,#2997ff,#0071e3)}
+  font-size:24px;font-weight:600;background:linear-gradient(140deg,#2f9e63,#0e4c28)}
 .board-card h3{font-size:17px;font-weight:600;letter-spacing:-.01em}
 .board-card .role{font-size:13.5px;color:var(--ink-2);margin-top:5px;line-height:1.45}
 
@@ -324,7 +351,7 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);font-size:12px
 .org-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .org-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px}
 a.org-card{display:block;text-decoration:none;color:inherit;cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
-a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,0,0,.22);border-color:rgba(0,113,227,.4)}
+a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,0,0,.22);border-color:rgba(22,111,67,.4)}
 .org-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;background:var(--paper-2)}
 .org-card h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
 .org-card p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
@@ -339,14 +366,14 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 .oc-col{position:relative}
 .oc-col::before{content:"";position:absolute;top:-22px;left:50%;width:1px;height:22px;background:var(--line);transform:translateX(-50%)}
 .oc-deputy{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 14px;text-align:center;transition:.25s}
-.oc-deputy:hover{transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(0,0,0,.26);border-color:rgba(41,151,255,.4)}
+.oc-deputy:hover{transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(0,0,0,.26);border-color:rgba(63,160,107,.4)}
 .oc-deputy .person-ava{width:56px;height:56px;font-size:18px;margin:0 auto 10px}
 .oc-deputy h4{font-size:14.5px;font-weight:600;letter-spacing:-.008em;line-height:1.3}
 .oc-role{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.4;letter-spacing:.01em}
 .oc-depts{position:relative;margin-top:18px;padding-left:17px}
-.oc-depts::before{content:"";position:absolute;left:4px;top:2px;bottom:4px;width:1px;background:linear-gradient(var(--oc-accent,var(--blue)),transparent)}
+.oc-depts::before{content:"";position:absolute;left:4px;top:2px;bottom:4px;width:1px;background:linear-gradient(var(--oc-accent,var(--green)),transparent)}
 .oc-dept{position:relative;padding:8px 0;font-size:12.5px;color:var(--ink-2);line-height:1.4}
-.oc-dept::before{content:"";position:absolute;left:-17px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--oc-accent,var(--blue));box-shadow:0 0 0 3px var(--paper)}
+.oc-dept::before{content:"";position:absolute;left:-17px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--oc-accent,var(--green));box-shadow:0 0 0 3px var(--paper)}
 .oc-count{text-align:center;margin-top:28px;font-size:13.5px;color:var(--ink-3)}
 @media(max-width:820px){
   .oc-cols{grid-template-columns:1fr 1fr;row-gap:36px}
@@ -361,7 +388,7 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 .logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .logo-cell{background:var(--paper);border:1px solid var(--line);border-radius:18px;height:96px;display:grid;place-items:center;
   font-size:15px;font-weight:600;color:var(--ink-2);text-align:center;padding:14px;transition:.25s}
-.logo-cell:hover{border-color:var(--blue);color:var(--ink)}
+.logo-cell:hover{border-color:var(--green);color:var(--ink)}
 
 /* current top-nav page highlight */
 .nav-links a.current{color:var(--ink);opacity:1;font-weight:500}
@@ -376,7 +403,7 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 .role-row{display:flex;align-items:center;gap:18px;padding:22px 26px;background:var(--paper);border:1px solid var(--line);
   border-radius:18px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .role-row:hover{transform:translateY(-3px);box-shadow:0 16px 36px -18px rgba(0,0,0,.14)}
-.role-row.hl{background:linear-gradient(135deg,#0071e3,#2997ff);border-color:transparent;color:#fff}
+.role-row.hl{background:linear-gradient(135deg,#166f43,#3fa06b);border-color:transparent;color:#fff}
 .role-ic{width:46px;height:46px;border-radius:13px;background:var(--paper-2);display:grid;place-items:center;font-size:22px;flex-shrink:0}
 .role-row.hl .role-ic{background:rgba(255,255,255,.2)}
 .role-row h3{font-size:19px;font-weight:600;letter-spacing:-.01em}
@@ -385,45 +412,33 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 
 /* ─────────── SERVICE CARDS ─────────── */
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.svc-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column}
-.svc-ic{width:52px;height:52px;border-radius:15px;background:rgba(0,113,227,.08);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
+.svc-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column}
+.svc-ic{width:52px;height:52px;border-radius:15px;background:rgba(22,111,67,.08);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
 .svc-card h3{font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.2;margin-bottom:10px}
 .svc-tag{font-size:15px;color:var(--ink-2);line-height:1.5;margin-bottom:20px}
 .svc-block{margin-bottom:16px}
 .svc-block h4{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
 .svc-list{list-style:none;display:flex;flex-direction:column;gap:7px}
 .svc-list li{font-size:14px;color:var(--ink);line-height:1.45;padding-left:20px;position:relative}
-.svc-list li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.svc-list li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--green)}
 .svc-who{font-size:14px;color:var(--ink-2);line-height:1.5}
 .svc-channel{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
 .svc-channel b{color:var(--ink);font-weight:600}
-.svc-channel a{color:var(--blue)}
+.svc-channel a{color:var(--green)}
 
 /* ─────────── LIVE NEWS BAR ─────────── */
 .news-live{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2);margin-bottom:28px}
-.news-live .dot{width:8px;height:8px;border-radius:50%;background:#30d158;box-shadow:0 0 0 0 rgba(48,209,88,.5);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(48,209,88,.5)}70%{box-shadow:0 0 0 7px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
-.news-live a{color:var(--blue)}
-.news-skel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;min-height:200px}
+.news-live .dot{width:8px;height:8px;border-radius:50%;background:#4fc07a;box-shadow:0 0 0 0 rgba(79,192,122,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,192,122,.5)}70%{box-shadow:0 0 0 7px rgba(79,192,122,0)}100%{box-shadow:0 0 0 0 rgba(79,192,122,0)}}
+.news-live a{color:var(--green)}
+.news-skel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px;min-height:200px}
 .news-note{grid-column:1/-1;text-align:center;color:var(--ink-3);font-size:14px;padding:8px}
 
 @media(max-width:820px){.svc-grid{grid-template-columns:1fr}}
 
-/* ─────────── STICKY HEADER (topbar + nav) ─────────── */
+/* ─────────── STICKY HEADER (nav) ─────────── */
 .site-head{position:relative;z-index:1000}
 .nav{position:static}
-.topbar{background:#0b0b0f;color:#e8e8ee;height:34px;overflow:hidden}
-.topbar-in{max-width:1100px;margin:0 auto;height:100%;display:flex;align-items:center;gap:14px;padding:0 20px}
-.ticker{flex:1;overflow:hidden;position:relative;height:100%}
-.ticker::before,.ticker::after{content:"";position:absolute;top:0;width:40px;height:100%;z-index:2}
-.ticker::before{left:0;background:linear-gradient(to right,#0b0b0f,transparent)}
-.ticker::after{right:0;background:linear-gradient(to left,#0b0b0f,transparent)}
-.ticker-track{display:flex;align-items:center;gap:26px;width:max-content;height:100%;animation:tick 38s linear infinite;white-space:nowrap}
-.ticker:hover .ticker-track{animation-play-state:paused}
-@keyframes tick{to{transform:translateX(-50%)}}
-.fx{font-size:12px;color:#a9a9b6;display:inline-flex;align-items:center;gap:7px}
-.fx b{color:#fff;font-weight:600}
-.fx .up{color:#30d158}.fx .dn{color:#ff6b6b}
 .wx{font-size:12px;color:#e8e8ee;display:flex;align-items:center;gap:6px;flex-shrink:0;white-space:nowrap}
 @media(max-width:560px){.wx span.wxc{display:none}}
 
@@ -432,7 +447,7 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 .lang{display:flex;gap:2px;background:var(--paper-2);border:1px solid var(--line);border-radius:980px;padding:2px}
 .lang-btn{border:0;background:none;font-size:11.5px;font-weight:600;color:var(--ink-2);padding:5px 9px;border-radius:980px;cursor:pointer;font-family:inherit;transition:.2s}
 .lang-btn:hover{color:var(--ink)}
-.lang-btn.active{background:var(--blue);color:#fff}
+.lang-btn.active{background:var(--green);color:#fff}
 
 /* ─────────── TECHNOLOGY MARQUEE ─────────── */
 .techmq{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -448,7 +463,7 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 .tech-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 
 /* ─────────── BRAND LOGO ─────────── */
-.brand-badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,#2997ff,#0071e3);display:grid;place-items:center;flex-shrink:0;box-shadow:0 4px 12px -4px rgba(0,113,227,.5)}
+.brand-badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,#2f9e63,#0e4c28);display:grid;place-items:center;flex-shrink:0;box-shadow:0 4px 12px -4px rgba(22,111,67,.5)}
 .brand-emblem{width:22px;height:22px;object-fit:contain;display:block}
 .brand{gap:10px}
 
@@ -456,7 +471,7 @@ a.org-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .hero-gl{will-change:transform}
-.ticker-track,.techmq-track{will-change:transform;backface-visibility:hidden;transform:translateZ(0)}
+.techmq-track{will-change:transform;backface-visibility:hidden;transform:translateZ(0)}
 .techmq.paused .techmq-track{animation-play-state:paused}
 /* offload heavy lower sections until near viewport */
 #tech,#facts,#leadership,#advantages{content-visibility:auto;contain-intrinsic-size:1px 600px}
@@ -464,19 +479,19 @@ html{scroll-behavior:smooth}
 
 /* ─────────── TECH CHIP CLICKABLE + MODAL ─────────── */
 .tech-chip{cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
-.tech-chip:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.25);border-color:var(--blue)}
+.tech-chip:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.25);border-color:var(--green)}
 .tmodal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:24px;
   background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
 .tmodal.open{display:flex;animation:fadein .2s ease}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
-.tmodal-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:34px;max-width:440px;width:100%;
+.tmodal-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px;max-width:440px;width:100%;
   position:relative;text-align:center;box-shadow:0 30px 80px -30px rgba(0,0,0,.4);animation:pop .25s cubic-bezier(.22,1,.36,1)}
 @keyframes pop{from{transform:scale(.94);opacity:.4}to{transform:scale(1);opacity:1}}
 .tmodal-x{position:absolute;top:16px;right:16px;width:32px;height:32px;border:0;border-radius:50%;background:var(--paper-2);
   color:var(--ink-2);font-size:14px;cursor:pointer}
 .tmodal-ic{width:64px;height:64px;border-radius:18px;margin:0 auto 18px;display:grid;place-items:center;font-size:30px;font-weight:700;color:#fff}
 .tmodal-card h3{font-size:24px;font-weight:600;letter-spacing:-.02em}
-.tmodal-cat{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);margin:6px 0 16px}
+.tmodal-cat{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin:6px 0 16px}
 .tmodal-card p{font-size:15px;color:var(--ink-2);line-height:1.6;margin-bottom:22px}
 
 /* ─────────── PHERO 3D BACKGROUND ─────────── */
@@ -487,11 +502,11 @@ html{scroll-behavior:smooth}
   background:radial-gradient(ellipse 60% 70% at 50% 40%,rgba(251,251,253,.72),rgba(251,251,253,.25) 70%,transparent)}
 
 /* ─────────── MAP ─────────── */
-.mapwrap{max-width:1000px;margin:32px auto 0;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -28px rgba(0,0,0,.2)}
+.mapwrap{max-width:1000px;margin:32px auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -28px rgba(0,0,0,.2)}
 .mapwrap iframe{width:100%;height:380px;border:0;display:block;filter:grayscale(.15)}
 
 /* partner link cells */
-.logo-cell .lc-go{font-size:13px;color:var(--blue);opacity:0;transition:opacity .2s;margin-left:4px}
+.logo-cell .lc-go{font-size:13px;color:var(--green);opacity:0;transition:opacity .2s;margin-left:4px}
 .logo-cell:hover .lc-go{opacity:1}
 a.logo-cell{text-decoration:none}
 
@@ -502,9 +517,9 @@ a.logo-cell{text-decoration:none}
 .cp-left{display:flex;flex-direction:column;gap:14px}
 .cp-card{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);
   border-radius:18px;padding:18px 20px;text-decoration:none;transition:.2s}
-.cp-card:hover{background:rgba(255,255,255,.07);border-color:rgba(41,151,255,.5);transform:translateY(-1px)}
+.cp-card:hover{background:rgba(255,255,255,.07);border-color:rgba(63,160,107,.5);transform:translateY(-1px)}
 .cp-ic{font-size:22px;flex-shrink:0;width:40px;height:40px;display:grid;place-items:center;
-  background:rgba(41,151,255,.14);border-radius:12px}
+  background:rgba(63,160,107,.14);border-radius:12px}
 .cp-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
 .cp-tx b{color:#fff;font-size:15px;font-weight:600;letter-spacing:-.01em}
 .cp-tx span{color:rgba(255,255,255,.55);font-size:12.5px}
@@ -513,8 +528,8 @@ a.logo-cell{text-decoration:none}
 .cp-social-row{display:flex;gap:10px;flex-wrap:wrap}
 .cp-social-row a{color:rgba(255,255,255,.85);font-size:13px;font-weight:500;text-decoration:none;
   border:1px solid rgba(255,255,255,.18);border-radius:980px;padding:8px 16px;transition:.2s}
-.cp-social-row a:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-.cp-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:28px;
+.cp-social-row a:hover{background:var(--green);border-color:var(--green);color:#fff}
+.cp-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:28px;
   display:flex;flex-direction:column;gap:16px}
 .cp-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:520px){.cp-row{grid-template-columns:1fr}}
@@ -523,25 +538,25 @@ a.logo-cell{text-decoration:none}
 .cp-form input,.cp-form select,.cp-form textarea{background:rgba(0,0,0,.30);border:1px solid rgba(255,255,255,.14);
   border-radius:12px;padding:13px 15px;color:#fff;font-size:14.5px;font-family:inherit;outline:none;transition:.2s;width:100%}
 .cp-form input::placeholder,.cp-form textarea::placeholder{color:rgba(255,255,255,.38)}
-.cp-form input:focus,.cp-form select:focus,.cp-form textarea:focus{border-color:var(--blue);background:rgba(0,0,0,.45);box-shadow:0 0 0 3px rgba(41,151,255,.18)}
+.cp-form input:focus,.cp-form select:focus,.cp-form textarea:focus{border-color:var(--green);background:rgba(0,0,0,.45);box-shadow:0 0 0 3px rgba(63,160,107,.18)}
 .cp-form select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23ffffff88' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 15px center}
 .cp-form select option{background:#16181d;color:#fff}
 .cp-form textarea{resize:vertical;min-height:110px}
 .cp-submit{margin-top:4px;width:100%;justify-content:center}
 .cp-note{font-size:13px;text-align:center;min-height:18px}
-.cp-note.ok{color:#34d399}.cp-note.err{color:#ff7a7a}
+.cp-note.ok{color:#57bd8b}.cp-note.err{color:#ff7a7a}
 
 /* ─────────── PERSON CARDS (board / management) ─────────── */
 .person-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto}
 @media(max-width:880px){.person-grid{grid-template-columns:1fr 1fr;gap:14px}}
 @media(max-width:560px){.person-grid{grid-template-columns:1fr}}
-.person-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 24px;text-align:center;transition:.25s}
-.person-card:hover{transform:translateY(-3px);box-shadow:0 22px 50px -28px rgba(0,0,0,.28);border-color:rgba(41,151,255,.4)}
+.person-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 24px;text-align:center;transition:.25s}
+.person-card:hover{transform:translateY(-3px);box-shadow:0 22px 50px -28px rgba(0,0,0,.28);border-color:rgba(63,160,107,.4)}
 .person-ava{width:74px;height:74px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;color:#fff;font-size:24px;font-weight:600;letter-spacing:.01em}
 .person-card h3{font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
 .person-pos{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.5}
 .person-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-  color:var(--blue);background:rgba(41,151,255,.10);border:1px solid rgba(41,151,255,.25);border-radius:980px;padding:3px 12px;margin-bottom:10px}
+  color:var(--green);background:rgba(63,160,107,.10);border:1px solid rgba(63,160,107,.25);border-radius:980px;padding:3px 12px;margin-bottom:10px}
 .band-dark .person-card,.management.band-dark .person-card{background:rgba(255,255,255,.04)}
 
 /* board/management avatar photos */
@@ -565,11 +580,11 @@ a.logo-cell{text-decoration:none}
 .tour-bar{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:10px}
 .tour-dots{font-size:12px;font-weight:600;color:var(--ink-3)}
 .tour-btns{display:flex;gap:7px}
-.tour-btn{font-size:13px;font-weight:600;border-radius:980px;padding:8px 15px;cursor:pointer;
+.tour-btn{font-size:13px;font-weight:600;border-radius:9px;padding:8px 15px;cursor:pointer;
   border:1px solid var(--line);background:var(--paper-2);color:var(--ink);font-family:inherit;transition:.2s}
 .tour-btn:hover{border-color:var(--ink-3)}
-.tour-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
-.tour-btn.primary:hover{background:#0077ed}
+.tour-btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+.tour-btn.primary:hover{background:#20844a}
 
 /* ─────────── BENTO TILE FILL (icon watermark + dot texture) ─────────── */
 .tile .tile-ico{position:absolute;top:28px;right:28px;width:92px;height:92px;z-index:0;color:var(--ink);opacity:.07;pointer-events:none}
@@ -584,38 +599,38 @@ button.job{width:100%;text-align:left;background:none;border:0;border-top:1px so
   display:flex;align-items:center;gap:18px;padding:26px 6px;cursor:pointer;font-family:inherit;transition:.2s}
 button.job:first-child{border-top:0}
 button.job:hover{padding-left:14px;padding-right:0}
-button.job:hover h3{color:var(--blue)}
+button.job:hover h3{color:var(--green)}
 .job-main{flex:1;min-width:0}
 .job-main h3{font-size:21px;font-weight:600;letter-spacing:-.01em;transition:color .2s}
 .job-meta{font-size:14px;color:var(--ink-3);margin-top:5px}
-.job-dept{font-size:13px;font-weight:600;color:var(--blue);background:rgba(0,113,227,.08);border-radius:980px;padding:7px 16px;white-space:nowrap}
+.job-dept{font-size:13px;font-weight:600;color:var(--green);background:rgba(22,111,67,.08);border-radius:980px;padding:7px 16px;white-space:nowrap}
 .job-go{color:var(--ink-3);font-size:20px;transition:transform .2s}
-button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
+button.job:hover .job-go{transform:translateX(4px);color:var(--green)}
 
 .vacmodal{position:fixed;inset:0;z-index:2000;display:none;align-items:flex-start;justify-content:center;
   padding:40px 20px;overflow-y:auto;background:rgba(0,0,0,.5);backdrop-filter:blur(6px)}
 .vacmodal.open{display:flex;animation:fadein .2s ease}
-.vac-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:24px;
+.vac-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;
   max-width:540px;width:100%;padding:38px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);animation:pop .25s cubic-bezier(.22,1,.36,1);margin:auto}
 .vac-x{position:absolute;top:16px;right:16px;width:34px;height:34px;border:0;border-radius:50%;background:var(--paper-2);color:var(--ink-2);font-size:14px;cursor:pointer;z-index:2}
 .vac-in h3{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1.15;padding-right:30px}
 .vac-meta{font-size:13.5px;color:var(--ink-3);margin-top:10px}
 .vac-desc{font-size:15px;color:var(--ink-2);line-height:1.6;margin-top:14px}
-.vac-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin:24px 0 12px}
+.vac-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin:24px 0 12px}
 .vac-req{list-style:none;display:flex;flex-direction:column;gap:9px}
 .vac-req li{font-size:14.5px;color:var(--ink);padding-left:26px;position:relative;line-height:1.45}
-.vac-req li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
+.vac-req li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
 .vac-stack{display:flex;flex-wrap:wrap;gap:8px}
 .vac-stack span{font-size:13px;font-weight:500;color:var(--ink);background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:7px 14px}
 .vac-form{display:flex;flex-direction:column;gap:11px}
 .vac-form input,.vac-form textarea{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
   padding:13px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);outline:none;transition:.2s;width:100%}
 .vac-form input::placeholder,.vac-form textarea::placeholder{color:var(--ink-3)}
-.vac-form input:focus,.vac-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+.vac-form input:focus,.vac-form textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,111,67,.12)}
 .vac-form textarea{resize:vertical;min-height:80px}
 .vac-submit{margin-top:4px;width:100%;justify-content:center}
 .vac-note{font-size:13px;text-align:center;min-height:18px}
-.vac-note.ok{color:#0a9d57}.vac-note.err{color:#d8443c}
+.vac-note.ok{color:#14804a}.vac-note.err{color:#d8443c}
 
 /* home leadership avatar photo */
 .lead-ava{position:relative;overflow:hidden}
@@ -632,19 +647,19 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .plogin-card>p{color:var(--ink-3);font-size:14px;margin-top:6px;margin-bottom:26px}
 .plogin-card form{display:flex;flex-direction:column;gap:12px}
 .plogin-card input{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px;font-family:inherit;color:var(--ink);outline:none;transition:.2s}
-.plogin-card input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+.plogin-card input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,111,67,.12)}
 .plogin-card .btn{justify-content:center;margin-top:4px}
 .plogin-hint{font-size:12.5px;color:var(--ink-3);margin-top:8px}
 .plogin-err{font-size:13px;color:#d8443c;min-height:16px}
 .plogin-back{position:absolute;top:24px;left:24px;color:var(--ink-2);font-size:14px;text-decoration:none}
-.plogin-back:hover{color:var(--blue)}
+.plogin-back:hover{color:var(--green)}
 /* dashboard */
 .pbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
   padding:16px 28px;background:rgba(251,251,253,.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
 .pbar-right{display:flex;align-items:center;gap:16px}
 .pbar-right #pWho{font-size:14px;color:var(--ink-2);font-weight:500}
 .pbtn{font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--paper);border-radius:980px;padding:8px 16px;cursor:pointer;color:var(--ink);font-family:inherit;transition:.2s}
-.pbtn:hover{border-color:var(--blue);color:var(--blue)}
+.pbtn:hover{border-color:var(--green);color:var(--green)}
 .pmain{max-width:1080px;margin:0 auto;padding:34px 24px 80px}
 .phello h2{font-size:30px;font-weight:700;letter-spacing:-.02em}
 .phello p{color:var(--ink-3);margin-top:4px;font-size:14px}
@@ -653,7 +668,7 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 @media(max-width:820px){.pgrid{grid-template-columns:repeat(2,1fr)}}
 .ptile{display:flex;flex-direction:column;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:18px;
   padding:20px;text-decoration:none;color:var(--ink);transition:.2s;cursor:pointer}
-.ptile:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(0,0,0,.22);border-color:rgba(0,113,227,.4)}
+.ptile:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(0,0,0,.22);border-color:rgba(22,111,67,.4)}
 .ptile .pico{font-size:26px}
 .ptile b{font-size:15px;font-weight:600;letter-spacing:-.01em}
 .ptile span{font-size:12.5px;color:var(--ink-3)}
@@ -661,14 +676,14 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 @media(max-width:820px){.pcols{grid-template-columns:1fr}}
 .pann{display:flex;flex-direction:column;gap:12px}
 .pann-item{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
-.pann-item .pann-tag{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
+.pann-item .pann-tag{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
 .pann-item h4{font-size:16px;font-weight:600;margin:6px 0 4px;letter-spacing:-.01em}
 .pann-item p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
 .pann-item time{font-size:12px;color:var(--ink-3);display:block;margin-top:8px}
 .preq{display:flex;flex-direction:column;gap:10px}
 .preq button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);
   border-radius:14px;padding:15px 18px;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:500;color:var(--ink);transition:.2s}
-.preq button:hover{border-color:var(--blue);background:rgba(0,113,227,.04)}
+.preq button:hover{border-color:var(--green);background:rgba(22,111,67,.04)}
 .preq button .pico{font-size:18px}
 .pcontacts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:680px){.pcontacts{grid-template-columns:1fr}}
@@ -687,8 +702,8 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .atab{font-size:14px;font-weight:600;font-family:inherit;background:none;border:0;border-bottom:2px solid transparent;
   color:var(--ink-3);padding:12px 14px;cursor:pointer;margin-bottom:-1px;transition:.2s}
 .atab:hover{color:var(--ink)}
-.atab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.abadge{display:inline-block;min-width:18px;text-align:center;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:980px;padding:1px 6px;margin-left:2px}
+.atab.active{color:var(--green);border-bottom-color:var(--green)}
+.abadge{display:inline-block;min-width:18px;text-align:center;font-size:11px;font-weight:700;color:#fff;background:var(--green);border-radius:980px;padding:1px 6px;margin-left:2px}
 .abadge:empty{display:none}
 .apane-h{font-size:16px;font-weight:600;margin-bottom:14px;letter-spacing:-.01em}
 .acard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin-bottom:16px}
@@ -700,7 +715,7 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .atable b{font-weight:600}
 .atable select{font-family:inherit;font-size:13.5px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--paper-2);color:var(--ink);cursor:pointer}
 .amut{color:var(--ink-3);font-size:13px}
-.atag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);background:rgba(0,113,227,.08);border-radius:980px;padding:3px 10px}
+.atag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green);background:rgba(22,111,67,.08);border-radius:980px;padding:3px 10px}
 .acov{font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-top:8px}
 .alink{background:none;border:0;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink-3);transition:.2s}
 .alink.del:hover{color:#d8443c}
@@ -709,7 +724,7 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .aform.col{flex-direction:column;align-items:stretch}
 .aform input,.aform select,.aform textarea{flex:1;min-width:150px;background:var(--paper-2);border:1px solid var(--line);border-radius:10px;
   padding:11px 14px;font-size:14px;font-family:inherit;color:var(--ink);outline:none;transition:.2s}
-.aform input:focus,.aform select:focus,.aform textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+.aform input:focus,.aform select:focus,.aform textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,111,67,.12)}
 .aform textarea{resize:vertical;width:100%;flex:none}
 .aform .btn{flex:none}
 
@@ -718,9 +733,9 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .apane-bar .apane-h{margin-bottom:0}
 .aright{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .astatus{font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 10px;border-radius:980px;border:1px solid var(--line);cursor:pointer;outline:none}
-.astatus.st-new{color:#0071e3;background:rgba(0,113,227,.08);border-color:rgba(0,113,227,.25)}
+.astatus.st-new{color:#166f43;background:rgba(22,111,67,.08);border-color:rgba(22,111,67,.25)}
 .astatus.st-progress{color:#b26a00;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3)}
-.astatus.st-closed{color:#0a9d57;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3)}
+.astatus.st-closed{color:#14804a;background:rgba(32,132,74,.12);border-color:rgba(32,132,74,.3)}
 
 /* ─────────── EMAIL PROVIDER CHOOSER ─────────── */
 .mailpop{position:absolute;z-index:3000;background:var(--paper);border:1px solid var(--line);border-radius:16px;
@@ -735,58 +750,58 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .pcourse-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:34px 0 14px}
 .pcourse-bar .psec{margin:0}
 .pcourse{position:relative}
-.pcourse.done{border-color:rgba(16,185,129,.4);background:linear-gradient(180deg,rgba(16,185,129,.05),var(--paper))}
+.pcourse.done{border-color:rgba(32,132,74,.4);background:linear-gradient(180deg,rgba(32,132,74,.05),var(--paper))}
 .pcourse-meta{font-size:12px;color:var(--ink-3)}
 .pcourse-btn{margin-top:12px;font-family:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);
-  background:var(--paper-2);color:var(--blue);border-radius:980px;padding:8px 14px;cursor:pointer;transition:.2s;align-self:flex-start}
-.pcourse-btn:hover{border-color:var(--blue)}
-.pcourse.done .pcourse-btn{color:#0a9d57;border-color:rgba(16,185,129,.4)}
+  background:var(--paper-2);color:var(--green);border-radius:980px;padding:8px 14px;cursor:pointer;transition:.2s;align-self:flex-start}
+.pcourse-btn:hover{border-color:var(--green)}
+.pcourse.done .pcourse-btn{color:#14804a;border-color:rgba(32,132,74,.4)}
 .pchat{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;height:420px}
 .pchat-list{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px}
 .pmsg{display:flex}
 .pmsg.mine{justify-content:flex-end}
 .pmsg-b{max-width:75%;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:10px 14px;font-size:14.5px;line-height:1.45;color:var(--ink)}
-.pmsg.mine .pmsg-b{background:var(--blue);border-color:var(--blue);color:#fff}
-.pmsg-u{display:block;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:3px}
+.pmsg.mine .pmsg-b{background:var(--green);border-color:var(--green);color:#fff}
+.pmsg-u{display:block;font-size:12px;font-weight:600;color:var(--green);margin-bottom:3px}
 .pmsg.mine .pmsg-u{color:rgba(255,255,255,.85)}
 .pmsg-t{display:block;font-size:10.5px;color:var(--ink-3);margin-top:4px;text-align:right}
 .pmsg.mine .pmsg-t{color:rgba(255,255,255,.7)}
 .pchat-form{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line);background:var(--paper)}
 .pchat-form input{flex:1;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:12px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);outline:none}
-.pchat-form input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+.pchat-form input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,111,67,.12)}
 .pchat-form .btn{flex:none}
 
 /* ─────────── PORTAL: badges, certificate, DM ─────────── */
 .pbadge{display:none;min-width:20px;text-align:center;font-size:12px;font-weight:700;color:#fff;background:#ff3b30;border-radius:980px;padding:1px 7px;vertical-align:middle}
 .pbadge.on{display:inline-block}
 .pcourse-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.pcert-btn{font-family:inherit;font-size:13px;font-weight:600;border:1px solid rgba(16,185,129,.4);background:rgba(16,185,129,.08);
-  color:#0a9d57;border-radius:980px;padding:8px 14px;cursor:pointer;transition:.2s}
-.pcert-btn:hover{background:rgba(16,185,129,.16)}
+.pcert-btn{font-family:inherit;font-size:13px;font-weight:600;border:1px solid rgba(32,132,74,.4);background:rgba(32,132,74,.08);
+  color:#14804a;border-radius:980px;padding:8px 14px;cursor:pointer;transition:.2s}
+.pcert-btn:hover{background:rgba(32,132,74,.16)}
 /* certificate */
 .certmodal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto;background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
 .certwrap{display:flex;flex-direction:column;gap:16px;align-items:center;margin:auto}
-.cert{width:640px;max-width:92vw;background:#fff;border:2px solid #0071e3;border-radius:18px;padding:48px 56px;text-align:center;
-  background-image:radial-gradient(rgba(0,113,227,.05) 1px,transparent 1px);background-size:18px 18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.5)}
+.cert{width:640px;max-width:92vw;background:#fff;border:2px solid #166f43;border-radius:18px;padding:48px 56px;text-align:center;
+  background-image:radial-gradient(rgba(22,111,67,.05) 1px,transparent 1px);background-size:18px 18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.5)}
 .cert-emblem img{width:54px;height:54px;margin:0 auto 14px;display:block}
-.cert-org{font-size:12.5px;font-weight:600;color:#0071e3;letter-spacing:.02em}
+.cert-org{font-size:12.5px;font-weight:600;color:#166f43;letter-spacing:.02em}
 .cert-h{font-size:38px;font-weight:800;letter-spacing:.16em;color:#1d1d1f;margin:22px 0 14px}
 .cert-sub{font-size:14px;color:#6e6e73}
 .cert-name{font-size:30px;font-weight:700;color:#1d1d1f;margin:10px 0;letter-spacing:-.01em}
-.cert-course{font-size:20px;font-weight:600;color:#0071e3;margin:8px 0 26px}
+.cert-course{font-size:20px;font-weight:600;color:#166f43;margin:8px 0 26px}
 .cert-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e5e5ea;padding-top:18px;font-size:13px;color:#6e6e73}
 .cert-sig{font-weight:600;color:#1d1d1f}
 .cert-actions{display:flex;gap:10px}
 @media print{body>*{display:none!important}.certmodal{display:flex!important;position:static;background:none;backdrop-filter:none;padding:0}
-  .cert-actions{display:none!important}.cert{border:2px solid #0071e3;box-shadow:none}}
+  .cert-actions{display:none!important}.cert{border:2px solid #166f43;box-shadow:none}}
 /* direct messages */
 .pdm{display:grid;grid-template-columns:260px 1fr;gap:18px;align-items:start}
 @media(max-width:760px){.pdm{grid-template-columns:1fr}}
 .pdm-contacts{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:8px;max-height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
 .pdm-contact{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:none;border:0;border-radius:12px;padding:11px 12px;cursor:pointer;font-family:inherit;transition:.15s}
 .pdm-contact:hover{background:var(--paper-2)}
-.pdm-contact.active{background:rgba(0,113,227,.08)}
-.pdm-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(140deg,#2997ff,#0071e3);color:#fff;font-weight:600;display:grid;place-items:center;flex-shrink:0}
+.pdm-contact.active{background:rgba(22,111,67,.08)}
+.pdm-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(140deg,#2f9e63,#0e4c28);color:#fff;font-weight:600;display:grid;place-items:center;flex-shrink:0}
 .pdm-nm{flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--ink);line-height:1.2}
 .pdm-nm small{display:block;font-size:11.5px;font-weight:400;color:var(--ink-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pdm-thread{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;height:420px}
@@ -794,10 +809,10 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .pdm-list{flex:1}
 
 /* ─────────── CHAIRMAN ADDRESS (About) ─────────── */
-.chair{display:grid;grid-template-columns:280px 1fr;gap:42px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:42px}
+.chair{display:grid;grid-template-columns:280px 1fr;gap:42px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:42px}
 @media(max-width:820px){.chair{grid-template-columns:1fr;gap:24px;padding:28px;text-align:center}}
 .chair-side{text-align:center}
-.chair-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;margin:0 auto 18px;background:linear-gradient(140deg,#2997ff,#0071e3);display:grid;place-items:center;color:#fff;font-size:46px;font-weight:600}
+.chair-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;margin:0 auto 18px;background:linear-gradient(140deg,#2f9e63,#0e4c28);display:grid;place-items:center;color:#fff;font-size:46px;font-weight:600}
 .chair-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
 .chair-name{font-size:18px;font-weight:700;letter-spacing:-.01em}
 .chair-pos{font-size:13.5px;color:var(--ink-3);margin-top:6px;line-height:1.45}
@@ -807,12 +822,12 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .chair-sign{color:var(--ink)!important;font-weight:500;margin-top:6px}
 
 /* ─────────── PORTAL: request modal ─────────── */
-.reqmodal{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:22px;max-width:460px;width:100%;padding:32px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);animation:pop .25s cubic-bezier(.22,1,.36,1);margin:auto}
+.reqmodal{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;max-width:460px;width:100%;padding:32px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);animation:pop .25s cubic-bezier(.22,1,.36,1);margin:auto}
 .reqmodal h3{font-size:21px;font-weight:700;letter-spacing:-.01em;padding-right:30px}
 .reqmodal textarea{width:100%;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);outline:none;resize:vertical;min-height:80px}
-.reqmodal textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+.reqmodal textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,111,67,.12)}
 .reqmail{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);margin:12px 0 4px;cursor:pointer}
-.reqmail input{width:16px;height:16px;accent-color:var(--blue)}
+.reqmail input{width:16px;height:16px;accent-color:var(--green)}
 
 /* ═══════════ SOC / CYBERSECURITY PAGE ═══════════ */
 .soc-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
@@ -820,19 +835,19 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .soc-kpi{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
 .soc-kpi-l{font-size:12.5px;color:var(--ink-3)}
 .soc-kpi-v{font-size:26px;font-weight:700;letter-spacing:-.02em}
-.soc-kpi.ok .soc-kpi-v{color:#0a9d57}.soc-kpi.warn .soc-kpi-v{color:#b26a00}
+.soc-kpi.ok .soc-kpi-v{color:#14804a}.soc-kpi.warn .soc-kpi-v{color:#b26a00}
 .soc-dc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:820px){.soc-dc{grid-template-columns:1fr}}
 .soc-dccard{margin:0}
 .soc-dc-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .soc-dc-h b{font-size:16px}
-.soc-on{font-size:12px;font-weight:600;color:#0a9d57}
+.soc-on{font-size:12px;font-weight:600;color:#14804a}
 .soc-dc-row{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-2);padding:7px 0}
 .soc-dc-row>span{flex:0 0 96px}
 .soc-dc-row b{margin-left:auto;color:var(--ink)}
 .soc-bar{flex:1;height:7px;background:var(--paper-2);border-radius:980px;overflow:hidden}
 .soc-bar i{display:block;height:100%;border-radius:980px;transition:width .6s}
-.soc-bar i.lo{background:#0a9d57}.soc-bar i.mid{background:#f59e0b}.soc-bar i.hi{background:#ff3b30}
+.soc-bar i.lo{background:#14804a}.soc-bar i.mid{background:#f59e0b}.soc-bar i.hi{background:#ff3b30}
 .soc-feed{display:flex;flex-direction:column;gap:6px;font-variant-numeric:tabular-nums}
 .soc-ev{display:grid;grid-template-columns:80px 80px 1fr 130px 120px;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 16px;font-size:13.5px;animation:slidein .3s}
 @media(max-width:760px){.soc-ev{grid-template-columns:1fr 1fr;gap:6px}}
@@ -841,9 +856,9 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .soc-ev-type{font-weight:500}
 .soc-ev-src{color:var(--ink-3);font-size:12.5px}
 .soc-sev{font-size:11.5px;font-weight:700;text-align:center;border-radius:980px;padding:3px 8px}
-.soc-sev.lo{color:#0a9d57;background:rgba(16,185,129,.12)}.soc-sev.mid{color:#b26a00;background:rgba(245,158,11,.14)}.soc-sev.hi{color:#ff3b30;background:rgba(255,59,48,.12)}
+.soc-sev.lo{color:#14804a;background:rgba(32,132,74,.12)}.soc-sev.mid{color:#b26a00;background:rgba(245,158,11,.14)}.soc-sev.hi{color:#ff3b30;background:rgba(255,59,48,.12)}
 .soc-st{font-size:12px;font-weight:600;text-align:center;border-radius:980px;padding:3px 10px}
-.soc-st.ok{color:#0a9d57;background:rgba(16,185,129,.1)}.soc-st.warn{color:#b26a00;background:rgba(245,158,11,.14)}
+.soc-st.ok{color:#14804a;background:rgba(32,132,74,.1)}.soc-st.warn{color:#b26a00;background:rgba(245,158,11,.14)}
 .soc-types{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 @media(max-width:760px){.soc-types{grid-template-columns:1fr}}
 .soc-type{margin:0}
@@ -852,13 +867,13 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .soc-type-h b{font-size:16.5px}
 .soc-type-d{font-size:14px;color:var(--ink-2);line-height:1.5}
 .soc-type-def{font-size:13px;color:var(--ink-2);background:var(--paper-2);border-radius:12px;padding:11px 14px;margin-top:12px;line-height:1.5}
-.soc-type-def b{color:var(--blue)}
+.soc-type-def b{color:var(--green)}
 .soc-q{margin:0 0 14px}
 .soc-q-q{font-size:15px;font-weight:600;margin-bottom:12px}
 .soc-q-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer;font-size:14px;transition:.15s}
-.soc-q-opt:hover{border-color:var(--blue)}
-.soc-q-opt input{accent-color:var(--blue)}
-.soc-q-opt.ok{border-color:rgba(16,185,129,.5);background:rgba(16,185,129,.07)}
+.soc-q-opt:hover{border-color:var(--green)}
+.soc-q-opt input{accent-color:var(--green)}
+.soc-q-opt.ok{border-color:rgba(32,132,74,.5);background:rgba(32,132,74,.07)}
 .soc-q-opt.bad{border-color:rgba(255,59,48,.5);background:rgba(255,59,48,.06)}
 .soc-result{font-size:15px;margin-top:14px;padding:14px 18px;background:var(--paper-2);border-radius:12px}
 .soc-result:empty{display:none}
@@ -866,7 +881,7 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 /* ─────────── SOC: attack globe ─────────── */
 .soc-map{display:grid;grid-template-columns:1fr 290px;gap:18px;align-items:stretch}
 @media(max-width:820px){.soc-map{grid-template-columns:1fr}}
-.soc-globe{height:480px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 38%,#0e2c50,#05101f);border:1px solid var(--line)}
+.soc-globe{height:480px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 38%,#0f4127,#06120c);border:1px solid var(--line)}
 .soc-globe canvas{display:block}
 .soc-srclist{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;max-height:480px;overflow:hidden;display:flex;flex-direction:column}
 .soc-srclist-h{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
@@ -895,9 +910,9 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .pmyreq{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 18px}
 .pmyreq b{font-size:14.5px;font-weight:600}
 .pst{font-size:12.5px;font-weight:600;border-radius:980px;padding:5px 12px;white-space:nowrap;flex-shrink:0}
-.pst-new{color:#0071e3;background:rgba(0,113,227,.1)}
+.pst-new{color:#166f43;background:rgba(22,111,67,.1)}
 .pst-progress{color:#b26a00;background:rgba(245,158,11,.14)}
-.pst-closed{color:#0a9d57;background:rgba(16,185,129,.12)}
+.pst-closed{color:#14804a;background:rgba(32,132,74,.12)}
 
 /* ─────────── SOC: analytics ─────────── */
 .soc-analytics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
@@ -905,7 +920,7 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .soc-week{display:flex;align-items:flex-end;gap:10px;height:158px}
 .soc-week-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
 .soc-week-track{width:100%;flex:1;display:flex;align-items:flex-end}
-.soc-week-bar{width:100%;background:linear-gradient(180deg,#2997ff,#0071e3);border-radius:6px 6px 0 0;min-height:4px;transition:height .5s}
+.soc-week-bar{width:100%;background:linear-gradient(180deg,#3fa06b,#166f43);border-radius:6px 6px 0 0;min-height:4px;transition:height .5s}
 .soc-week-l{font-size:11.5px;color:var(--ink-3)}
 .soc-week-v{font-size:10.5px;color:var(--ink-3)}
 .soc-dist{display:flex;flex-direction:column;gap:11px}
@@ -914,27 +929,26 @@ button.job:hover .job-go{transform:translateX(4px);color:var(--blue)}
 .soc-dist-bar{flex:1;height:8px;background:var(--paper-2);border-radius:980px;overflow:hidden}
 .soc-dist-bar i{display:block;height:100%;background:linear-gradient(90deg,#ffa033,#ff3b30);border-radius:980px;transition:width .4s}
 .soc-dist-row b{min-width:24px;text-align:right;color:var(--ink-2);font-size:12.5px}
+
+/* ─────────── DISPLAY SERIF (banknote character) ─────────── */
+h1,.phero h1,.sec-title{font-family:var(--font-display);font-weight:400;letter-spacing:0;line-height:1.12}
+.sec-title{font-size:clamp(28px,4.2vw,44px)}
+.phero h1{font-size:clamp(36px,5.6vw,60px)}
+@media(max-width:560px){.sec-title{font-size:clamp(24px,7vw,36px)}}
+.eyebrow,.sec-eyebrow{letter-spacing:.14em}
 </style>
 <style id="bg3d-css">#siteBg3d{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}html,body{overflow-x:hidden;max-width:100%}@media(max-width:820px){#siteBg3d{display:none!important}.hero-gl{display:none!important}.bot{right:12px;left:12px;width:auto;max-width:none}}.band-gray{background:var(--paper-2)}</style>
 <script>try{if(localStorage.getItem('ddc_no3d')==='1')document.documentElement.classList.add('no3d');}catch(e){}</script>
 <style>
-#readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0071e3,#2997ff);z-index:1200;transition:width .12s ease-out;pointer-events:none}
+#readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#9a7403,#ffe092);z-index:1200;transition:width .12s ease-out;pointer-events:none}
 html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!important}
 .foot-3d{background:none;border:0;color:var(--ink-3);font:inherit;font-size:12px;cursor:pointer;text-decoration:underline;padding:0}
-.foot-3d:hover{color:var(--blue)}
+.foot-3d:hover{color:var(--green)}
 </style>
 </head>
 <body>
-<canvas id="siteBg3d" aria-hidden="true"></canvas>
-<script src="three.min.js"></script>
 
 <div class="site-head" id="siteHead">
-  <div class="topbar">
-    <div class="topbar-in">
-      <div class="ticker"><div class="ticker-track" id="fxTrack"><span class="fx">Загрузка курсов валют…</span></div></div>
-      <div class="wx" id="wx"><span class="wxi">⏳</span><span class="wxc">Астана</span><span class="wxt">—</span></div>
-    </div>
-  </div>
   <header class="nav" id="nav">
   <div class="nav-in">
     <a class="brand" href="index.html">
@@ -952,11 +966,11 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     </nav>
     <div class="nav-right">
       <div class="lang" role="group" aria-label="Язык">
+        <button class="lang-btn" data-lang="kz">KZ</button>
         <button class="lang-btn" data-lang="ru">RU</button>
         <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="kz">KZ</button>
       </div>
-      <a class="nav-cta" href="portal.html">Войти в портал</a>
+      <a class="nav-cta" href="media.html#contacts">Контакты</a>
     </div>
     <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
   </div>
@@ -1007,13 +1021,10 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
         <a class="mm-main-link" data-bot="1" href="#">ИИ-ассистент</a>
         <a class="mm-main-link" href="media.html#faq">FAQ</a>
         <a class="mm-main-link" href="media.html#contacts">Контакты</a></div>
-      <div class="mm-col"><div class="mm-h">Пресс-центр</div>
-        <a class="mm-link" href="media.html#news">Пресс-релизы</a>
-        <a class="mm-link" href="#">Медиа-кит</a>
-        <a class="mm-link" href="#">Брендбук</a></div>
       <div class="mm-col"><div class="mm-h">Связь</div>
         <a class="mm-link" href="media.html#contacts">Связаться с нами</a>
-        <a class="mm-link" href="#">Telegram</a>
+        <a class="mm-link" href="https://www.instagram.com/ddc_nbk/" target="_blank" rel="noopener">Instagram</a>
+        <a class="mm-link" href="https://www.linkedin.com/company/ddc-nbk" target="_blank" rel="noopener">LinkedIn</a>
         <a class="mm-link" data-bot="1" href="#">Задать вопрос боту</a></div>
     </div>
 
@@ -1025,8 +1036,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
         <a class="mm-main-link" href="partners.html#edu">Академические партнёры</a></div>
       <div class="mm-col"><div class="mm-h">Сотрудничество</div>
         <a class="mm-link" href="partners.html#join">Стать партнёром</a>
-        <a class="mm-link" href="#">API-интеграции</a>
-        <a class="mm-link" href="activity.html#tenge">Open Banking</a></div>
+</div>
     </div>
 
     <div class="mm-panel" data-panel="careers">
@@ -1044,9 +1054,14 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
   </div>
 </div>
 
+<style>
+.cc-ic svg,.cp-ic svg,.pj-ic svg,.org-ic svg,.wc-ic svg,.role-ic svg,.svc-ic svg{width:1.05em;height:1.05em;display:block;color:var(--green)}
+.cp-ic svg{color:#3fa06b}
+.role-row.hl .role-ic svg{color:#fff}
+</style>
 <main>
 <section class="phero"><div class="eyebrow">О нас</div>
-  <h1 data-i18n-html="h_about">От сервисного бюро —<br>к цифровому суверенитету.</h1>
+  <h1 data-i18n-html="h_about">Технологический центр<br>Национального Банка</h1>
   <p>АО «Центр цифрового развития Национального Банка Казахстана» — реорганизовано в 2025 году из «Банковского сервисного бюро НБ РК» (осн. 1995). Единственный акционер — Национальный Банк РК.</p>
 </section>
 
@@ -1059,11 +1074,11 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
       <div class="chair-pos">Член Совета директоров Общества — Председатель Правления</div>
     </div>
     <div class="chair-text">
-      <p class="chair-hello">Уважаемые интернет-пользователи!</p>
+      <p class="chair-hello">Уважаемые коллеги и партнёры!</p>
       <p class="chair-body">Я рад приветствовать вас на официальном сайте ЦЦР! Более 30 лет ЦЦР успешно осуществляет свою деятельность на рынке ИТ-услуг, что позволило сформировать внушительный портфель не простых, а порой и весьма сложных, но успешно реализованных ИТ-проектов для Национального Банка. Деятельность ЦЦР построена на простых, но очень важных принципах партнёрства, уважения и меритократии.</p>
       <p class="chair-body">Достоянием любой компании являются её сотрудники, её корпоративные знания, накапливаемые в технологиях, идеях, аналитических разработках, её истории и традициях. Коллектив ЦЦР представляют опытные специалисты, обладающие широкими знаниями в области ИТ-технологий и эффективно применяющие их на практике. Каждый сотрудник нашей компании обладает такими качествами, как профессионализм, стремление работать и желание постоянно всесторонне развиваться.</p>
       <p class="chair-body">В разделе сайта «Связаться с нами» каждый интернет-пользователь может задавать интересующие его вопросы, оставлять комментарии и предложения, а также высказывать своё мнение о деятельности компании. Надеюсь, это даст дополнительную возможность ближе узнать о деятельности и дальнейших планах ЦЦР, а также позволит мне ответить на интересующие пользователей вопросы.</p>
-      <p class="chair-sign" data-i18n-html="chair_sign">С уважением,<br>Амардинов Малик</p>
+      <p class="chair-sign" data-i18n-html="chair_sign">С уважением,<br>Малик Амардинов<br>Председатель Правления АО «ЦЦР»</p>
     </div>
   </div>
 </div></section>
@@ -1078,8 +1093,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
         <div class="mv-card"><h4>Видение</h4><p>Стать эталоном в области цифровой трансформации, развивая и внедряя передовые IT-решения для Национального Банка и его дочерних структур, — ключевой партнёр, обеспечивающий инновации, надёжность и эффективность всех технологических процессов.</p></div>
       </div>
       <div class="certs" id="certs">
-        <span class="cert-pill">ISO 27001</span><span class="cert-pill">PCI DSS</span><span class="cert-pill">NIST CSF</span>
-        <span class="cert-pill">OWASP</span><span class="cert-pill">Best Digital Gov 2024</span><span class="cert-pill">FinTech Award KZ</span>
+        <span class="cert-pill">ISO 9001 · TÜV NORD</span>
       </div>
       <p style="font-size:14px;color:var(--ink-2);line-height:1.6;margin-top:18px" data-i18n="qpolicy">Политика в области качества и Политика информационной безопасности — основа деятельности ЦЦР, направленная на высокие стандарты сервисов, укрепление доверия и удовлетворение потребностей заказчика.</p>
     </div>
@@ -1098,6 +1112,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
           <li>цифровую трансформацию.</li>
         </ul></div></div>
       <div class="tl-item"><div class="tl-year">2025</div><div class="tl-text">Преобразование в акционерное общество «Центр цифрового развития Национального Банка Казахстана», перерегистрация произведена 18 июля 2025 года.</div></div>
+      <div class="tl-item"><div class="tl-year">2026</div><div class="tl-text">Новый этап: развитие направлений данных и искусственного интеллекта в экосистеме Национального Банка. NBK AI Platform — единая точка входа к ИИ-сервисам НБРК — отмечена наградой «The Best IT-Project» на саммите K-Tech 2026.</div></div>
     </div></div>
   </div>
 </div></section>
@@ -1107,13 +1122,13 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <h2 class="sec-title">Совет директоров</h2>
     <p class="sec-desc">Стратегическое управление и надзор за деятельностью ЦЦР.</p></div>
   <div class="person-grid reveal">
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#2997ff,#0071e3)"><img src="img/zhalenov.jpg" alt="Жаленов Бинур Муратович" loading="lazy" onerror="this.remove()">ЖБ</div><span class="person-badge">Председатель</span><h3>Жаленов Бинур Муратович</h3><div class="person-pos">Председатель Совета директоров · Заместитель Председателя НБ РК</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#34d399,#0ea5a4)"><img src="img/uzbekov.jpg" alt="Узбеков Асхат Архатович" loading="lazy" onerror="this.remove()">УА</div><h3>Узбеков Асхат Архатович</h3><div class="person-pos">Член Совета директоров · Директор департамента ИТ НБ РК</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#a78bfa,#7c4dff)"><img src="img/arinova.jpg" alt="Аринова Айжан Бейбытовна" loading="lazy" onerror="this.remove()">АА</div><h3>Аринова Айжан Бейбытовна</h3><div class="person-pos">Член Совета директоров · Директор Департамента цифровой трансформации</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#f59e0b,#ef4444)"><img src="img/amardinov.jpg" alt="Амардинов Малик Алимжанович" loading="lazy" onerror="this.remove()">АМ</div><h3>Амардинов Малик Алимжанович</h3><div class="person-pos">Член Совета директоров · Председатель Правления</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#38bdf8,#3b82f6)"><img src="img/konyrbaev.jpg" alt="Конирбаев Баян Кайратович" loading="lazy" onerror="this.remove()">КБ</div><h3>Конирбаев Баян Кайратович</h3><div class="person-pos">Член Совета директоров · Независимый директор</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#f472b6,#db2777)"><img src="img/alpamysov.jpg" alt="Алпамысов Абай Абдисаметович" loading="lazy" onerror="this.remove()">АА</div><h3>Алпамысов Абай Абдисаметович</h3><div class="person-pos">Член Совета директоров · Независимый директор</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#22d3ee,#0891b2)"><img src="img/marat.jpg" alt="Марат Аскар" loading="lazy" onerror="this.remove()">МА</div><h3>Марат Аскар</h3><div class="person-pos">Член Совета директоров · Независимый директор</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#2f9e63,#0e4c28)"><img src="img/zhalenov.jpg" alt="Жаленов Бинур Муратович" loading="lazy" onerror="this.remove()">ЖБ</div><span class="person-badge">Председатель</span><h3>Жаленов Бинур Муратович</h3><div class="person-pos">Председатель Совета директоров · Заместитель Председателя НБ РК</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#57bd8b,#166f43)"><img src="img/uzbekov.jpg" alt="Узбеков Асхат Архатович" loading="lazy" onerror="this.remove()">УА</div><h3>Узбеков Асхат Архатович</h3><div class="person-pos">Член Совета директоров · Директор департамента ИТ НБ РК</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#d9b24a,#9a7403)"><img src="img/arinova.jpg" alt="Аринова Айжан Бейбытовна" loading="lazy" onerror="this.remove()">АА</div><h3>Аринова Айжан Бейбытовна</h3><div class="person-pos">Член Совета директоров · Директор Департамента цифровой трансформации</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#c4a747,#7a5c02)"><img src="img/amardinov.jpg" alt="Амардинов Малик Алимжанович" loading="lazy" onerror="this.remove()">АМ</div><h3>Амардинов Малик Алимжанович</h3><div class="person-pos">Член Совета директоров · Председатель Правления</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#4fb47e,#14663e)"><img src="img/konyrbaev.jpg" alt="Конирбаев Баян Кайратович" loading="lazy" onerror="this.remove()">КБ</div><h3>Конирбаев Баян Кайратович</h3><div class="person-pos">Член Совета директоров · Независимый директор</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#7dcd9f,#20844a)"><img src="img/alpamysov.jpg" alt="Алпамысов Абай Абдисаметович" loading="lazy" onerror="this.remove()">АА</div><h3>Алпамысов Абай Абдисаметович</h3><div class="person-pos">Член Совета директоров · Независимый директор</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#66c29a,#177a52)"><img src="img/marat.jpg" alt="Марат Аскар" loading="lazy" onerror="this.remove()">МА</div><h3>Марат Аскар</h3><div class="person-pos">Член Совета директоров · Независимый директор</div></div>
   </div>
 </div></section>
 
@@ -1122,11 +1137,11 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <h2 class="sec-title">Правление</h2>
     <p class="sec-desc">Оперативное руководство и реализация стратегии ЦЦР.</p></div>
   <div class="person-grid reveal">
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#f59e0b,#ef4444)"><img src="img/amardinov.jpg" alt="Амардинов Малик Алимжанович" loading="lazy" onerror="this.remove()">АМ</div><span class="person-badge">Председатель Правления</span><h3>Амардинов Малик Алимжанович</h3><div class="person-pos">Председатель Правления</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#2997ff,#0071e3)"><img src="img/durmagambetov.jpg" alt="Дурмагамбетов Ерлан Дмитриевич" loading="lazy" onerror="this.remove()">ДЕ</div><h3>Дурмагамбетов Ерлан Дмитриевич</h3><div class="person-pos">Первый заместитель Председателя Правления</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#34d399,#0ea5a4)"><img src="img/kentbekov.jpg" alt="Кентбеков Аргын Салаватович" loading="lazy" onerror="this.remove()">КА</div><h3>Кентбеков Аргын Салаватович</h3><div class="person-pos">Заместитель Председателя Правления</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#a78bfa,#7c4dff)"><img src="img/imazhanov.jpg" alt="Имажанов Бахытжан Гылымбекович" loading="lazy" onerror="this.remove()">ИБ</div><h3>Имажанов Бахытжан Гылымбекович</h3><div class="person-pos">Заместитель Председателя Правления</div></div>
-    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#f472b6,#db2777)">ДМ</div><h3>Мажренов Даурен Муратович</h3><div class="person-pos">Заместитель Председателя Правления</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#c4a747,#7a5c02)"><img src="img/amardinov.jpg" alt="Амардинов Малик Алимжанович" loading="lazy" onerror="this.remove()">АМ</div><span class="person-badge">Председатель Правления</span><h3>Амардинов Малик Алимжанович</h3><div class="person-pos">Председатель Правления</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#2f9e63,#0e4c28)"><img src="img/durmagambetov.jpg" alt="Дурмагамбетов Ерлан Дмитриевич" loading="lazy" onerror="this.remove()">ДЕ</div><h3>Дурмагамбетов Ерлан Дмитриевич</h3><div class="person-pos">Первый заместитель Председателя Правления</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#57bd8b,#166f43)"><img src="img/kentbekov.jpg" alt="Кентбеков Аргын Салаватович" loading="lazy" onerror="this.remove()">КА</div><h3>Кентбеков Аргын Салаватович</h3><div class="person-pos">Заместитель Председателя Правления</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#d9b24a,#9a7403)"><img src="img/imazhanov.jpg" alt="Имажанов Бахытжан Гылымбекович" loading="lazy" onerror="this.remove()">ИБ</div><h3>Имажанов Бахытжан Гылымбекович</h3><div class="person-pos">Заместитель Председателя Правления</div></div>
+    <div class="person-card"><div class="person-ava" style="background:linear-gradient(140deg,#7dcd9f,#20844a)">ДМ</div><h3>Мажренов Даурен Муратович</h3><div class="person-pos">Заместитель Председателя Правления</div></div>
   </div>
 </div></section>
 
@@ -1134,14 +1149,14 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 .valgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .valcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .3s,box-shadow .3s}
 .valcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px -16px rgba(0,0,0,.2)}
-.valcard .val-l{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#0071e3,#2997ff);color:#fff;font-weight:700;font-size:20px;margin-bottom:12px}
+.valcard .val-l{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#166f43,#3fa06b);color:#fff;font-weight:700;font-size:20px;margin-bottom:12px}
 .valcard b{display:block;font-size:17px;margin-bottom:6px;letter-spacing:-.01em}
 .valcard p{color:var(--ink-2,#3a3a3c);font-size:14px;line-height:1.5;margin:0}
 @media(max-width:820px){.valgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.valgrid{grid-template-columns:1fr}}
 </style>
 <section class="band band-gray" id="values"><div class="wrap">
-  <div class="sec-head reveal"><div class="sec-eyebrow">Ценности</div><h2 class="sec-title">CENTER — основа нашей работы</h2><p class="sec-desc">В Центре цифрового развития мы опираемся на концепцию CENTER, которая определяет подход к процессам, взаимодействию и результатам.</p></div>
+  <div class="sec-head reveal"><div class="sec-eyebrow">Принципы</div><h2 class="sec-title">CENTER — основа нашей работы</h2><p class="sec-desc">В Центре цифрового развития мы опираемся на концепцию CENTER, которая определяет подход к процессам, взаимодействию и результатам.</p></div>
   <div class="valgrid reveal">
     <div class="valcard"><span class="val-l">C</span><b>Commitment</b><p>Ответственность и доведение обязательств до результата.</p></div>
     <div class="valcard"><span class="val-l">E</span><b>Excellence</b><p>Профессионализм, качество и применение лучших практик.</p></div>
@@ -1151,60 +1166,30 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <div class="valcard"><span class="val-l">R</span><b>Result</b><p>Измеримый эффект как главный критерий.</p></div>
   </div>
 </div></section>
-<style>
-.trgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.trcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .3s,box-shadow .3s}
-.trcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px -16px rgba(0,0,0,.2)}
-.trcard .tr-ic{font-size:28px;margin-bottom:10px}
-.trcard h3{font-size:17px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
-.trcard p{color:var(--ink-2,#3a3a3c);font-size:14px;line-height:1.55;margin:0}
-@media(max-width:820px){.trgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.trgrid{grid-template-columns:1fr}}
-</style>
-<section class="band" id="transform"><div class="wrap">
-  <div class="sec-head reveal"><div class="sec-eyebrow">Трансформация</div><h2 class="sec-title">Драйвер цифровой трансформации</h2><p class="sec-desc">Цифровая трансформация — это не просто внедрение новых IT-решений, а системное изменение процессов, культуры и подходов к управлению. Ключевую роль в этом играет ЦЦР.</p></div>
-  <div class="trgrid reveal">
-    <div class="trcard"><div class="tr-ic">🧭</div><h3>Стратегия и архитектура</h3><p>Формируем цифровую стратегию и определяем технологические приоритеты, обеспечивая согласованность инициатив с бизнес-целями.</p></div>
-    <div class="trcard"><div class="tr-ic">⚙️</div><h3>Оптимизация процессов</h3><p>Анализируем процессы, находим узкие места и внедряем цифровые инструменты для роста эффективности и прозрачности.</p></div>
-    <div class="trcard"><div class="tr-ic">🚀</div><h3>Внедрение инноваций</h3><p>От автоматизации и аналитики данных до современных платформ — сопровождаем проекты от идеи до масштабирования.</p></div>
-    <div class="trcard"><div class="tr-ic">📈</div><h3>Data-driven подход</h3><p>Развиваем системы аналитики и культуру работы с данными, чтобы решения принимались на основе фактов.</p></div>
-    <div class="trcard"><div class="tr-ic">🌱</div><h3>Цифровая культура</h3><p>Поддерживаем обучение сотрудников, развитие компетенций и mindset непрерывных улучшений.</p></div>
-  </div>
-</div></section>
-<section class="band" id="advantages"><div class="wrap">
-  <div class="sec-head reveal"><div class="sec-eyebrow">Преимущества</div>
-    <h2 class="sec-title">Почему ЦЦР</h2></div>
-  <div class="org-grid reveal">
-    <a class="org-card" href="activity.html"><div class="org-ic">💠</div><h3>Цифровизация</h3><p>Оператор портала закупок. Более 30 лет опыта, проверенного государственными сервисами.</p></a>
-    <a class="org-card" href="activity.html#cyber"><div class="org-ic">🛡️</div><h3>Информационная безопасность</h3><p>Сопровождение и администрирование ИТ-систем, защита информации.</p></a>
-    <a class="org-card" href="activity.html#data"><div class="org-ic">🗄️</div><h3>Технологический оператор данных</h3><p>Профессиональная обработка, хранение и управление информацией (статус с 2021 года).</p></a>
-    <a class="org-card" href="activity.html#contact"><div class="org-ic">☎️</div><h3>Контакт-центр 1477</h3><p>Консультационная и техническая поддержка пользователей.</p></a>
-    <a class="org-card" href="https://www.ddcnb.kz" target="_blank" rel="noopener"><div class="org-ic">📈</div><h3>Финансовая отчётность</h3><p>Годовая финансовая отчётность. <span style="color:var(--blue)">Подробнее ›</span></p></a>
-    <a class="org-card" href="about.html#transform"><div class="org-ic">🔄</div><h3>Гарантированное качество</h3><p>Цифровая трансформация: доверие и удовлетворение потребностей заказчика.</p></a>
-  </div>
-</div></section>
+
+
 
 <section class="band band-gray" id="priorities"><div class="wrap">
   <div class="sec-head reveal"><div class="sec-eyebrow">Стратегия</div>
     <h2 class="sec-title">Приоритеты развития</h2>
     <p class="sec-desc">Направления, на которых ЦЦР фокусируется в цифровой трансформации финансового сектора.</p></div>
   <div class="org-grid reveal">
-    <div class="org-card"><div class="org-ic">🤖</div><h3>Искусственный интеллект и аналитика</h3><p>Внедрение ИИ и аналитики данных для эффективности процессов.</p></div>
-    <div class="org-card"><div class="org-ic">🏦</div><h3>Цифровая трансформация финсектора</h3><p>Современные сервисы для финансовой системы страны.</p></div>
-    <div class="org-card"><div class="org-ic">🛡️</div><h3>Кибербезопасность</h3><p>Защита информации и непрерывность работы систем.</p></div>
-    <div class="org-card"><div class="org-ic">☁️</div><h3>Облачные технологии и платформы</h3><p>Современные масштабируемые технологические платформы.</p></div>
-    <div class="org-card"><div class="org-ic">⚙️</div><h3>Автоматизация процессов</h3><p>Повышение эффективности и снижение издержек.</p></div>
-    <div class="org-card"><div class="org-ic">🏛️</div><h3>Государственные цифровые сервисы</h3><p>Развитие сервисов государственного масштаба.</p></div>
+    <div class="org-card"><div class="org-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 7V4M8 4h8"/><circle cx="9.5" cy="12.5" r="1" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1" fill="currentColor"/><path d="M9 16h6"/></svg></div><h3>Искусственный интеллект и аналитика</h3><p>Внедрение ИИ и аналитики данных для эффективности процессов.</p></div>
+    <div class="org-card"><div class="org-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 7H3l9-7z"/><path d="M5 10v8M9.7 10v8M14.3 10v8M19 10v8"/><path d="M3 21h18"/></svg></div><h3>Цифровая трансформация финсектора</h3><p>Современные сервисы для финансовой системы страны.</p></div>
+    <div class="org-card"><div class="org-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.2-7 10-4-1.8-7-5.4-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-4"/></svg></div><h3>Кибербезопасность</h3><p>Защита информации и непрерывность работы систем.</p></div>
+    <div class="org-card"><div class="org-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 1 1 .8-8.9A6 6 0 0 1 19 11a3.5 3.5 0 0 1-1 7H7z"/></svg></div><h3>Облачные технологии и платформы</h3><p>Современные масштабируемые технологические платформы.</p></div>
+    <div class="org-card"><div class="org-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9 16.9L19 19M19 5l-2.1 2.1M7.1 16.9L5 19"/></svg></div><h3>Автоматизация процессов</h3><p>Повышение эффективности и снижение издержек.</p></div>
+    <div class="org-card"><div class="org-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 7H3l9-7z"/><path d="M5 10v8M9.7 10v8M14.3 10v8M19 10v8"/><path d="M3 21h18"/></svg></div><h3>Государственные цифровые сервисы</h3><p>Развитие сервисов государственного масштаба.</p></div>
   </div>
 </div></section>
 
 <section class="band" id="structure"><div class="wrap">
   <div class="sec-head reveal"><div class="sec-eyebrow">Структура</div>
     <h2 class="sec-title">Организационная структура</h2>
-    <p class="sec-desc">Председатель Правления, четыре заместителя и департаменты, обеспечивающие работу ЦЦР.</p></div>
+    <p class="sec-desc">Председатель Правления, четыре заместителя и 19 департаментов — инфраструктура, безопасность, данные, разработка и сервисы для НБРК.</p></div>
 
   <div class="oc-chair reveal">
-    <div class="person-ava" style="background:linear-gradient(140deg,#f59e0b,#ef4444)"><img src="img/amardinov.jpg" alt="Амардинов Малик Алимжанович" loading="lazy" onerror="this.remove()">АМ</div>
+    <div class="person-ava" style="background:linear-gradient(140deg,#c4a747,#7a5c02)"><img src="img/amardinov.jpg" alt="Амардинов Малик Алимжанович" loading="lazy" onerror="this.remove()">АМ</div>
     <h3>Амардинов Малик Алимжанович</h3>
     <div class="oc-role">Председатель Правления</div>
   </div>
@@ -1212,9 +1197,9 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 
   <div class="oc-cols reveal">
 
-    <div class="oc-col" style="--oc-accent:#0071e3">
+    <div class="oc-col" style="--oc-accent:#166f43">
       <div class="oc-deputy">
-        <div class="person-ava" style="background:linear-gradient(140deg,#2997ff,#0071e3)"><img src="img/durmagambetov.jpg" alt="Дурмагамбетов Ерлан Дмитриевич" loading="lazy" onerror="this.remove()">ДЕ</div>
+        <div class="person-ava" style="background:linear-gradient(140deg,#2f9e63,#0e4c28)"><img src="img/durmagambetov.jpg" alt="Дурмагамбетов Ерлан Дмитриевич" loading="lazy" onerror="this.remove()">ДЕ</div>
         <h4>Дурмагамбетов Ерлан Дмитриевич</h4>
         <div class="oc-role">Первый заместитель Председателя Правления</div>
       </div>
@@ -1228,9 +1213,9 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
       </div>
     </div>
 
-    <div class="oc-col" style="--oc-accent:#0ea5a4">
+    <div class="oc-col" style="--oc-accent:#166f43">
       <div class="oc-deputy">
-        <div class="person-ava" style="background:linear-gradient(140deg,#34d399,#0ea5a4)"><img src="img/kentbekov.jpg" alt="Кентбеков Аргын Салаватович" loading="lazy" onerror="this.remove()">КА</div>
+        <div class="person-ava" style="background:linear-gradient(140deg,#57bd8b,#166f43)"><img src="img/kentbekov.jpg" alt="Кентбеков Аргын Салаватович" loading="lazy" onerror="this.remove()">КА</div>
         <h4>Кентбеков Аргын Салаватович</h4>
         <div class="oc-role">Заместитель Председателя Правления</div>
       </div>
@@ -1244,9 +1229,9 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
       </div>
     </div>
 
-    <div class="oc-col" style="--oc-accent:#7c4dff">
+    <div class="oc-col" style="--oc-accent:#9a7403">
       <div class="oc-deputy">
-        <div class="person-ava" style="background:linear-gradient(140deg,#a78bfa,#7c4dff)"><img src="img/imazhanov.jpg" alt="Имажанов Бахытжан Гылымбекович" loading="lazy" onerror="this.remove()">ИБ</div>
+        <div class="person-ava" style="background:linear-gradient(140deg,#d9b24a,#9a7403)"><img src="img/imazhanov.jpg" alt="Имажанов Бахытжан Гылымбекович" loading="lazy" onerror="this.remove()">ИБ</div>
         <h4>Имажанов Бахытжан Гылымбекович</h4>
         <div class="oc-role">Заместитель Председателя Правления</div>
       </div>
@@ -1260,7 +1245,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 
     <div class="oc-col" style="--oc-accent:#db2777">
       <div class="oc-deputy">
-        <div class="person-ava" style="background:linear-gradient(140deg,#f472b6,#db2777)">ДМ</div>
+        <div class="person-ava" style="background:linear-gradient(140deg,#7dcd9f,#20844a)">ДМ</div>
         <h4>Мажренов Даурен Муратович</h4>
         <div class="oc-role">Заместитель Председателя Правления</div>
       </div>
@@ -1280,12 +1265,12 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <div class="foot-cols">
       <div><h5>Услуги</h5><a href="activity.html#contact">Контакт-центр 1477</a><a href="activity.html#procurement">Портал закупок</a><a href="activity.html#infra">ИТ-инфраструктура</a><a href="activity.html#cyber">Кибербезопасность</a></div>
       <div><h5>Компания</h5><a href="about.html">О нас</a><a href="about.html#history">История</a><a href="careers.html">Карьера</a><a href="media.html#contacts">Контакты</a></div>
-      <div><h5>Ресурсы</h5><a href="media.html#news">Новости</a><a href="media.html#faq">FAQ</a><a href="partners.html">Партнёры</a><a href="portal.html">Портал сотрудника</a><a href="admin.html">Админ-панель</a></div>
+      <div><h5>Ресурсы</h5><a href="media.html#news">Новости</a><a href="media.html#faq">FAQ</a><a href="partners.html">Партнёры</a><a href="https://www.instagram.com/ddc_nbk/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/ddc-nbk" target="_blank" rel="noopener">LinkedIn</a></div>
       <div><h5>Правовое</h5><a href="legal.html#terms">Условия</a><a href="legal.html#privacy">Конфиденциальность</a><a href="legal.html#cookie">Cookie</a></div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 АО «Центр цифрового развития Национального Банка Казахстана». Единственный акционер — Национальный Банк РК.</span>
-      <span>Астана, пр. Мангилик Ел, 57А · ddcnb.kz</span> <button class="foot-3d" id="toggle3d" type="button">Отключить 3D-фон</button>
+      <span>Астана, пр. Мангилик Ел, 57А · ddcnb.kz</span>
     </div>
   </div>
 </footer>
@@ -1307,16 +1292,6 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
   </div>
 </div>
 
-<div class="tmodal" id="tmodal" aria-hidden="true">
-  <div class="tmodal-card">
-    <button class="tmodal-x" id="tmodalX" aria-label="Закрыть">✕</button>
-    <div class="tmodal-ic" id="tmodalIc"></div>
-    <h3 id="tmodalName"></h3>
-    <div class="tmodal-cat" id="tmodalCat"></div>
-    <p id="tmodalDesc"></p>
-    <a id="tmodalLink" href="#" target="_blank" rel="noopener" class="btn btn-primary">Официальный сайт ›</a>
-  </div>
-</div>
 <script>
 // ── MEGA MENU ──
 const mm=document.getElementById('mm');
@@ -1366,7 +1341,7 @@ document.getElementById('burger').addEventListener('click',()=>{
   if(open){open.remove();return;}
   const m=document.createElement('div');m.className='mobile-menu';
   m.style.cssText='position:fixed;top:48px;left:0;right:0;background:rgba(251,251,253,.96);backdrop-filter:blur(20px);z-index:999;padding:18px 22px;border-bottom:1px solid var(--line)';
-  m.innerHTML='<a href="index.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Главная</a><a href="about.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">О нас</a><a href="activity.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Деятельность</a><a href="media.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Медиа</a><a href="partners.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Партнёры</a><a href="careers.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Карьера</a><a href="index.html#cta" style="display:block;padding:12px 0;font-size:17px;color:var(--blue)">Войти в портал</a>';
+  m.innerHTML='<a href="index.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Главная</a><a href="about.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">О нас</a><a href="activity.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Деятельность</a><a href="media.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Медиа</a><a href="partners.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Партнёры</a><a href="careers.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Карьера</a><a href="media.html#contacts" style="display:block;padding:12px 0;font-size:17px;color:var(--green)">Контакты</a>';
   document.body.appendChild(m);
   m.querySelectorAll('a').forEach(a=>a.addEventListener('click',(ev)=>{if(a.dataset.bot){ev.preventDefault();openBot();}m.remove();}));
 });
@@ -1390,12 +1365,12 @@ const KNOWLEDGE=`Ты — умный ИИ-ассистент на сайте А�
 - Председатель Совета директоров — Жаленов Бинур Муратович (Заместитель Председателя НБ РК). Председатель Правления — Амардинов Малик Алимжанович.
 - Направления: ИКТ-инфраструктура и ЦОД; кибербезопасность и защита информации; разработка и сопровождение ПО (разработано 50 ИС, 24 в эксплуатации, Agile/Waterfall); управление данными (технологический оператор данных НБРК с 2021); защищённая корпоративная сеть; портал закупок (zakup.nationalbank.kz, оператор с 24.06.2020); единый контакт-центр НБРК 1477 (бесплатно по РК, Пн–Пт 09:00–18:30).
 - Клиенты: НБРК, его филиалы, организации системы НБРК (ДО, ТФ), финансовый регулятор (АРРФР), участники финрынка.
-- Контакты: Астана, пр. Мангилик Ел, 57А; тел/факс +7 (727) 258 49 58; info@bsbnb.kz; сайты bsbnb.kz и ddcnb.kz; Instagram @ddc_nbk.
+- Контакты: юр. адрес — Астана, пр. Мангилик Ел, 57А; офис — Алматы, пр. Достык, 136; тел/факс +7 (727) 258 49 58; info@bsbnb.kz; сайты bsbnb.kz и ddcnb.kz; Instagram @ddc_nbk.
 Проекты ЦЦР:
 - «Депозитный регистр» — централизованная система учёта депозитов и вкладов граждан и организаций; единый источник достоверных данных, защита вкладчиков, ускорение обработки и отчётности, интеграция с экосистемой НБРК.
 - «Фабрика данных НБК» — единая цифровая экосистема хранения и анализа данных: ускорение обработки в 6,6 раза, отчёты в Qlik Sense и Denodo за секунды, оптимизация выгрузки отчётов на 80%.
 - Портал закупок — более 15 000 пользователей, 9 000 поставщиков, свыше 29 000 закупок на 194+ млрд ₸.
-- Масштаб инфраструктуры: 1163 виртуальные машины, 36 физических серверов, 10 систем хранения, 2500+ абонентов корпоративной связи; команда из 28 специалистов 24/7.
+- Масштаб инфраструктуры: 1163 виртуальные машины, 36 физических серверов, 10 систем хранения, 2500+ абонентов корпоративной связи; дежурная смена мониторинга 24/7 — 28 специалистов.
 Для вопросов о ЦЦР опирайся на факты выше. На все прочие вопросы отвечай как обычный универсальный ассистент, без ограничений по теме.`;
 
 const KB=[
@@ -1420,7 +1395,7 @@ const KB=[
  {k:['закуп','портал закуп','zakup','тендер','поставщик','закупки'],
   a:'Портал закупок (zakup.nationalbank.kz) — единая точка доступа к электронным закупкам НБРК. ЦЦР — его оператор; в промышленной эксплуатации с 24 июня 2020 года. Доступен круглосуточно, поддержка — через 1477.'},
  {k:['проект','депозитн','фабрика данных','кейс','реестр','qlik','denodo','масштаб','виртуальн'],
-  a:'Ключевые проекты ЦЦР: «Депозитный регистр» — централизованный учёт депозитов и вкладов (единый источник данных, защита вкладчиков, интеграции с НБРК); «Фабрика данных НБК» — экосистема анализа данных (обработка быстрее в 6,6×, отчёты в Qlik Sense и Denodo за секунды); Портал закупок — 15 000+ пользователей, 9 000 поставщиков, 194+ млрд ₸. Инфраструктура: 1163 виртуальные машины, 36 серверов, команда 28 специалистов 24/7. Подробнее — «Деятельность» → «Ключевые проекты».'},
+  a:'Ключевые проекты ЦЦР: NBK AI Platform — единая точка входа к ИИ-сервисам НБРК («The Best IT-Project», K-Tech 2026); «Депозитный регистр» — централизованный учёт депозитов и вкладов (единый источник данных, защита вкладчиков, интеграции с НБРК); «Фабрика данных НБК» — экосистема анализа данных (обработка быстрее в 6,6×, отчёты в Qlik Sense и Denodo за секунды); Портал закупок — 15 000+ пользователей, 9 000 поставщиков, 194+ млрд ₸. Инфраструктура: 1163 виртуальные машины, 36 серверов, дежурная смена мониторинга 24/7 — 28 специалистов. Подробнее — «Деятельность» → «Ключевые проекты».'},
  {k:['данн','база данных','бд','хранен','обработк','оператор данных'],
   a:'С 2021 года ЦЦР — технологический оператор данных НБРК: обработка, хранение и управление данными, разработка и поддержка баз данных, безопасность и контроль целостности информации.'},
  {k:['разработ','информацион систем','ис ','agile','waterfall','софт','по ','приложен'],
@@ -1434,19 +1409,19 @@ const KB=[
  {k:['кому','для кого','участник','аррфр','клиент','услуги предостав'],
   a:'Услуги ЦЦР — для Нацбанка РК и его подразделений, организаций системы НБРК (ДО, ТФ), финрегулятора (АРРФР), а также участников финрынка и пользователей цифровых сервисов.'},
  {k:['партн','сотруднич','экосистем','кому оказыв','вуз','вендор'],
-  a:'ЦЦР входит в группу Национального Банка РК (единственный акционер — 100%) и работает в его экосистеме: организации системы НБРК, филиалы и подразделения, финансовый регулятор (АРРФР) и участники финансового рынка. Также ЦЦР — оператор портала закупок НБ. Актуальный перечень партнёров уточняется; по вопросам сотрудничества — форма на странице «Медиа».'},
+  a:'ЦЦР входит в группу Национального Банка РК (единственный акционер — 100%) и работает в его экосистеме: организации системы НБРК, филиалы и подразделения, финансовый регулятор (АРРФР) и участники финансового рынка. Также ЦЦР — оператор портала закупок НБ. ЦЦР работает в экосистеме Национального Банка: НБРК (учредитель), АРРФР, НПК, филиалы и организации группы. По вопросам сотрудничества — форма на странице «Медиа».'},
  {k:['ваканс','карьер','работа','стажир','резюме','устроит'],
   a:'ЦЦР приглашает ИТ-специалистов. Открыты направления разработки, инфраструктуры, кибербезопасности и данных, есть стажировки. Смотрите раздел «Карьера» и присылайте отклик через форму на странице «Медиа».'},
  {k:['технолог','стек','язык','python','java','kubernetes','docker','инструмент'],
   a:'Технологический стек включает Python, Java, TypeScript/React, Spring Boot, PostgreSQL/Oracle, Docker/Kubernetes/OpenShift, Terraform/Ansible, Grafana/Prometheus, Splunk, Keycloak, HashiCorp Vault и др. Нажмите на любой чип в блоке «Технологии» на главной.'},
  {k:['контакт','адрес','где наход','почта','email','сайт','связат','телефон','офис'],
-  a:'Контакты: Астана, пр. Мангилик Ел, 57А. Тел/Факс +7 (727) 258 49 58. Email info@bsbnb.kz. Сайты bsbnb.kz и ddcnb.kz. Instagram @ddc_nbk. Контакт-центр НБРК — 1477. Форма обращения — на странице «Медиа».'},
+  a:'Контакты: юр. адрес — Астана, пр. Мангилик Ел, 57А; офис — Алматы, пр. Достык, 136. Тел/Факс +7 (727) 258 49 58. Email info@bsbnb.kz. Сайты bsbnb.kz и ddcnb.kz. Instagram @ddc_nbk. Контакт-центр НБРК — 1477. Форма обращения — на странице «Медиа».'},
  {k:['привет','здравств','салам','добр','hello','hi','сәлем'],
   a:'Здравствуйте! Я ИИ-ассистент ЦЦР. Спросите про услуги, контакт-центр 1477, портал закупок, руководство, историю, технологии или контакты — либо запустите тур по сайту.'},
  {k:['спасибо','благодар','thanks','рахмет'],
   a:'Пожалуйста! Рад помочь. Если будут ещё вопросы о ЦЦР — спрашивайте.'},
 ];
-const SUGGEST=['🧭 Тур по сайту','Чем занимается ЦЦР?','Контакт-центр 1477','Руководство','Портал закупок','Контакты'];
+const SUGGEST=['Тур по сайту','Чем занимается ЦЦР?','Контакт-центр 1477','Руководство','Портал закупок','Контакты'];
 
 function kbAnswer(q){
   const t=' '+q.toLowerCase().replace(/[^a-zа-яё0-9ңғүұқөһәі ]/gi,' ')+' ';
@@ -1486,7 +1461,7 @@ function renderChips(){botChips.innerHTML='';SUGGEST.forEach(q=>{const c=documen
 
 async function send(q){
   q=(q||botInput.value).trim(); if(!q) return;
-  if(q==='🧭 Тур по сайту'||/^тур( по сайту)?$/i.test(q)){ closeBot(); if(window.startSiteTour) startSiteTour(); return; }
+  if(q==='Тур по сайту'||/^тур( по сайту)?$/i.test(q)){ closeBot(); if(window.startSiteTour) startSiteTour(); return; }
   addMsg(q,'me'); botInput.value='';
   var tip=typing();
   var ans=await aiAnswer(q);
@@ -1519,171 +1494,8 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   if(!open){it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
 }));
 
-// ── LIVE NEWS (RSS Нацбанка РК, автообновление каждые 5 минут) ──
-(function(){
-  var list=document.getElementById('newsList'); if(!list) return;
-  var stamp=document.getElementById('newsStamp');
-  var RSS='https://nationalbank.kz/rss_news_russian.xml';
-  var MO=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-  function fmt(d){var x=new Date(d); if(isNaN(x)) return ''; return x.getDate()+' '+MO[x.getMonth()]+' '+x.getFullYear();}
-  function clean(s){var t=document.createElement('div');t.innerHTML=s||'';var x=(t.textContent||'').trim().replace(/\s+/g,' ');return x.length>150?x.slice(0,150)+'…':x;}
-  function card(it){
-    var date=fmt(it.date), desc=clean(it.desc), link=it.link||'#', title=(it.title||'').trim();
-    if(!title) return '';
-    return '<a class="news-card" href="'+link+'" target="_blank" rel="noopener">'+
-      '<span class="news-tag">Нацбанк РК</span>'+(date?'<div class="news-date">'+date+'</div>':'')+
-      '<h3>'+title+'</h3>'+(desc?'<p>'+desc+'</p>':'')+
-      '<span class="more">Читать на nationalbank.kz</span></a>';
-  }
-  function render(items,note){
-    var html=items.slice(0,9).map(card).filter(Boolean).join('');
-    if(!html) return false;
-    list.innerHTML=html+(note?'<div class="news-note">'+note+'</div>':'');
-    if(stamp){var n=new Date();stamp.textContent='обновлено '+('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2);}
-    return true;
-  }
-  function parseXML(t){
-    try{
-      var xml=new DOMParser().parseFromString(t,'text/xml');
-      return [].slice.call(xml.querySelectorAll('item')).map(function(it){
-        function g(s){var e=it.querySelector(s);return e?e.textContent:'';}
-        return {title:g('title'),date:g('pubDate'),link:g('link'),desc:g('description')};});
-    }catch(e){return [];}
-  }
-  var FALLBACK=[
-    {title:'Перенос модуля «Учётная регистрация валютных договоров» на платформу digital.nationalbank.kz',date:'2026-02-24',link:'https://nbportal.nationalbank.kz/',desc:'Национальный Банк РК сообщает о переносе функционала на новую цифровую платформу.'},
-    {title:'Развитие единой системы платежей по QR-коду',date:'2026-06-20',link:'https://nationalbank.kz/ru/news',desc:'Национальный Банк объявил о развитии единого QR-кода в Казахстане.'},
-    {title:'Информационное сообщение по валютному рынку',date:'2025-12-04',link:'https://www.nationalbank.kz/ru/news/informacionnye-soobshcheniya',desc:'Официальное информационное сообщение Национального Банка Республики Казахстан.'}
-  ];
-  async function tryFetch(u,asJson){
-    var ctrl=new AbortController(); setTimeout(function(){ctrl.abort();},9000);
-    var r=await fetch(u,{signal:ctrl.signal}); if(!r.ok) throw 0;
-    return asJson? await r.json() : await r.text();
-  }
-  async function load(){
-    // 1) rss2json
-    try{ var j=await tryFetch('https://api.rss2json.com/v1/api.json?count=9&rss_url='+encodeURIComponent(RSS),true);
-      if(j&&j.status==='ok'&&j.items&&j.items.length&&render(j.items.map(function(it){return {title:it.title,date:it.pubDate,link:it.link,desc:it.description};}))) return;
-    }catch(e){}
-    // 2) allorigins raw
-    try{ var t=await tryFetch('https://api.allorigins.win/raw?url='+encodeURIComponent(RSS),false);
-      var its=parseXML(t); if(its.length&&render(its)) return; }catch(e){}
-    // 3) allorigins get (json-wrapped)
-    try{ var g=await tryFetch('https://api.allorigins.win/get?url='+encodeURIComponent(RSS),true);
-      if(g&&g.contents){var its2=parseXML(g.contents); if(its2.length&&render(its2)) return;} }catch(e){}
-    // 4) corsproxy.io
-    try{ var t3=await tryFetch('https://corsproxy.io/?url='+encodeURIComponent(RSS),false);
-      var its3=parseXML(t3); if(its3.length&&render(its3)) return; }catch(e){}
-    render(FALLBACK,'Лента Нацбанка временно недоступна — показаны последние сохранённые сообщения.');
-  }
-  load(); setInterval(load, 5*60*1000);
-})();
 
-// ════════════ TECHNOLOGY STACK MARQUEE (clickable) ════════════
-(function(){
-  var r1=document.getElementById('techRow1'),r2=document.getElementById('techRow2'); if(!r1) return;
-  // [name, category, color, description, url]
-  var TECH=[
-    ['Python','AI/ML','#3776ab','Язык программирования для анализа данных, машинного обучения и автоматизации.','https://www.python.org/'],
-    ['Java','Backend','#e76f00','Платформа для надёжных корпоративных и банковских серверных систем.','https://www.java.com/'],
-    ['TypeScript','Frontend','#3178c6','Типизированный JavaScript для масштабируемых веб-интерфейсов.','https://www.typescriptlang.org/'],
-    ['React','Frontend','#61dafb','Библиотека для построения современных пользовательских интерфейсов.','https://react.dev/'],
-    ['Spring Boot','Backend','#6db33f','Java-фреймворк для быстрой разработки микросервисов.','https://spring.io/projects/spring-boot'],
-    ['FastAPI','Backend','#05998b','Высокопроизводительный Python-фреймворк для API.','https://fastapi.tiangolo.com/'],
-    ['PostgreSQL','Data','#336791','Надёжная реляционная СУБД с открытым исходным кодом.','https://www.postgresql.org/'],
-    ['Oracle DB','Data','#f80000','Корпоративная СУБД для критичных банковских нагрузок.','https://www.oracle.com/database/'],
-    ['Redis','Data','#dc382d','Быстрое хранилище «ключ-значение» в памяти для кеширования.','https://redis.io/'],
-    ['Elasticsearch','Data','#fed10a','Поисковый и аналитический движок для больших объёмов данных.','https://www.elastic.co/'],
-    ['Apache Kafka','Data','#231f20','Платформа потоковой передачи событий в реальном времени.','https://kafka.apache.org/'],
-    ['Grafana','Observability','#f46800','Визуализация метрик и дашборды мониторинга.','https://grafana.com/'],
-    ['Docker','Cloud','#2496ed','Контейнеризация приложений для переносимости и изоляции.','https://www.docker.com/'],
-    ['Kubernetes','Cloud','#326ce5','Оркестрация контейнеров и автоматическое масштабирование.','https://kubernetes.io/'],
-    ['OpenShift','Cloud','#ee0000','Корпоративная платформа Kubernetes от Red Hat.','https://www.redhat.com/en/technologies/cloud-computing/openshift'],
-    ['Terraform','Cloud','#7b42bc','Инфраструктура как код для управления облаком.','https://www.terraform.io/'],
-    ['Ansible','Cloud','#1a1918','Автоматизация конфигурации и развёртывания систем.','https://www.ansible.com/'],
-    ['Prometheus','Observability','#e6522c','Система сбора метрик и оповещений.','https://prometheus.io/'],
-    ['Splunk','Security','#65a637','Анализ логов и мониторинг событий безопасности (SIEM).','https://www.splunk.com/'],
-    ['Keycloak','Security','#4d4d4d','Управление доступом, SSO и аутентификацией.','https://www.keycloak.org/'],
-    ['HashiCorp Vault','Security','#000000','Безопасное хранение секретов и ключей шифрования.','https://www.vaultproject.io/'],
-    ['Linux','Infra','#333333','Операционная система серверной инфраструктуры.','https://www.kernel.org/'],
-    ['Git','DevOps','#f05032','Распределённая система контроля версий кода.','https://git-scm.com/'],
-    ['CI/CD','DevOps','#0071e3','Непрерывная интеграция и доставка программных продуктов.','https://about.gitlab.com/topics/ci-cd/']
-  ];
-  function chip(t){
-    return '<div class="tech-chip" role="button" tabindex="0" data-name="'+t[0]+'" data-cat="'+t[1]+'" data-color="'+t[2]+'" data-desc="'+t[3].replace(/"/g,'&quot;')+'" data-url="'+t[4]+'">'+
-      '<span class="tech-dot" style="background:'+t[2]+'"></span><b>'+t[0]+'</b><span>'+t[1]+'</span></div>';
-  }
-  var half=Math.ceil(TECH.length/2), a=TECH.slice(0,half), b=TECH.slice(half);
-  function fill(el,arr){var h=arr.map(chip).join('');el.innerHTML=h+h;}
-  fill(r1,a); if(r2) fill(r2,b);
 
-  // modal
-  var m=document.getElementById('tmodal');
-  function open(d){
-    if(!m)return;
-    document.getElementById('tmodalIc').textContent=d.name.charAt(0);
-    document.getElementById('tmodalIc').style.background=d.color==='#000000'?'#222':d.color;
-    document.getElementById('tmodalName').textContent=d.name;
-    document.getElementById('tmodalCat').textContent=d.cat;
-    document.getElementById('tmodalDesc').textContent=d.desc;
-    document.getElementById('tmodalLink').href=d.url;
-    m.classList.add('open'); m.setAttribute('aria-hidden','false');
-  }
-  function close(){if(m){m.classList.remove('open');m.setAttribute('aria-hidden','true');}}
-  document.addEventListener('click',function(e){
-    var chip=e.target.closest('.tech-chip');
-    if(chip){open({name:chip.dataset.name,cat:chip.dataset.cat,color:chip.dataset.color,desc:chip.dataset.desc,url:chip.dataset.url});return;}
-    if(e.target.id==='tmodal'||e.target.id==='tmodalX')close();
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-
-// ════════════ CURRENCY TICKER (auto-refresh) ════════════
-(function(){
-  var track=document.getElementById('fxTrack'); if(!track) return;
-  var PAIRS=[['USD','$'],['EUR','€'],['RUB','₽'],['CNY','¥']];
-  function fxItem(code,sym,val){return '<span class="fx">'+sym+' '+code+'/KZT <b>'+val.toFixed(2)+'</b> ₸</span>';}
-  async function load(){
-    try{
-      var r=await fetch('https://open.er-api.com/v6/latest/USD'); var j=await r.json();
-      if(!j||!j.rates||!j.rates.KZT) throw 0;
-      var KZT=j.rates.KZT, out=[];
-      out.push(fxItem('USD','$',KZT));
-      out.push(fxItem('EUR','€',KZT/j.rates.EUR));
-      out.push(fxItem('RUB','₽',KZT/j.rates.RUB));
-      out.push(fxItem('CNY','¥',KZT/j.rates.CNY));
-      out.push('<span class="fx" data-fxsrc>Курсы · ориентировочно · официальные — nationalbank.kz</span>');
-      var html=out.join('<span style="opacity:.3">•</span>');
-      track.innerHTML=html+'<span style="opacity:.3">•</span>'+html;
-      if(window.__applyLang) window.__applyLang();
-    }catch(e){
-      track.innerHTML='<span class="fx">Курсы валют · nationalbank.kz</span>';
-      if(window.__applyLang) window.__applyLang();
-    }
-  }
-  load(); setInterval(load, 5*60*1000);
-})();
-
-// ════════════ WEATHER (Астана) ════════════
-(function(){
-  var wx=document.getElementById('wx'); if(!wx) return;
-  var I=wx.querySelector('.wxi'),T=wx.querySelector('.wxt');
-  function emoji(c){if(c===0)return '☀️';if(c<=2)return '🌤️';if(c===3)return '☁️';if(c<=48)return '🌫️';if(c<=67)return '🌧️';if(c<=77)return '❄️';if(c<=82)return '🌦️';if(c<=99)return '⛈️';return '🌡️';}
-  function set(ic,t){if(I)I.textContent=ic; if(T)T.textContent=t;}
-  async function load(){
-    try{
-      var ctrl=new AbortController(); setTimeout(function(){ctrl.abort();},7000);
-      var r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=71.45&current=temperature_2m,weather_code&timezone=auto',{signal:ctrl.signal});
-      var j=await r.json();
-      if(j&&j.current&&typeof j.current.temperature_2m==='number'){
-        var t=Math.round(j.current.temperature_2m);
-        set(emoji(j.current.weather_code),(t>0?'+':'')+t+'°'); return;
-      }
-      throw 0;
-    }catch(e){ set('📍','—'); }
-  }
-  load(); setInterval(load, 15*60*1000);
-})();
 
 // ════════════ I18N (RU / EN / KZ) ════════════
 (function(){
@@ -1692,7 +1504,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "Обращение":["Message","Үндеу"],
    "Слово Председателя Правления":["Word from the Chairman of the Management Board","Басқарма Төрағасының сөзі"],
    "Член Совета директоров Общества — Председатель Правления":["Member of the Company's Board of Directors — Chairman of the Management Board","Қоғам Директорлар кеңесінің мүшесі — Басқарма Төрағасы"],
-   "Уважаемые интернет-пользователи!":["Dear website visitors!","Қымбатты интернет-қолданушылар!"],
+   "Уважаемые коллеги и партнёры!":["Dear colleagues and partners!","Құрметті әріптестер мен серіктестер!"],
    "Я рад приветствовать вас на официальном сайте ЦЦР! Более 30 лет ЦЦР успешно осуществляет свою деятельность на рынке ИТ-услуг, что позволило сформировать внушительный портфель не простых, а порой и весьма сложных, но успешно реализованных ИТ-проектов для Национального Банка. Деятельность ЦЦР построена на простых, но очень важных принципах партнёрства, уважения и меритократии.":
     ["I am delighted to welcome you to the official DDC website! For more than 30 years, DDC has successfully operated in the IT services market, building an impressive portfolio of demanding — and at times highly complex — IT projects successfully delivered for the National Bank. DDC's work is built on simple yet vitally important principles: partnership, respect, and meritocracy.",
      "Сіздерді ЦДО-ның ресми сайтында құттықтаймын! ЦДО 30 жылдан астам уақыт бойы АТ-қызметтер нарығында табысты қызмет көрсетіп келеді, бұл Ұлттық Банк үшін күрделі, кейде өте қиын, бірақ сәтті жүзеге асырылған АТ-жобалардың әсерлі портфолиосын қалыптастыруға мүмкіндік берді. ЦДО қызметі қарапайым, бірақ өте маңызды принциптерге — әріптестікке, құрметке және меритократияға — негізделген."],
@@ -1730,9 +1542,6 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "Консультационная и техническая поддержка пользователей.":["Consulting and technical support for users.","Пайдаланушыларға консультациялық және техникалық қолдау."],
    "Годовая финансовая отчётность.":["Annual financial statements.","Жылдық қаржылық есептілік."],
    "Подробнее ›":["Learn more ›","Толығырақ ›"],
-   "Загрузка курсов валют…":["Loading exchange rates…","Валюта бағамдары жүктелуде…"],
-   "Курсы валют · nationalbank.kz":["Exchange rates · nationalbank.kz","Валюта бағамдары · nationalbank.kz"],
-   "Курсы · ориентировочно · официальные — nationalbank.kz":["Rates are indicative · official source — nationalbank.kz","Бағамдар бағдарлама ретінде · ресми дереккөз — nationalbank.kz"],
    "Цифровая трансформация: доверие и удовлетворение потребностей заказчика.":["Digital transformation: trust and customer satisfaction.","Цифрлық трансформация: тапсырыс берушінің сенімі мен қажеттіліктерін қанағаттандыру."],
    // "Приоритеты развития" cards
    "Внедрение ИИ и аналитики данных для эффективности процессов.":["Deploying AI and data analytics to improve process efficiency.","Процестердің тиімділігі үшін ЖИ және деректер талдауын енгізу."],
@@ -1745,7 +1554,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "ИИ-ассистент DDC":["DDC AI Assistant","DDC ЖИ-көмекшісі"],
    "На связи":["Online","Байланыста"],
    "Спросите о DDC…":["Ask about DDC…","DDC туралы сұраңыз…"],
-   "🧭 Тур по сайту":["🧭 Site tour","🧭 Сайт бойынша тур"],
+   "Тур по сайту":["Site tour","Сайт бойынша тур"],
    "Официальный сайт ›":["Official website ›","Ресми сайт ›"],
    "Портал сотрудника":["Employee portal","Қызметкер порталы"],
    "Админ-панель":["Admin panel","Әкімшілік панелі"],
@@ -1987,7 +1796,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "Ваше имя":["Your name","Атыңыз"],"Название организации":["Organization name","Ұйым атауы"],
    "Опишите ваш запрос…":["Describe your request…","Сұранысыңызды сипаттаңыз…"],
    // development priorities
-   "Стратегия":["Strategy","Стратегия"],"Приоритеты развития":["Development priorities","Даму басымдықтары"],
+   "Стратегия":["Strategy","Стратегия"],"Принципы":["Principles","Қағидаттар"],"Приоритеты развития":["Development priorities","Даму басымдықтары"],
    "Направления, на которых ЦЦР фокусируется в цифровой трансформации финансового сектора.":["Areas DDC focuses on in the digital transformation of the financial sector.","ЦДО қаржы секторын цифрлық трансформациялауда назар аударатын бағыттар."],
    "Искусственный интеллект и аналитика":["Artificial intelligence and analytics","Жасанды интеллект және аналитика"],
    "Цифровая трансформация финсектора":["Financial sector digital transformation","Қаржы секторының цифрлық трансформациясы"],
@@ -2012,21 +1821,21 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   var MARK={
    h_home:["Digital Development<br><span class='grad'>Center</span>.","Цифрлық даму<br><span class='grad'>орталығы</span>."],
    h_flag:["Secure infrastructure of<br>the National Bank.","Ұлттық Банктің қорғалған<br>инфрақұрылымы."],
-   h_about:["From a service bureau<br>to digital sovereignty.","Сервистік бюродан<br>цифрлық егемендікке."],
-   h_activity:["Services for the National<br>Bank of Kazakhstan.","Қазақстан Ұлттық Банкіне<br>арналған қызметтер."],
-   h_media:["News, answers<br>and contact with DDC.","Жаңалықтар, жауаптар<br>және ЦДО-мен байланыс."],
-   h_partners:["An ecosystem<br>built together.","Бірге құрылған<br>экожүйе."],
-   h_careers:["Build the country's<br>digital future.","Елдің цифрлық<br>болашағын құрыңыз."],
+   h_about:["Technology center<br>of the National Bank","Ұлттық Банктің<br>технологиялық орталығы"],
+   h_activity:["Services for the National<br>Bank of Kazakhstan","Қазақстан Ұлттық Банкіне<br>арналған қызметтер"],
+   h_media:["News, answers<br>and contact with DDC","Жаңалықтар, жауаптар<br>және ЦДО-мен байланыс"],
+   h_partners:["An ecosystem<br>built together","Бірге құрылған<br>экожүйе"],
+   h_careers:["Build the country's<br>digital future","Елдің цифрлық<br>болашағын құрыңыз"],
    hf1:["<b>Since 1995</b>","<b>1995 жылдан</b> бері"],
    hf2:["<b>100%</b> — National Bank of KZ","<b>100%</b> — ҚР Ұлттық Банкі"],
    hf3:["Reorganized <b>2025</b>","Қайта құру <b>2025</b>"],
    hf4:["Astana","Астана"],
-   chair_sign:["Best regards,<br>Malik Amardinov","Құрметпен,<br>Амардинов Малик"],
-   fin_report_p:["Annual financial statements. <a href=\"https://www.ddcnb.kz\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--blue)\">Learn more ›</a>","Жылдық қаржылық есептілік. <a href=\"https://www.ddcnb.kz\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--blue)\">Толығырақ ›</a>"],
+   chair_sign:["Sincerely,<br>Malik Amardinov<br>Chairman of the Management Board, DDC JSC","Құрметпен,<br>Мәлік Амардинов<br>«ЦДО» АҚ Басқарма Төрағасы"],
+   fin_report_p:["Annual financial statements. <a href=\"https://www.ddcnb.kz\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--green)\">Learn more ›</a>","Жылдық қаржылық есептілік. <a href=\"https://www.ddcnb.kz\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--green)\">Толығырақ ›</a>"],
    tl_2020_2023:["Delivery of key projects and development of new business areas, including:\n        <ul style=\"margin:8px 0 0;padding-left:18px;display:grid;gap:4px\">\n          <li>the procurement portal;</li>\n          <li>support of the Risk and Asset Management System;</li>\n          <li>the National Bank of Kazakhstan's 1477 contact center;</li>\n          <li>administration of information security tools;</li>\n          <li>data technology operator functions;</li>\n          <li>digital transformation.</li>\n        </ul>","Негізгі жобаларды іске асыру және қызметтің жаңа бағыттарын дамыту, соның ішінде:\n        <ul style=\"margin:8px 0 0;padding-left:18px;display:grid;gap:4px\">\n          <li>сатып алу порталы;</li>\n          <li>тәуекелдер мен активтерді басқару жүйесін сүйемелдеу;</li>\n          <li>Қазақстан Ұлттық Банкінің 1477 байланыс орталығы;</li>\n          <li>ақпараттық қауіпсіздік құралдарын әкімшілендіру;</li>\n          <li>деректер технологиялық операторының функциялары;</li>\n          <li>цифрлық трансформация.</li>\n        </ul>"]
   };
   var IDX={ru:-1,en:0,kz:1};
-  var SEL='.nav-links a,.nav-cta,.brand small,.eyebrow,.hero-sub,.tlink,.hero-fact,.sec-eyebrow,.sec-title,.sec-desc,.lede,.mm-h,.mm-main-link,.mm-link,.btn,.tile-cat,.tile h3,.tile p,.tile-more,.svc-card h3,.svc-tag,.svc-who,.svc-block h4,.svc-list li,.faq-a-in,.role-row h3,.num span,.mv-card h4,.mv-card p,.about-lead h3,.about-lead p,.tl-text,.org-card h3,.org-card p,.foot-cols h5,.foot-cols a,.foot-bottom span,.lead-card .pos,.fstat span,.job-dept,.person-pos,.person-badge,.contact-card h3,.cp-tx b,.cp-tx span,.cp-social-h,.form-label,.cp-form option,.faq-q,.phero p,.news-card .more,.wxc,[data-bot],.oc-role,.oc-dept,.oc-count,.person-card h3,.oc-chair h3,.oc-deputy h4,.chair-name,.person-ava,.chair-pos,.chair-hello,.chair-body,.bot-head b,.bot-head span,#tmodalLink,.bot-chip,.fx';
+  var SEL='.nav-links a,.nav-cta,.brand small,.eyebrow,.hero-sub,.tlink,.hero-fact,.sec-eyebrow,.sec-title,.sec-desc,.lede,.mm-h,.mm-main-link,.mm-link,.btn,.tile-cat,.tile h3,.tile p,.tile-more,.svc-card h3,.svc-tag,.svc-who,.svc-block h4,.svc-list li,.faq-a-in,.role-row h3,.num span,.mv-card h4,.mv-card p,.about-lead h3,.about-lead p,.tl-text,.org-card h3,.org-card p,.foot-cols h5,.foot-cols a,.foot-bottom span,.lead-card .pos,.fstat span,.job-dept,.person-pos,.person-badge,.contact-card h3,.cp-tx b,.cp-tx span,.cp-social-h,.form-label,.cp-form option,.faq-q,.phero p,.news-card .more,.wxc,[data-bot],.oc-role,.oc-dept,.oc-count,.person-card h3,.oc-chair h3,.oc-deputy h4,.chair-name,.person-ava,.chair-pos,.chair-hello,.chair-body,.bot-head b,.bot-head span,#tmodalLink,.bot-chip';
   function apply(lang){
     document.querySelectorAll('[data-i18n-html]').forEach(function(el){
       var k=el.getAttribute('data-i18n-html'); if(!MARK[k])return;
@@ -2098,9 +1907,9 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
     r.setPixelRatio(Math.min(window.devicePixelRatio||1,1.3));
     var g=new THREE.Group(); scene.add(g);
     var base=geom();
-    g.add(new THREE.LineSegments(new THREE.WireframeGeometry(base),new THREE.LineBasicMaterial({color:0x0071e3,transparent:true,opacity:0.30})));
-    g.add(new THREE.Points(base,new THREE.PointsMaterial({color:0x2997ff,size:0.05,transparent:true,opacity:0.65})));
-    var outer=new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.4,0)),new THREE.LineBasicMaterial({color:0x7c4dff,transparent:true,opacity:0}));
+    g.add(new THREE.LineSegments(new THREE.WireframeGeometry(base),new THREE.LineBasicMaterial({color:0x166f43,transparent:true,opacity:0.30})));
+    g.add(new THREE.Points(base,new THREE.PointsMaterial({color:0x3fa06b,size:0.05,transparent:true,opacity:0.65})));
+    var outer=new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.4,0)),new THREE.LineBasicMaterial({color:0x9a7403,transparent:true,opacity:0}));
     g.add(outer);
     function size(){var w=c.clientWidth||1,h=c.clientHeight||1;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
     size(); window.addEventListener('resize',size);
@@ -2152,7 +1961,6 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   var STEPS=[
     {sel:'.brand',title:'Добро пожаловать!',text:'Это официальный сайт Центра цифрового развития Нацбанка РК. Покажу основные возможности за минуту.'},
     {sel:'.lang',title:'Три языка',text:'Переключайте сайт между русским, английским и казахским — выбор запоминается между страницами.'},
-    {sel:'.topbar',title:'Курсы и погода',text:'Вверху — живые курсы валют к тенге и погода в Астане, обновляются автоматически.'},
     {sel:'.nav-links',title:'Разделы и меню',text:'Наведите на пункт меню — откроется подробная навигация по разделу с быстрыми ссылками.'},
     {sel:'#tech',title:'Технологический стек',text:'Технологии бегущей строкой — нажмите на любой инструмент, чтобы узнать о нём подробнее.'},
     {sel:'#facts',title:'Коротко о компании',text:'Ключевые цифры: 30+ лет опыта, 50 разработанных ИС, 24 в эксплуатации, оператор данных с 2021.'},
@@ -2339,7 +2147,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   try{r=new T.WebGLRenderer({canvas:c,alpha:true,antialias:false,powerPreference:'low-power'});}catch(e){return;}
   r.setPixelRatio(Math.min(window.devicePixelRatio||1,1.3));
   var scene=new T.Scene(), cam=new T.PerspectiveCamera(45,1,0.1,100); cam.position.z=6;
-  var col=0x0071e3, g=new T.Group(); scene.add(g);
+  var col=0x166f43, g=new T.Group(); scene.add(g);
   var w1=new T.LineSegments(new T.WireframeGeometry(new T.IcosahedronGeometry(2.3,0)), new T.LineBasicMaterial({color:col,transparent:true,opacity:0.06})); g.add(w1);
   var N=28,pos=new Float32Array(N*3),i;
   for(i=0;i<N;i++){pos[i*3]=(Math.random()-0.5)*15;pos[i*3+1]=(Math.random()-0.5)*10;pos[i*3+2]=(Math.random()-0.5)*8;}
@@ -2360,7 +2168,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 })();
 </script>
 <button id="toTop" class="to-top" aria-label="Наверх" title="Наверх">↑</button>
-<style>.to-top{position:fixed;right:28px;bottom:90px;width:44px;height:44px;border-radius:50%;background:var(--blue,#0071e3);color:#fff;border:0;font-size:20px;line-height:44px;text-align:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .3s,transform .3s;z-index:975;box-shadow:0 10px 26px -8px rgba(0,113,227,.55)}.to-top.show{opacity:1;visibility:visible;transform:none}.to-top:hover{transform:translateY(-3px)}@media(max-width:820px){.to-top{right:20px;bottom:86px;width:42px;height:42px;line-height:42px}}</style>
+<style>.to-top{position:fixed;right:28px;bottom:90px;width:44px;height:44px;border-radius:50%;background:var(--green,#166f43);color:#fff;border:0;font-size:20px;line-height:44px;text-align:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .3s,transform .3s;z-index:975;box-shadow:0 10px 26px -8px rgba(22,111,67,.55)}.to-top.show{opacity:1;visibility:visible;transform:none}.to-top:hover{transform:translateY(-3px)}@media(max-width:820px){.to-top{display:none!important}}</style>
 <script>(function(){var b=document.getElementById('toTop');if(!b)return;var tk=false;function upd(){b.classList.toggle('show',(window.scrollY||window.pageYOffset||0)>420);}window.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){upd();tk=false;});},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});upd();})();</script>
 <div id="readbar"></div>
 <script>
