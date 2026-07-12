@@ -21,7 +21,7 @@ export default async () => {
 
     const r = await fetch(
       'https://api.hh.ru/vacancies?employer_id=' + cfg.hh.employerId + '&per_page=20&order_by=publication_time',
-      { headers: { 'User-Agent': 'DDC-Site/1.0 (muha.ddcnb@gmail.com)', 'HH-User-Agent': 'DDC-Site/1.0 (muha.ddcnb@gmail.com)' } }
+      { headers: { 'User-Agent': 'DDC-Site/1.0 (+https://melodic-frangollo-49ddb8.netlify.app)', 'HH-User-Agent': 'DDC-Site/1.0 (+https://melodic-frangollo-49ddb8.netlify.app)' } }
     );
     if (!r.ok) throw new Error('hh ' + r.status);
     const data = await r.json();
