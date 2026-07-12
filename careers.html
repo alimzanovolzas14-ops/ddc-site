@@ -1060,6 +1060,20 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 .cc-ic svg,.cp-ic svg,.pj-ic svg,.org-ic svg,.wc-ic svg,.role-ic svg,.svc-ic svg{width:1.05em;height:1.05em;display:block;color:var(--green)}
 .cp-ic svg{color:#3fa06b}
 .role-row.hl .role-ic svg{color:#fff}
+.jobs-filter{margin:0 0 18px;display:flex;flex-direction:column;gap:12px}
+.jf-search{position:relative;max-width:520px}
+.jf-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-3);pointer-events:none}
+.jf-search input{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 14px 11px 40px;font:inherit;font-size:14.5px;color:var(--ink)}
+.jf-search input:focus{outline:none;border-color:var(--green)}
+.jf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.jf-chip{border:1px solid var(--line);background:#fff;color:var(--ink-2);border-radius:980px;padding:7px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.jf-chip:hover{color:var(--ink);border-color:var(--green)}
+.jf-chip.on{background:var(--green);border-color:var(--green);color:#fff}
+.jf-meta{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--ink-3)}
+.jf-reset{border:0;background:none;color:var(--green);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.jf-empty{margin:8px 0 0;text-align:center;padding:34px 20px;border:1px dashed var(--line);border-radius:16px;color:var(--ink-2)}
+.jf-empty p{margin-bottom:14px}
+.job[hidden]{display:none!important}
 </style>
 <main>
 <section class="phero"><div class="eyebrow">Карьера</div>
@@ -1069,6 +1083,13 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 
 <section class="band" id="jobs"><div class="wrap">
   <div class="sec-head reveal"><div class="sec-eyebrow">Вакансии</div><h2 class="sec-title">Открытые позиции</h2></div>
+  <div class="jobs-filter reveal" id="jobsFilter">
+    <div class="jf-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg><input type="search" id="jfQ" placeholder="Поиск по вакансиям…" data-i18n-ph="Поиск по вакансиям…" autocomplete="off" aria-label="Поиск по вакансиям"></div>
+    <div class="jf-chips" id="jfDept" role="group" aria-label="Департамент"></div>
+    <div class="jf-chips" id="jfTyp" role="group" aria-label="Тип занятости"></div>
+    <div class="jf-meta"><span class="jf-count"><span class="jf-lbl">Найдено</span>: <b id="jfN" aria-live="polite"></b></span><button type="button" class="jf-reset" id="jfReset" hidden>Сбросить</button></div>
+  </div>
+  <div class="jf-empty" id="jfEmpty" hidden><p>Ничего не найдено по заданным условиям.</p><button type="button" class="btn btn-ghost" id="jfEmptyReset">Сбросить фильтры</button></div>
   <div class="jobs reveal" id="staticJobs"><button type="button" class="job" data-vac="soc"><div class="job-main"><h3>SOC Analyst L2/L3</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-eng"><div class="job-main"><h3>Старший инженер по информационной безопасности</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-ml"><div class="job-main"><h3>Инженер по данным (ML/NLP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="backend"><div class="job-main"><h3>Backend-разработчик (банковские системы)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Разработка</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="devsecops"><div class="job-main"><h3>DevSecOps инженер</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="data-analyst"><div class="job-main"><h3>Аналитик данных</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Данные</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="chief-eng"><div class="job-main"><h3>Главный инженер (Zabbix)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="telecom-eng"><div class="job-main"><h3>Lead Telecom Engineer (Cisco, VoIP)</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="dc-eng"><div class="job-main"><h3>Главный эксперт-инженер по строительству и развитию ЦОД</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Инфраструктура</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="sec-senior"><div class="job-main"><h3>Senior Information Security Specialist</h3><div class="job-meta">Астана · Полная занятость</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button><button type="button" class="job" data-vac="intern-ib"><div class="job-main"><h3>Стажёр — информационная безопасность</h3><div class="job-meta">Астана · Стажировка</div></div><span class="job-dept">Безопасность</span><span class="job-go">›</span></button></div>
   <div class="jobs reveal" id="hhJobs" hidden></div>
   <div class="hh-more" id="hhMore" hidden>
@@ -1590,6 +1611,8 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    // careers tags & types
    "Безопасность":["Security","Қауіпсіздік"],"Данные":["Data","Деректер"],"Разработка":["Development","Әзірлеу"],"Инфраструктура":["Infrastructure","Инфрақұрылым"],
    "Полная занятость":["Full-time","Толық жұмыспен қамту"],"Стажировка":["Internship","Тәжірибе"],
+   "Поиск по вакансиям…":["Search vacancies…","Бос орындарды іздеу…"],"Найдено":["Found","Табылды"],"Сбросить":["Reset","Тазарту"],
+   "Ничего не найдено по заданным условиям.":["Nothing matches your filters.","Берілген шарттар бойынша ештеңе табылмады."],"Сбросить фильтры":["Reset filters","Сүзгілерді тазарту"],
    // careers job titles
    "SOC Analyst L2/L3":["SOC Analyst L2/L3","SOC талдаушысы L2/L3"],
    "Старший инженер по информационной безопасности":["Senior Information Security Engineer","Ақпараттық қауіпсіздік бойынша аға инженер"],
@@ -1616,7 +1639,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    hf4:["Astana","Астана"]
   };
   var IDX={ru:-1,en:0,kz:1};
-  var SEL='.nav-links a,.nav-cta,.brand small,.eyebrow,.hero-sub,.tlink,.hero-fact,.sec-eyebrow,.sec-title,.sec-desc,.lede,.mm-h,.mm-main-link,.mm-link,.btn,.tile-cat,.tile h3,.tile p,.tile-more,.svc-card h3,.svc-tag,.svc-who,.svc-block h4,.svc-list li,.faq-a-in,.role-row h3,.num span,.num em,.mv-card h4,.mv-card p,.about-lead h3,.about-lead p,.tl-text,.org-card h3,.org-card p,.foot-cols h5,.foot-cols a,.foot-bottom span,.lead-card .pos,.fstat span,.job-dept,.job h3,.job-meta,.person-pos,.person-badge,.contact-card h3,.cp-tx b,.cp-tx span,.cp-social-h,.form-label,.cp-form option,.faq-q,.phero p,.news-card .more,.wxc,[data-bot],.bot-head b,.bot-head span,#tmodalLink,.bot-chip,.tg-rail-h';
+  var SEL='.nav-links a,.nav-cta,.brand small,.eyebrow,.hero-sub,.tlink,.hero-fact,.sec-eyebrow,.sec-title,.sec-desc,.lede,.mm-h,.mm-main-link,.mm-link,.btn,.tile-cat,.tile h3,.tile p,.tile-more,.svc-card h3,.svc-tag,.svc-who,.svc-block h4,.svc-list li,.faq-a-in,.role-row h3,.num span,.num em,.mv-card h4,.mv-card p,.about-lead h3,.about-lead p,.tl-text,.org-card h3,.org-card p,.foot-cols h5,.foot-cols a,.foot-bottom span,.lead-card .pos,.fstat span,.job-dept,.job h3,.job-meta,.person-pos,.person-badge,.contact-card h3,.cp-tx b,.cp-tx span,.cp-social-h,.form-label,.cp-form option,.faq-q,.phero p,.news-card .more,.wxc,[data-bot],.bot-head b,.bot-head span,#tmodalLink,.bot-chip,.tg-rail-h,.jf-chip,.jf-lbl,.jf-reset,.jf-empty p';
   function apply(lang){
     document.querySelectorAll('[data-i18n-html]').forEach(function(el){
       var k=el.getAttribute('data-i18n-html'); if(!MARK[k])return;
@@ -1938,6 +1961,50 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   jobs.forEach(function(j){j.addEventListener('click',function(){open(j.dataset.vac);});});
   modal.addEventListener('click',function(e){if(e.target===modal||e.target.classList.contains('vac-x'))close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  // ── ФИЛЬТР ВАКАНСИЙ: поиск + чипы (департамент, тип занятости) ──
+  (function(){
+    var q=document.getElementById('jfQ'); if(!q) return;
+    var deptBox=document.getElementById('jfDept'),typBox=document.getElementById('jfTyp'),
+        cnt=document.getElementById('jfN'),reset=document.getElementById('jfReset'),
+        empty=document.getElementById('jfEmpty'),state={q:'',dept:null,typ:null};
+    function norm(s){return (s||'').toLowerCase().replace(/ё/g,'е');}
+    function activeList(){var hh=document.getElementById('hhJobs');return (hh&&!hh.hidden)?hh:document.getElementById('staticJobs');}
+    function hay(el){var v=el.dataset.vac&&VAC[el.dataset.vac];
+      if(v)return norm(v.t+' '+v.dept+' '+v.typ+' '+v.desc+' '+v.req.join(' ')+' '+v.stack.join(' '));
+      return norm(el.dataset.search||el.textContent);}
+    function chips(box,vals,key){
+      box.innerHTML=vals.map(function(x){return '<button type="button" class="jf-chip" data-v="'+x+'" aria-pressed="false">'+x+'</button>';}).join('');
+      box.hidden=vals.length<2; if(box.hidden)state[key]=null;
+      Array.prototype.forEach.call(box.querySelectorAll('.jf-chip'),function(b){b.addEventListener('click',function(){
+        state[key]=(state[key]===b.dataset.v)?null:b.dataset.v; run();});});}
+    function rebuild(){
+      var D=[],T=[],sd={},st={};
+      Array.prototype.forEach.call(activeList().querySelectorAll('.job'),function(el){var v=el.dataset.vac&&VAC[el.dataset.vac];if(!v)return;
+        if(!sd[v.dept]){sd[v.dept]=1;D.push(v.dept);} if(!st[v.typ]){st[v.typ]=1;T.push(v.typ);}});
+      chips(deptBox,D,'dept'); chips(typBox,T,'typ');
+      if(window.__applyLang)window.__applyLang();}
+    function run(){
+      var terms=norm(state.q).split(/\s+/).filter(Boolean),n=0;
+      Array.prototype.forEach.call(activeList().querySelectorAll('.job'),function(el){
+        var v=el.dataset.vac&&VAC[el.dataset.vac],h=hay(el),ok=true,i;
+        for(i=0;i<terms.length;i++)if(h.indexOf(terms[i])<0){ok=false;break;}
+        if(ok&&state.dept)ok=!!v&&v.dept===state.dept;
+        if(ok&&state.typ)ok=!!v&&v.typ===state.typ;
+        el.hidden=!ok; if(ok)n++;});
+      if(cnt)cnt.textContent=n;
+      reset.hidden=!(state.q||state.dept||state.typ); empty.hidden=n>0;
+      Array.prototype.forEach.call(document.querySelectorAll('.jf-chip'),function(b){
+        var on=(state.dept===b.dataset.v)||(state.typ===b.dataset.v);
+        b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});}
+    var deb;
+    q.addEventListener('input',function(){clearTimeout(deb);deb=setTimeout(function(){state.q=q.value;run();},120);});
+    function clearAll(){state.q='';state.dept=null;state.typ=null;q.value='';run();}
+    reset.addEventListener('click',clearAll);
+    document.getElementById('jfEmptyReset').addEventListener('click',clearAll);
+    window.__jobsFilter=function(){rebuild();run();};
+    rebuild(); run();
+  })();
 })();
 
 // ════════════ EMAIL PROVIDER CHOOSER (Gmail / Yandex / Outlook / default) ════════════
@@ -2037,12 +2104,13 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
     grid.innerHTML=items.map(function(v){
       var meta=esc(v.area||'')+(v.published?' · '+esc(String(v.published).slice(0,10)):'');
       var badge=salTxt(v.salary)||'hh.kz';
-      return '<a class="job" href="'+esc(v.url)+'" target="_blank" rel="noopener">'+
+      return '<a class="job" data-search="'+esc(((v.name||'')+' '+(v.area||'')+' '+(v.req||'')).toLowerCase())+'" href="'+esc(v.url)+'" target="_blank" rel="noopener">'+
         '<div class="job-main"><h3>'+esc(v.name)+'</h3><div class="job-meta">'+meta+'</div></div>'+
         '<span class="job-dept">'+esc(badge)+'</span><span class="job-go">›</span></a>';
     }).join('');
     grid.hidden=false; grid.classList.add('in');
     if(stat) stat.hidden=true;
+    if(window.__jobsFilter) window.__jobsFilter();
     if(more){ more.hidden=false; if(allLnk&&/^https:\/\//.test(employerUrl||'')) allLnk.href=employerUrl; }
     if(window.__applyLang) window.__applyLang();
   }
