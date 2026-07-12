@@ -300,6 +300,9 @@ footer{background:var(--paper-2);border-top:1px solid var(--line-gold);box-shado
 .news-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:0;overflow:hidden;display:flex;flex-direction:column;
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;cursor:pointer}
 .news-cover{display:block;aspect-ratio:16/9;background:var(--obsidian-2)}
+.news-card--live .news-cover{position:relative}
+.news-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.news-card--live .news-tag{color:var(--green)}
 .news-cover svg{width:100%;height:100%;display:block}
 .news-card-body{display:flex;flex-direction:column;flex:1;padding:18px 22px 20px}
 .news-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px -20px rgba(0,0,0,.16)}
@@ -1453,6 +1456,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   ];
   function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
   var COVER={'Проекты':{a:'#0f4127',b:'#20844a',o:'#ffe092'},
+             'Telegram':{a:'#0e3320',b:'#177a46',o:'#ffe092'},
              'Назначения':{a:'#123a28',b:'#166f43',o:'#e9c86b'},
              'Компания':{a:'#0e2f1f',b:'#14663e',o:'#d5e5dc'}};
   function coverSVG(n,uid){
@@ -1473,6 +1477,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
       '<g fill="none" stroke="'+t.o+'" stroke-width=".7" opacity=".3">'+arcs+'</g>'+
       '<image href="img/ddc_mark_white.png" x="648" y="234" width="88" height="94" opacity="0.4"/></svg>';
   }
+  window.__coverSVG=coverSVG;
   function card(n){
     return '<a class="news-card" href="#news/'+n.slug+'" data-slug="'+n.slug+'">'+
       '<span class="news-cover">'+coverSVG(n,'c')+'</span>'+
@@ -1548,14 +1553,34 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   var KEY='ddc_tg_v1', TTL=600000;
   function esc(t){var d=document.createElement('div');d.textContent=t||'';return d.innerHTML;}
   function okImg(u){return /^https:\/\/[a-z0-9.-]+\.(telesco\.pe|cdn-telegram\.org)\//.test(u||'');}
+  function tgTitle(t){t=(t||'').trim();return t.length>96?t.slice(0,95).replace(/\s+\S*$/,'')+'…':(t||'Публикация в Telegram');}
+  function tgCard(p,i){
+    var svg=(window.__coverSVG?window.__coverSVG({slug:'tg-'+i,tag:'Telegram'},'t'):'');
+    var img=okImg(p.photo)?'<img src="'+esc(p.photo)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'';
+    return '<a class="news-card news-card--live" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+
+      '<span class="news-cover">'+svg+img+'</span>'+
+      '<span class="news-card-body"><span class="news-tag">Telegram</span>'+
+      (p.date?'<div class="news-date">'+esc(String(p.date).slice(0,10))+'</div>':'')+
+      '<h3>'+esc(tgTitle(p.text))+'</h3>'+
+      '<span class="more">Читать в Telegram</span></span></a>';
+  }
   function render(posts){
-    box.innerHTML=posts.slice(0,8).map(function(p){
-      return '<a class="tg-post" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+
-        (okImg(p.photo)?'<img src="'+esc(p.photo)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+
-        '<span>'+esc(p.text)+'</span>'+
-        (p.date?'<time>'+esc(String(p.date).slice(0,10))+'</time>':'')+'</a>';
-    }).join('');
-    rail.hidden=false;
+    // свежие посты с фото — в начало основной сетки новостей
+    var list=document.getElementById('newsList');
+    var wp=posts.filter(function(p){return okImg(p.photo);});
+    var top=(wp.length?wp:posts).slice(0,3);
+    if(list&&!document.querySelector('.news-card--live'))
+      list.insertAdjacentHTML('afterbegin',top.map(tgCard).join(''));
+    var rest=posts.filter(function(p){return top.indexOf(p)<0;});
+    if(rest.length){
+      box.innerHTML=rest.slice(0,8).map(function(p){
+        return '<a class="tg-post" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+
+          (okImg(p.photo)?'<img src="'+esc(p.photo)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+
+          '<span>'+esc(p.text)+'</span>'+
+          (p.date?'<time>'+esc(String(p.date).slice(0,10))+'</time>':'')+'</a>';
+      }).join('');
+      rail.hidden=false;
+    }
     if(window.__applyLang) window.__applyLang();
   }
   try{
@@ -1581,6 +1606,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "‹ Предыдущая":["‹ Previous","‹ Алдыңғы"],
    "Прямой эфир · Telegram Национального Банка":["Live · National Bank of Kazakhstan on Telegram","Тікелей эфир · Ұлттық Банк Telegram-да"],
    "Открыть канал":["Open the channel","Арнаны ашу"],
+   "Читать в Telegram":["Read on Telegram","Telegram-да оқу"],
    "Следующая ›":["Next ›","Келесі ›"],
    "Лента Национального Банка РК":["National Bank of Kazakhstan feed","Қазақстан Ұлттық Банкінің лентасы"],
    "обновляется каждые 5 минут":["updates every 5 minutes","әр 5 минут сайын жаңарады"],
