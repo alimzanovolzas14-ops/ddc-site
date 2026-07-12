@@ -1099,6 +1099,14 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
 </div></section>
 </main>
 
+<!-- Netlify Forms: статическая регистрация формы отклика (реальная форма собирается в модальном окне) -->
+<form name="ddc-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="ddc-application">
+  <input name="bot-field"><input name="vacancy"><input name="department">
+  <input name="name"><input type="email" name="email"><input name="phone">
+  <textarea name="cover"></textarea><input type="file" name="resume">
+</form>
+
 <footer>
   <div class="foot-in">
     <div class="foot-cols">
@@ -1830,13 +1838,16 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
   var L={
    ru:{req:'Требования',stack:'Технологии',apply:'Откликнуться на вакансию',name:'ФИО',email:'Email',phone:'Телефон',cover:'Сопроводительное письмо',
        send:'Отправить отклик',ok:'Открываю почтовый клиент…',err:'Заполните ФИО, корректный e-mail и письмо.',close:'Закрыть',
-       resume:'Прикрепить резюме',resumeHint:'PDF, DOC, DOCX — до 5 МБ',resumeBig:'Файл слишком большой (макс. 5 МБ).',attached:'прикреплено',deadline:'приём заявок'},
+       resume:'Прикрепить резюме',resumeHint:'PDF, DOC, DOCX — до 5 МБ',resumeBig:'Файл слишком большой (макс. 5 МБ).',attached:'прикреплено',deadline:'приём заявок',
+       sending:'Отправляем отклик…',sent:'Отклик отправлен ✓ Сохранено в панели HR.',direct:'или написать напрямую'},
    en:{req:'Requirements',stack:'Tech stack',apply:'Apply for this position',name:'Full name',email:'Email',phone:'Phone',cover:'Cover letter',
        send:'Submit application',ok:'Opening your mail client…',err:'Please fill in name, a valid e-mail and a letter.',close:'Close',
-       resume:'Attach résumé',resumeHint:'PDF, DOC, DOCX — up to 5 MB',resumeBig:'File too large (max 5 MB).',attached:'attached',deadline:'deadline'},
+       resume:'Attach résumé',resumeHint:'PDF, DOC, DOCX — up to 5 MB',resumeBig:'File too large (max 5 MB).',attached:'attached',deadline:'deadline',
+       sending:'Sending application…',sent:'Application sent ✓ Saved to the HR panel.',direct:'or email us directly'},
    kz:{req:'Талаптар',stack:'Технологиялар',apply:'Бос орынға өтініш беру',name:'Аты-жөні',email:'Email',phone:'Телефон',cover:'Ілеспе хат',
        send:'Өтініш жіберу',ok:'Пошта клиенті ашылуда…',err:'Аты-жөні, дұрыс e-mail және хат толтырыңыз.',close:'Жабу',
-       resume:'Түйіндемені тіркеу',resumeHint:'PDF, DOC, DOCX — 5 МБ дейін',resumeBig:'Файл тым үлкен (макс. 5 МБ).',attached:'тіркелді',deadline:'өтінім қабылдау'}
+       resume:'Түйіндемені тіркеу',resumeHint:'PDF, DOC, DOCX — 5 МБ дейін',resumeBig:'Файл тым үлкен (макс. 5 МБ).',attached:'тіркелді',deadline:'өтінім қабылдау',
+       sending:'Өтінім жіберілуде…',sent:'Өтінім жіберілді ✓ HR панелінде сақталды.',direct:'немесе тікелей жазу'}
   };
   function tt(typ){ // translate job type via global DICT if present
     try{var d=window.DICT&&window.DICT[typ];var i={ru:-1,en:0,kz:1}[window.__lang||'ru'];
@@ -1857,6 +1868,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
       '<div class="vac-h">'+t.stack+'</div><div class="vac-stack">'+v.stack.map(function(s){return '<span>'+esc(s)+'</span>';}).join('')+'</div>'+
       '<div class="vac-h">'+t.apply+'</div>'+
       '<form class="vac-form">'+
+        '<input name="bot-field" style="display:none" tabindex="-1" autocomplete="off">'+
         '<input name="name" placeholder="'+t.name+' *">'+
         '<input name="email" type="email" placeholder="'+t.email+' *">'+
         '<input name="phone" type="tel" placeholder="'+t.phone+'">'+
@@ -1895,14 +1907,30 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
       }
       // 2) send to backend too, if configured (does not block email)
       if(APPLY.endpoint){ try{fetch(APPLY.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)});}catch(e){} }
-      // 3) email to HR (always) — so the application reaches both inbox and admin
-      var savedMsg=(t===L.en?'Saved to HR panel ✓ — opening email…':t===L.kz?'HR-панельге сақталды ✓ — пошта ашылуда…':'Сохранено в панели HR ✓ — открываю почту…');
+      // 3) реальная отправка → Netlify Forms; почта — запасной канал
       var subj='Отклик на вакансию: '+v.t;
       var rl=resumeMeta?('\nРезюме: '+resumeMeta.name+' ('+t.attached+', приложите файл к письму)'):'';
       var body='Вакансия: '+v.t+'\nФИО: '+name+'\nEmail: '+email+'\nТелефон: '+(rec.phone||'—')+rl+'\n\n'+cover;
-      note.className='vac-note ok'; note.textContent=savedMsg+(resumeMeta?(' · '+resumeMeta.name+' '+t.attached):'');
-      if(window.openMailChooser){openMailChooser('info@bsbnb.kz',subj,body,f.querySelector('.vac-submit'));}
-      else{window.location.href='mailto:info@bsbnb.kz?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);}
+      function mailDirect(el){
+        if(window.openMailChooser){openMailChooser('info@bsbnb.kz',subj,body,el||f.querySelector('.vac-submit'));}
+        else{window.location.href='mailto:info@bsbnb.kz?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);}
+      }
+      function fallbackMail(){ // локальный запуск / ошибка сети → прежнее поведение
+        var savedMsg=(t===L.en?'Saved to HR panel ✓ — opening email…':t===L.kz?'HR-панельге сақталды ✓ — пошта ашылуда…':'Сохранено в панели HR ✓ — открываю почту…');
+        note.className='vac-note ok'; note.textContent=savedMsg+(resumeMeta?(' · '+resumeMeta.name+' '+t.attached):'');
+        mailDirect();
+      }
+      if(location.protocol==='file:'){ fallbackMail(); return; }
+      note.className='vac-note'; note.textContent=t.sending;
+      var fd=new FormData(f); // включает файл резюме и bot-field
+      fd.append('form-name','ddc-application'); fd.append('vacancy',v.t); fd.append('department',v.dept);
+      fetch('/',{method:'POST',body:fd})
+        .then(function(r){ if(!r.ok) throw 0;
+          note.className='vac-note ok'; note.textContent=t.sent+(resumeMeta?(' · '+resumeMeta.name+' '+t.attached):'')+' ';
+          var a=document.createElement('a'); a.href='#'; a.textContent=t.direct;
+          a.addEventListener('click',function(ev){ev.preventDefault();mailDirect(a);});
+          note.appendChild(a);
+        }).catch(fallbackMail);
     });
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
   }

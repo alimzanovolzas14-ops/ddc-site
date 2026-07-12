@@ -1168,7 +1168,9 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
         </div>
       </div>
     </div>
-    <form class="cp-form reveal" id="contactForm" novalidate>
+    <form class="cp-form reveal" id="contactForm" name="ddc-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="ddc-contact">
+      <p hidden aria-hidden="true"><label>Не заполняйте это поле: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="cp-row">
         <div class="cp-field"><label class="form-label">Имя</label><input type="text" name="name" data-i18n-ph="Ваше имя" placeholder="Ваше имя"></div>
         <div class="cp-field"><label class="form-label">Компания</label><input type="text" name="company" data-i18n-ph="Название организации" placeholder="Название организации"></div>
@@ -1928,13 +1930,13 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 })();
 
 
-// ════════════ CONTACT FORM (mailto, no backend) ════════════
+// ════════════ CONTACT FORM (Netlify Forms; mailto как запасной канал) ════════════
 (function(){
   var f=document.getElementById('contactForm'); if(!f) return;
   var note=document.getElementById('cpNote');
-  var MSG={ru:{bad:'Укажите корректный e-mail и сообщение.',ok:'Открываю почтовый клиент…'},
-           en:{bad:'Please enter a valid e-mail and a message.',ok:'Opening your mail client…'},
-           kz:{bad:'Дұрыс e-mail мен хабарлама енгізіңіз.',ok:'Пошта клиенті ашылуда…'}};
+  var MSG={ru:{bad:'Укажите корректный e-mail и сообщение.',ok:'Открываю почтовый клиент…',sending:'Отправляем…',sent:'Сообщение отправлено. Ответим на указанный e-mail.',direct:'или написать напрямую'},
+           en:{bad:'Please enter a valid e-mail and a message.',ok:'Opening your mail client…',sending:'Sending…',sent:'Message sent. We will reply to your e-mail.',direct:'or email us directly'},
+           kz:{bad:'Дұрыс e-mail мен хабарлама енгізіңіз.',ok:'Пошта клиенті ашылуда…',sending:'Жіберілуде…',sent:'Хабарлама жіберілді. Көрсетілген e-mail арқылы жауап береміз.',direct:'немесе тікелей жазу'}};
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var L=window.__lang||'ru', d=new FormData(f);
@@ -1947,9 +1949,27 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
       'Email: '+email+'\n'+
       'Телефон: '+((d.get('phone')||'').trim()||'—')+'\n'+
       'Тема: '+((d.get('topic')||'').trim()||'—')+'\n\n'+msg;
-    if(note){note.className='cp-note ok';note.textContent=MSG[L].ok;}
-    if(window.openMailChooser){openMailChooser('info@bsbnb.kz',subj,body,f.querySelector('.cp-submit'));}
-    else{window.location.href='mailto:info@bsbnb.kz?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);}
+    function mailDirect(el){
+      if(window.openMailChooser){openMailChooser('info@bsbnb.kz',subj,body,el||f.querySelector('.cp-submit'));}
+      else{window.location.href='mailto:info@bsbnb.kz?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);}
+    }
+    function fallbackMail(){ // локальный запуск / ошибка сети → прежнее поведение
+      if(note){note.className='cp-note ok';note.textContent=MSG[L].ok;}
+      mailDirect();
+    }
+    if(location.protocol==='file:'){ fallbackMail(); return; }
+    if(note){note.className='cp-note';note.textContent=MSG[L].sending;}
+    var p=[]; d.forEach(function(v,k){p.push(encodeURIComponent(k)+'='+encodeURIComponent(v));});
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:p.join('&')})
+      .then(function(r){ if(!r.ok) throw 0;
+        if(note){
+          note.className='cp-note ok'; note.textContent=MSG[L].sent+' ';
+          var a=document.createElement('a'); a.href='#'; a.textContent=MSG[L].direct;
+          a.addEventListener('click',function(ev){ev.preventDefault();mailDirect(a);});
+          note.appendChild(a);
+        }
+        f.reset();
+      }).catch(fallbackMail);
   });
 })();
 
