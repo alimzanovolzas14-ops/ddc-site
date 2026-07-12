@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0e4c28">
+<script>document.documentElement.classList.add('js');setTimeout(function(){var h=document.querySelector('.hero.xform');if(h&&!h.__xf){h.classList.add('hero-live','settled')}},9000);</script>
 <title>Главная — DDC | Центр цифрового развития</title>
 <meta name="description" content="АО «Центр цифрового развития Национального Банка Казахстана» — технологический оператор НБРК: ИКТ-инфраструктура, кибербезопасность, разработка ПО, управление данными.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1118,11 +1119,33 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
   .scroll-cue{display:none}
 }
 @media(max-width:360px){.hero-facts a:nth-child(n+3){display:none}}
+/* ── one-shot cinematic intro: text choreography + settled state ── */
+html.js .hero.xform:not(.hero-live) .hero-in>*{opacity:0;transform:translateY(14px)}
+html.js .hero.xform:not(.hero-live) .hero-foot{opacity:0;transform:translateY(14px);pointer-events:none}
+.hero.xform .hero-in>*,.hero.xform .hero-foot{transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.hero.xform.hero-live .hero-in>:nth-child(2){transition-delay:.12s}
+.hero.xform.hero-live .hero-in>:nth-child(3){transition-delay:.26s}
+.hero.xform.hero-live .hero-in>:nth-child(4){transition-delay:.4s}
+.hero.xform.hero-live .hero-foot{transition-delay:.55s}
+.xform-dim{position:absolute;inset:0;pointer-events:none;background:rgba(4,12,8,0);transition:background 1.4s ease}
+.hero.xform.settled .xform-dim{background:rgba(4,12,8,.34)}
+.hero.xform.settled .hero-in::before{background:radial-gradient(58% 62% at 50% 46%,rgba(4,12,8,.72),rgba(4,12,8,.38) 62%,transparent 82%)}
+.hero.xform.settled .xform-stage{animation:ambientDrift 36s ease-in-out infinite alternate}
+@keyframes ambientDrift{from{transform:scale(1) translateY(0)}to{transform:scale(1.045) translateY(-1.2%)}}
+.xform-replay{position:absolute;left:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:3;width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(255,224,146,.35);background:rgba(10,26,17,.5);color:var(--gold-bright);display:grid;place-items:center;cursor:pointer;
+  opacity:0;pointer-events:none;transition:opacity .5s,border-color .2s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.xform-replay svg{width:16px;height:16px}
+.xform-replay:hover{border-color:rgba(255,224,146,.7);opacity:1}
+.hero.xform.settled .xform-replay{opacity:.85;pointer-events:auto}
 @media(prefers-reduced-motion:reduce){
   .xform-cyan{opacity:1!important;clip-path:inset(0 50% 0 0)!important}
   .xform-gold{clip-path:inset(0 0 0 50%)!important;opacity:1!important}
   .xform-canvas,.xform video{display:none!important}
   .scroll-cue{animation:none}
+  .hero.xform .hero-in>*,.hero.xform .hero-foot{opacity:1!important;transform:none!important;transition:none!important}
+  .xform-stage{animation:none!important}
+  .xform-replay{display:none!important}
 }
 </style>
 <section class="hero xform" id="transformation" aria-label="Казахский орнамент превращается в логотип Центра цифрового развития">
@@ -1131,6 +1154,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <div class="xform-layer xform-cyan" id="xfCyan"></div>
     <canvas class="xform-canvas" id="xfCanvas" aria-hidden="true"></canvas>
     <div class="xform-vig"></div>
+    <div class="xform-dim"></div>
   </div>
   <div class="hero-in">
     <div class="eyebrow">Национальный Банк Казахстана</div>
@@ -1150,6 +1174,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     </div>
     <a class="scroll-cue" href="#directions" aria-label="К направлениям"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
   </div>
+  <button class="xform-replay" id="xfReplay" type="button" aria-label="Повторить анимацию превращения" title="Повторить анимацию"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
 </section>
 
 <section class="band band-gray" id="directions"><div class="wrap">
@@ -1316,11 +1341,23 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 // ── TRANSFORMATION METAMORPHOSIS: ornament disintegrates into particles and reassembles into the DDC logo ──
 (function(){
   var band=document.querySelector('.xform'); if(!band) return;
+  band.__xf=true;
   var REDUCED=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var cv=document.getElementById('xfCanvas'), gold=document.getElementById('xfGold'), cyan=document.getElementById('xfCyan');
   var MARK=new Image(); MARK.src='img/ddc_mark_hero.png';
   function ready(f){ if(MARK.complete&&MARK.naturalWidth) f(); else MARK.addEventListener('load',f,{once:true}); }
-  if(REDUCED){ ready(paintCyan); return; } // CSS shows static ornament|logo split; still needs the drawn logo layer
+  // ── one-shot intro state: the metamorphosis plays once, then the scene settles ──
+  var INTRO_SEEN=false; try{INTRO_SEEN=sessionStorage.getItem('ddc_intro')==='1';}catch(e){}
+  var SETTLED=false, settleHooks=[], watchdog=0, textTimer=0;
+  function revealText(){ band.classList.add('hero-live'); }
+  function settle(){
+    if(SETTLED) return; SETTLED=true;
+    revealText(); band.classList.add('settled');
+    clearTimeout(watchdog); clearTimeout(textTimer);
+    try{sessionStorage.setItem('ddc_intro','1');}catch(e){}
+    for(var i=0;i<settleHooks.length;i++){ try{settleHooks[i]();}catch(e){} }
+  }
+  if(REDUCED){ ready(paintCyan); revealText(); band.classList.add('settled'); return; } // CSS shows static ornament|logo split; still needs the drawn logo layer
   var ctx=cv.getContext('2d');
   var MOBILE=window.innerWidth<=820;
   var CAP=MOBILE?2000:6200, SAMPLE=MOBILE?5:4, DPR=Math.min(devicePixelRatio||1,1.5);
@@ -1329,6 +1366,9 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   // timeline fractions: [goldHold, morphF, cyanHold, morphR]
   var F1=.06, F2=.44, F3=.56, F4=.94; // 0..F1 gold, F1..F2 forward, F2..F3 cyan hold... (F3..F4 reverse, F4..1 gold hold)
   function smooth(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);}
+  var START_SETTLED=INTRO_SEEN;
+  if(START_SETTLED){ SETTLED=true; revealText(); band.classList.add('settled');
+    ready(function(){ paintCyan(); cyan.style.opacity=1; gold.style.opacity=0; }); }
 
   function samplePoints(src,w,h,step){
     var sw=Math.max(2,Math.round(w/step)), sh=Math.max(2,Math.round(h/step));
@@ -1557,7 +1597,8 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
     lastT=now;
     if(!parts){ return; }
     if(!t0) t0=now;
-    var p=((now-t0)%DUR)/DUR;
+    var p=(now-t0)/DUR; if(p>1) p=1; // one-shot: the story is told once, no wrap
+    if(!SETTLED){ if(p>=.4) revealText(); if(p>=.5){ settle(); return; } }
     var w=band.clientWidth;
     var mode, q; // q = morph progress 0..1
     if(p<F1){mode=0;} else if(p<F2){mode=1;q=(p-F1)/(F2-F1);} else if(p<F3){mode=2;} else if(p<F4){mode=3;q=(p-F3)/(F4-F3);} else {mode=0;}
@@ -1603,16 +1644,49 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
       ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
     }
   }
-  function start(){ if(running||killed) return; running=true; lastT=0; raf=requestAnimationFrame(frame); }
+  function start(){ if(running||killed||SETTLED) return; running=true; lastT=0; raf=requestAnimationFrame(frame); }
   function stop(){ running=false; if(raf) cancelAnimationFrame(raf); }
   window.__xformStop=function(){ killed=true; stop(); ctx.clearRect(0,0,cv.width,cv.height); };
+  settleHooks.push(function(){ // canvas engine: freeze on the resolved circuit-logo scene
+    stop();
+    try{ ctx.clearRect(0,0,cv.width,cv.height); }catch(e){}
+    if(!killed){ gold.style.opacity=0; gold.style.clipPath='none'; cyan.style.opacity=1; cyan.style.clipPath='none'; }
+  });
   try{
     new IntersectionObserver(function(es){
       es.forEach(function(e){ if(e.isIntersecting){ if(!parts) ready(build); start(); } else stop(); });
     },{rootMargin:'150px 0px'}).observe(band);
   }catch(e){ ready(build); start(); }
   document.addEventListener('visibilitychange',function(){ if(document.hidden) stop(); else start(); });
-  var rto; addEventListener('resize',function(){ clearTimeout(rto); rto=setTimeout(function(){ if(!killed){parts=null; t0=0; ready(build);} },350); });
+  var rto; addEventListener('resize',function(){ clearTimeout(rto); rto=setTimeout(function(){
+    if(killed) return; parts=null;
+    if(SETTLED){ ready(function(){ paintCyan(); if(!killed){ cyan.style.opacity=1; gold.style.opacity=0; } }); }
+    else { t0=0; ready(build); }
+  },350); });
+
+  // ── intro control: timed reveal, watchdog, skip-on-interaction, replay ──
+  if(!START_SETTLED){
+    textTimer=setTimeout(revealText,4200);   // headline never waits longer than this
+    watchdog=setTimeout(settle,12000);       // nothing can leave the hero unsettled
+  }
+  ['wheel','touchmove','keydown'].forEach(function(ev){ addEventListener(ev,function(){ settle(); },{passive:true,once:true}); });
+  addEventListener('scroll',function onsc(){ if(scrollY>40){ settle(); removeEventListener('scroll',onsc); } },{passive:true});
+  band.addEventListener('pointerdown',function(e){ if(!SETTLED&&!(e.target.closest&&e.target.closest('.xform-replay'))) settle(); },true);
+  var replayBtn=document.getElementById('xfReplay');
+  if(replayBtn) replayBtn.addEventListener('click',function(){
+    if(!SETTLED) return;
+    SETTLED=false; band.classList.remove('settled');
+    var vv=(typeof v!=='undefined')?v:null;
+    if(vv&&vv.parentNode&&vv.classList.contains('on')&&!vdead){
+      try{vv.currentTime=0;}catch(e){} vv.play().catch(function(){});
+      watchdog=setTimeout(settle,26000);
+    } else {
+      killed=false; t0=0; lastT=0;
+      if(!parts) ready(build);
+      start();
+      watchdog=setTimeout(settle,9000);
+    }
+  });
 
   // ── video upgrade (activates when encoded metamorphosis video is deployed) ──
   // Tier ladder: hi (720p) → lo (480p) on stalls/errors → canvas only if even lo fails.
@@ -1624,13 +1698,14 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
                        lo:['img/xform-169-lo.webm','img/xform-169-lo.mp4']} };
   var VIDEO_READY=true; // encoded loop files are in img/ (xform-169/916 + -lo, webm+mp4)
   if(!VIDEO_READY) return;
+  if(START_SETTLED) return; // repeat visit in this tab: settled backdrop, skip the video fetch entirely
   var conn=navigator.connection||{};
   var et=(conn.effectiveType||'');
   var portrait=(window.matchMedia&&matchMedia('(orientation:portrait)').matches)||window.innerHeight>window.innerWidth;
   var pk=portrait?SRC.portrait:SRC.landscape;
-  var level=(conn.saveData||et==='2g'||et==='slow-2g')?'lo':'hi';
+  var level=(conn.saveData||et==='2g'||et==='slow-2g'||et==='3g'||MOBILE)?'lo':'hi';
   var v=document.createElement('video');
-  v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('muted',''); v.setAttribute('playsinline','');
+  v.muted=true; v.loop=false; v.playsInline=true; v.setAttribute('muted',''); v.setAttribute('playsinline','');
   v.preload='auto';
   var stalls=0, vdead=false;
   function setSrc(){
@@ -1647,7 +1722,18 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   setSrc();
   v.addEventListener('error',degrade);
   ['waiting','stalled'].forEach(function(ev){ v.addEventListener(ev,function(){ if(++stalls>=3) degrade(); }); });
-  v.addEventListener('playing',function(){ v.classList.add('on'); window.__xformStop(); gold.style.opacity=0; cyan.style.opacity=0; });
+  var STOPF=.42; // measured on xform footage: logo fully assembled and held at ~42% of the 24s take
+  v.addEventListener('timeupdate',function(){ if(!SETTLED&&v.duration&&v.currentTime>=v.duration*STOPF) settle(); });
+  v.addEventListener('ended',function(){ settle(); });
+  settleHooks.push(function(){ // video engine: pause on the assembled-logo frame
+    if(vdead||!v.classList.contains('on')) return;
+    try{ v.pause(); if(v.duration&&Math.abs(v.currentTime-v.duration*STOPF)>0.6) v.currentTime=v.duration*STOPF; }catch(e){}
+  });
+  v.addEventListener('playing',function(){
+    if(SETTLED&&!v.classList.contains('on')){ vkill(); return; } // settled before video arrived: drop it
+    if(SETTLED){ try{v.pause();}catch(e){} return; }
+    v.classList.add('on'); window.__xformStop(); gold.style.opacity=0; cyan.style.opacity=0;
+  });
   band.querySelector('.xform-stage').insertBefore(v, band.querySelector('.xform-vig'));
   // hero is above the fold: start fetching immediately (browser streams via range
   // requests; the canvas covers the wait), observer only pauses/resumes off-screen
@@ -1657,12 +1743,12 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
     new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(vdead) return;
-        if(e.isIntersecting){ v.play().catch(function(){}); }
+        if(e.isIntersecting){ if(!SETTLED) v.play().catch(function(){}); }
         else{ try{v.pause();}catch(err){} }
       });
     },{rootMargin:'600px 0px'}).observe(band);
   }catch(e){}
-  document.addEventListener('visibilitychange',function(){ if(vdead)return; if(document.hidden){try{v.pause();}catch(e){}} else if(started){ v.play().catch(function(){}); } });
+  document.addEventListener('visibilitychange',function(){ if(vdead)return; if(document.hidden){try{v.pause();}catch(e){}} else if(started&&!SETTLED){ v.play().catch(function(){}); } });
 })();
 // mobile menu (simple)
 document.getElementById('burger').addEventListener('click',()=>{
