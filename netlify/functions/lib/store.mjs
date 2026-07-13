@@ -1,6 +1,7 @@
 // Shared helpers for the integrations backend.
 // Design rule inherited from news.mjs: nothing here may ever break a public page —
 // every Blobs access is try/catch'd and falls back to safe defaults.
+import { createHash, timingSafeEqual } from 'node:crypto';
 
 export const DEFAULTS = {
   banner: { on: false, text: '', type: 'info' },
@@ -89,7 +90,12 @@ export async function writeHealth(feed, ok, count, err) {
 
 export function isAdmin(req) {
   const t = process.env.ADMIN_TOKEN;
-  return !!t && req.headers.get('x-admin-token') === t; // unset env var -> always false (fail closed)
+  const got = req.headers.get('x-admin-token') || '';
+  if (!t || !got) return false; // unset env var -> always false (fail closed)
+  // constant-time compare; hashing first removes any length oracle
+  const a = createHash('sha256').update(got).digest();
+  const b = createHash('sha256').update(t).digest();
+  return timingSafeEqual(a, b);
 }
 
 export function json(body, cache) {

@@ -186,6 +186,7 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
   var API='/api/settings';
   var TOKEN='';
   var $=function(id){return document.getElementById(id)};
+  function esc(t){var d=document.createElement('div');d.textContent=t==null?'':String(t);return d.innerHTML;}
 
   if(location.port==='8923'||location.protocol==='file:'){
     $('localNote').style.display='block';
@@ -295,7 +296,7 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
   $('tjPreviewBtn').addEventListener('click',function(){
     var ul=$('tjPreview');ul.innerHTML='<li>Загрузка…</li>';
     fetch('/api/talent',{cache:'reload'}).then(function(r){return r.json()}).then(function(d){
-      if(!d.ok||!d.posts.length){ul.innerHTML='<li>'+(d.off?'Интеграция выключена':'Лента пуста: '+(d.err||''))+'</li>';return}
+      if(!d.ok||!d.posts.length){ul.innerHTML='<li>'+(d.off?'Интеграция выключена':'Лента пуста: '+esc(d.err||''))+'</li>';return}
       ul.innerHTML=d.posts.slice(0,5).map(function(p){
         var t=document.createElement('div');t.textContent=(p.text||'').slice(0,120);
         return '<li><b>'+(p.date?String(p.date).slice(0,10):'')+'</b> · '+t.innerHTML+'</li>';
@@ -306,10 +307,10 @@ footer{font-size:11.5px;color:#5a6b60;text-align:center;margin-top:34px}
   $('hhPreviewBtn').addEventListener('click',function(){
     var ul=$('hhPreview');ul.innerHTML='<li>Загрузка…</li>';
     fetch('/api/vacancies',{cache:'reload'}).then(function(r){return r.json()}).then(function(d){
-      if(!d.ok||!d.items.length){ul.innerHTML='<li>'+(d.off?'Интеграция выключена или не настроена':'Лента пуста: '+(d.err||''))+'</li>';return}
+      if(!d.ok||!d.items.length){ul.innerHTML='<li>'+(d.off?'Интеграция выключена или не настроена':'Лента пуста: '+esc(d.err||''))+'</li>';return}
       ul.innerHTML=d.items.slice(0,5).map(function(v){
         var sal=v.salary?(' · '+(v.salary.from?'от '+v.salary.from:'')+(v.salary.to?' до '+v.salary.to:'')+' '+(v.salary.currency||'')):'';
-        return '<li><b>'+v.name+'</b> · '+v.area+sal+'</li>';
+        return '<li><b>'+esc(v.name)+'</b> · '+esc(v.area)+esc(sal)+'</li>';
       }).join('');
     }).catch(function(){ul.innerHTML='<li>Сеть недоступна</li>'});
   });

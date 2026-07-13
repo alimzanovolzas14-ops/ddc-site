@@ -243,6 +243,7 @@ body.dark .quiz-o,body.dark .grp-m{background:var(--panel)}
 }
 @media(max-width:560px){.stats,.g4,.dir,.cyb,.qa{grid-template-columns:1fr 1fr}.hello .when .t{font-size:20px}}
 </style>
+<script src="facts.js"></script>
 </head>
 <body>
 
@@ -372,7 +373,7 @@ body.dark .quiz-o,body.dark .grp-m{background:var(--panel)}
        '</div></div>'+
      '</div>'+
      '<div class="grid g3 mb20">'+
-       '<div class="card"><div class="card-h"><h3>Быстрый доступ</h3></div><div class="card-b"><div class="qa">'+QA.map(function(q){var ext=q[2].indexOf("http")===0||q[2].indexOf("tel")===0;var href=(q[2]==="people"||q[2]==="soon")?"#":q[2];var at=q[2]==="people"?' data-go="people"':(q[2]==="soon"?' data-soon="1"':"");return '<a href="'+href+'"'+at+(ext?' target="_blank"':'')+'><div class="qi">'+q[0]+'</div><b>'+q[1]+'</b></a>';}).join('')+'</div></div></div>'+
+       '<div class="card"><div class="card-h"><h3>Быстрый доступ</h3></div><div class="card-b"><div class="qa">'+QA.map(function(q){var ext=q[2].indexOf("http")===0||q[2].indexOf("tel")===0;var href=(q[2]==="people"||q[2]==="soon")?"#":q[2];var at=q[2]==="people"?' data-go="people"':(q[2]==="soon"?' data-soon="1"':"");return '<a href="'+href+'"'+at+(ext?' target="_blank" rel="noopener"':'')+'><div class="qi">'+q[0]+'</div><b>'+q[1]+'</b></a>';}).join('')+'</div></div></div>'+
        '<div class="card"><div class="card-h"><h3>Состояние сервисов</h3></div><div class="card-b">'+DB.status.list().slice(0,6).map(function(s){var st={ok:['ok','Работает'],warn:['warn','Внимание'],down:['down','Недоступен']}[s.state||'ok'];return '<div class="srow"><span>'+esc(s.name)+'</span><span><span class="sdot '+st[0]+'"></span>'+st[1]+'</span></div>';}).join('')+'</div></div>'+
        '<div class="card"><div class="card-h"><h3>Проекты</h3><button class="link" data-go="home">Обновить</button></div><div class="card-b">'+PROJ.map(function(p){return '<div style="padding:10px 0;border-bottom:1px solid var(--line)"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="font-weight:500">'+esc(p[0])+'</b><span style="color:var(--muted);font-size:12px">'+p[2]+'%</span></div><div style="height:7px;border-radius:4px;background:var(--line)"><i style="display:block;height:100%;border-radius:4px;width:'+p[2]+'%;background:linear-gradient(90deg,#2f6df6,#5b8cff)"></i></div></div>';}).join('')+'</div></div>'+
      '</div>'+
@@ -518,7 +519,7 @@ body.dark .quiz-o,body.dark .grp-m{background:var(--panel)}
     var addBtn=(CUR.role==='admin')?'<button class="btn-sm" id="crsAdd" style="margin-bottom:16px">＋ Добавить курс</button>':'';
     $('view').innerHTML='<h1 class="vtitle">Обучение</h1><p class="vsub">Пройдено '+done.length+' из '+courses.length+' курсов. Изучите материалы и пройдите тест.</p>'+addBtn+mand+
       '<div class="grid g3">'+courses.map(function(c){var ok=done.indexOf(c.id)>=0;var m=MAT[c.id]||{};var hasQuiz=QUIZ[c.id];
-        var links='<div class="crs-links">'+(m.site?'<a href="'+m.site+'" target="_blank">🎓 Курс</a>':'')+(m.yt?'<a href="'+m.yt+'" target="_blank">▶️ Видео</a>':'')+(m.doc?'<a href="'+m.doc+'" target="_blank">📄 Материалы</a>':'')+'</div>';
+        var links='<div class="crs-links">'+(m.site?'<a href="'+m.site+'" target="_blank" rel="noopener">🎓 Курс</a>':'')+(m.yt?'<a href="'+m.yt+'" target="_blank" rel="noopener">▶️ Видео</a>':'')+(m.doc?'<a href="'+m.doc+'" target="_blank" rel="noopener">📄 Материалы</a>':'')+'</div>';
         var btn=hasQuiz?'<button class="btn '+(ok?'btn-sm':'btn-primary')+'" data-quiz="'+c.id+'" style="width:auto">'+(ok?'✓ Пройден — пройти снова':'Пройти тест →')+'</button>':'<button class="btn '+(ok?'btn-sm':'btn-primary')+'" data-crs="'+c.id+'" style="width:auto">'+(ok?'✓ Пройден — сбросить':'Отметить пройденным')+'</button>';
         return '<div class="course"><h4>'+esc(c.title)+'</h4><p>'+esc((c.intro||c.desc||'Курс для сотрудников ЦЦР.').slice(0,110))+'</p>'+links+btn+'</div>';}).join('')+'</div>';
     [].forEach.call($('view').querySelectorAll('[data-crs]'),function(b){b.addEventListener('click',function(){DB.progress.toggle(CUR.login,b.getAttribute('data-crs'));renderLearning();renderBell();});});
@@ -686,7 +687,7 @@ body.dark .quiz-o,body.dark .grp-m{background:var(--panel)}
   function kbListHtml(q){
     q=(q||'').toLowerCase();
     var arr=DB.kb.list().filter(function(a){return !q||(a.title||'').toLowerCase().indexOf(q)>=0||(a.desc||'').toLowerCase().indexOf(q)>=0||(a.cat||'').toLowerCase().indexOf(q)>=0;});
-    return arr.length?arr.map(function(a){return '<div class="kb-item"><span class="kb-cat">'+esc(a.cat||'Прочее')+'</span><b>'+esc(a.title)+'</b><p>'+esc(a.desc||'')+'</p>'+(a.link?'<a href="'+esc(a.link)+'" target="_blank">Открыть →</a>':'')+'</div>';}).join(''):'<div class="empty">Ничего не найдено.</div>';
+    return arr.length?arr.map(function(a){return '<div class="kb-item"><span class="kb-cat">'+esc(a.cat||'Прочее')+'</span><b>'+esc(a.title)+'</b><p>'+esc(a.desc||'')+'</p>'+(a.link&&/^https?:\/\//.test(a.link)?'<a href="'+esc(a.link)+'" target="_blank" rel="noopener">Открыть →</a>':'')+'</div>';}).join(''):'<div class="empty">Ничего не найдено.</div>';
   }
   function pollsSection(){
     return (DB.polls.list().map(function(p){var total=p.opts.reduce(function(a,o){return a+(o.v||[]).length;},0);var voted=p.opts.some(function(o){return (o.v||[]).indexOf(CUR.login)>=0;});
@@ -729,7 +730,7 @@ body.dark .quiz-o,body.dark .grp-m{background:var(--panel)}
   var HIST=[];
   var KB=[
     [['проект','депозит','фабрика','закуп','масштаб','кейс'],'Ключевые проекты ЦЦР: «Депозитный регистр» — централизованный учёт вкладов; «Фабрика данных НБК» — обработка данных быстрее в 6,6×; Портал закупок — 15 000+ пользователей, 9 000 поставщиков, 194 млрд ₸.'],
-    [['контакт','1477','телефон','адрес','связ','почт'],'Контакт-центр 1477 (бесплатно по РК). Юр. адрес: Астана, пр. Мангилик Ел, 57А; офис: Алматы, пр. Достык, 136. Email: info@bsbnb.kz.'],
+    [['контакт','1477','телефон','адрес','связ','почт'],'Контакт-центр 1477 (бесплатно по РК). Юр. адрес: Астана, пр. Мангилик Ел, 57А. Email: info@bsbnb.kz.'],
     [['безопас','иб ','кибер','фишинг','инцидент','вирус'],'Кибербезопасность ЦЦР: мониторинг угроз 24/7, защита данных НБК, аудит и расследование инцидентов, DevSecOps. Сообщить об инциденте — в разделе «Безопасность».'],
     [['отпуск','справк','документ','заявлен','бланк','записк'],'Официальные документы (отпуск, справка, служебная записка, доступ) — раздел «Документы»: выберите шаблон, заполните поля, получите бланк с логотипом, распечатайте/сохраните PDF и отправьте на согласование.'],
     [['вакан','карьер','резюме','устро'],'Открытые вакансии — на странице «Карьера» сайта, можно откликнуться онлайн с резюме.'],
@@ -737,7 +738,7 @@ body.dark .quiz-o,body.dark .grp-m{background:var(--panel)}
     [['чат','сообщен','групп','напис'],'Раздел «Чат»: общий чат для всех, личные сообщения и группы, которые можно создавать для выбранных коллег.'],
     [['заявк','сервис','доступ','vpn','пароль','оборуд','пропуск'],'Заявки (доступ, ПО, оборудование, пропуск, VPN) — раздел «Заявки и сервисы», там же статус. Срочное — 1477.'],
     [['структ','руковод','кто ','чем заним','услуг'],'ЦЦР — АО, 100% дочерняя структура Национального Банка РК. Направления: инфраструктура и ЦОД, кибербезопасность, разработка ПО, управление данными.'],
-    [['истори','создан','основан','когда'],'ЦЦР основан в 1995 году (как БСБ НБ РК), реорганизован 18.07.2025. Сегодня — цифровой оператор Национального Банка Казахстана.']
+    [['истори','создан','основан','когда'],'ЦЦР основан в '+DDC_FACTS.founded+' году (как БСБ НБ РК), реорганизован '+DDC_FACTS.reorgDate+'. Сегодня — цифровой оператор Национального Банка Казахстана.']
   ];
   function kb(q){q=q.toLowerCase();for(var i=0;i<KB.length;i++){for(var j=0;j<KB[i][0].length;j++)if(q.indexOf(KB[i][0][j])>=0)return KB[i][1];}return 'Могу подсказать по проектам, услугам, контакт-центру 1477, обучению, документам, заявкам и безопасности. Для ответов на любые темы (как ChatGPT) подключите ИИ-сервер: укажите адрес воркера в config.js → DDC_AI_ENDPOINT (инструкция в AI_SETUP.md).';}
   function bindAI(){var f=$('aiForm');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var i=$('aiInput'),q=(i.value||'').trim();if(!q)return;var log=$('aiLog');log.innerHTML+='<div class="ai-bub me">'+esc(q)+'</div>';i.value='';log.scrollTop=log.scrollHeight;var ep=(window.DDC_AI_ENDPOINT||'');
