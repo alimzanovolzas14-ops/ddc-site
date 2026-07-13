@@ -566,6 +566,16 @@ a.logo-cell{text-decoration:none}
 .tour-btn:hover{border-color:var(--ink-3)}
 .tour-btn.primary{background:var(--green);border-color:var(--green);color:#fff}
 .tour-btn.primary:hover{background:#20844a}
+.tour-invite{position:fixed;z-index:2900;left:18px;bottom:18px;width:340px;max-width:calc(100vw - 36px);
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px 16px;
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.45);opacity:0;transform:translateY(14px);pointer-events:none;
+  transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
+.tour-invite.on{opacity:1;transform:none;pointer-events:auto}
+.tour-invite h4{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:7px}
+.tour-invite p{font-size:14px;color:var(--ink-2);line-height:1.55}
+.tour-invite-btns{display:flex;gap:7px;justify-content:flex-end;margin-top:16px}
+@media(max-width:560px){.tour-invite{left:10px;right:10px;bottom:10px;width:auto;max-width:none}}
+@media(prefers-reduced-motion:reduce){.tour-invite{transition:opacity .2s;transform:none}}
 
 /* ─────────── BENTO TILE FILL (icon watermark + dot texture) ─────────── */
 .tile .tile-ico{position:absolute;top:28px;right:28px;width:92px;height:92px;z-index:0;color:var(--ink);opacity:.07;pointer-events:none}
@@ -962,7 +972,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
         <li><a data-menu="about" href="about.html" class="">О нас</a></li>
         <li><a data-menu="activity" href="activity.html" class="">Деятельность</a></li>
         <li><a data-menu="media" href="media.html" class="">Медиа</a></li>
-        <li><a data-menu="partners" href="partners.html" class="">Партнёры</a></li>
+        <li><a data-menu="partners" href="partners.html" class="">Экосистема</a></li>
         <li><a data-menu="careers" href="careers.html" class="current">Карьера</a></li>
       </ul>
     </nav>
@@ -1031,10 +1041,10 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     </div>
 
     <div class="mm-panel" data-panel="partners">
-      <div class="mm-col main"><div class="mm-h">Партнёры</div>
+      <div class="mm-col main"><div class="mm-h">Экосистема</div>
         <a class="mm-main-link" href="partners.html#fin">Финансовые институты</a>
-        <a class="mm-main-link" href="partners.html#gov">Государственные органы</a>
-        <a class="mm-main-link" href="partners.html#tech">Технологические партнёры</a>
+        <a class="mm-main-link" href="partners.html#gov">Заказчики услуг</a>
+        
         <a class="mm-main-link" href="partners.html#edu">Академические партнёры</a></div>
       <div class="mm-col"><div class="mm-h">Сотрудничество</div>
         <a class="mm-link" href="partners.html#join">Стать партнёром</a>
@@ -1133,7 +1143,7 @@ html.no3d #siteBg3d,html.no3d .hero-gl,html.no3d .phero-gl{display:none!importan
     <div class="foot-cols">
       <div><h5>Услуги</h5><a href="activity.html#contact">Контакт-центр 1477</a><a href="activity.html#procurement">Портал закупок</a><a href="activity.html#infra">ИТ-инфраструктура</a><a href="activity.html#cyber">Кибербезопасность</a></div>
       <div><h5>Компания</h5><a href="about.html">О нас</a><a href="about.html#history">История</a><a href="careers.html">Карьера</a><a href="media.html#contacts">Контакты</a></div>
-      <div><h5>Ресурсы</h5><a href="media.html#news">Новости</a><a href="media.html#faq">FAQ</a><a href="partners.html">Партнёры</a><a href="https://www.instagram.com/ddc_nbk/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/ddc-nbk" target="_blank" rel="noopener">LinkedIn</a></div>
+      <div><h5>Ресурсы</h5><a href="media.html#news">Новости</a><a href="media.html#faq">FAQ</a><a href="partners.html">Экосистема</a><a href="https://www.instagram.com/ddc_nbk/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/ddc-nbk" target="_blank" rel="noopener">LinkedIn</a></div>
       <div><h5>Правовое</h5><a href="legal.html#terms">Условия</a><a href="legal.html#privacy">Конфиденциальность</a><a href="legal.html#cookie">Cookie</a></div>
     </div>
     <div class="foot-bottom">
@@ -1209,7 +1219,7 @@ document.getElementById('burger').addEventListener('click',()=>{
   if(open){open.remove();return;}
   const m=document.createElement('div');m.className='mobile-menu';
   m.style.cssText='position:fixed;top:48px;left:0;right:0;background:rgba(251,251,253,.96);backdrop-filter:blur(20px);z-index:999;padding:18px 22px;border-bottom:1px solid var(--line)';
-  m.innerHTML='<a href="index.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Главная</a><a href="about.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">О нас</a><a href="activity.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Деятельность</a><a href="media.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Медиа</a><a href="partners.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Партнёры</a><a href="careers.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Карьера</a><a href="media.html#contacts" style="display:block;padding:12px 0;font-size:17px;color:var(--green)">Контакты</a>';
+  m.innerHTML='<a href="index.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Главная</a><a href="about.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">О нас</a><a href="activity.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Деятельность</a><a href="media.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Медиа</a><a href="partners.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Экосистема</a><a href="careers.html" style="display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)">Карьера</a><a href="media.html#contacts" style="display:block;padding:12px 0;font-size:17px;color:var(--green)">Контакты</a>';
   document.body.appendChild(m);
   m.querySelectorAll('a').forEach(a=>a.addEventListener('click',(ev)=>{if(a.dataset.bot){ev.preventDefault();openBot();}m.remove();}));
 });
@@ -1384,7 +1394,7 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
    "департаментов и управлений":["departments and offices","департамент пен басқарма"],
    // nav + chrome
    "О нас":["About","Біз туралы"],"Деятельность":["Activities","Қызмет"],"Медиа":["Media","Медиа"],
-   "Партнёры":["Partners","Серіктестер"],"Карьера":["Careers","Мансап"],"Войти в портал":["Portal login","Порталға кіру"],
+   "Партнёры":["Partners","Серіктестер"],"Экосистема":["Ecosystem","Экожүйе"],"Заказчики услуг":["Service customers","Қызмет тұтынушылары"],"Карьера":["Careers","Мансап"],"Войти в портал":["Portal login","Порталға кіру"],
    "Центр цифрового развития НБ РК":["Digital Development Center, NBK","ҚҰБ Цифрлық даму орталығы"],
    // hero
    "Национальный Банк Казахстана":["National Bank of Kazakhstan","Қазақстан Ұлттық Банкі"],
@@ -1762,32 +1772,64 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
 
 // ════════════ SITE TOUR ════════════
 (function(){
+  var LIDX={ru:0,en:1,kz:2};
+  function li(){return LIDX[window.__lang||'ru']||0;}
   var STEPS=[
-    {sel:'.brand',title:'Добро пожаловать!',text:'Это официальный сайт Центра цифрового развития Нацбанка РК. Покажу основные возможности за минуту.'},
-    {sel:'.lang',title:'Три языка',text:'Переключайте сайт между русским, английским и казахским — выбор запоминается между страницами.'},
-    {sel:'.nav-links',title:'Разделы и меню',text:'Наведите на пункт меню — откроется подробная навигация по разделу с быстрыми ссылками.'},
-    {sel:'#tech',title:'Технологический стек',text:'Технологии бегущей строкой — нажмите на любой инструмент, чтобы узнать о нём подробнее.'},
-    {sel:'#facts',title:'Коротко о компании',text:'Ключевые цифры: 30+ лет опыта, 50 разработанных ИС, 24 в эксплуатации, оператор данных с 2021.'},
-    {sel:'#leadership',title:'Руководство и контакты',text:'Здесь — как связаться с ЦЦР. Полный состав Совета директоров и Правления — на странице «О нас».'},
-    {sel:'#botFab',title:'ИИ-ассистент',text:'Задайте мне любой вопрос о ЦЦР в чате — отвечу в любое время. Приятного знакомства с сайтом!'}
+    {sel:'.brand',
+     title:['Добро пожаловать!','Welcome!','Қош келдіңіз!'],
+     text:['Это официальный сайт Центра цифрового развития Нацбанка РК. Покажу основные возможности за минуту.',
+       'This is the official website of the NBK Digital Development Center. Let me show you around in a minute.',
+       'Бұл ҚР Ұлттық Банкінің Цифрлық даму орталығының ресми сайты. Бір минутта негізгі мүмкіндіктерді көрсетемін.']},
+    {sel:'.lang',
+     title:['Три языка','Three languages','Үш тіл'],
+     text:['Переключайте сайт между русским, английским и казахским — выбор запоминается между страницами.',
+       'Switch the site between Russian, English and Kazakh — the choice is remembered across pages.',
+       'Сайтты орыс, ағылшын және қазақ тілдері арасында ауыстырыңыз — таңдау беттер арасында сақталады.']},
+    {sel:'.nav-links',
+     title:['Разделы и меню','Sections and menu','Бөлімдер мен мәзір'],
+     text:['Наведите на пункт меню — откроется подробная навигация по разделу с быстрыми ссылками.',
+       'Hover over a menu item to open detailed navigation with quick links.',
+       'Мәзір тармағына меңзерді апарыңыз — жылдам сілтемелері бар толық навигация ашылады.']},
+    {sel:'#directions .sec-head',
+     title:['Чем занимается ЦЦР','What DDC does','ЦЦР немен айналысады'],
+     text:['Пять ключевых направлений — от ИКТ-инфраструктуры до кибербезопасности. Каждая карточка ведёт к подробностям на странице «Деятельность».',
+       'Five key areas — from ICT infrastructure to cybersecurity. Each card leads to details on the Activities page.',
+       'Бес негізгі бағыт — АКТ-инфрақұрылымнан киберқауіпсіздікке дейін. Әр карточка «Қызмет» бетіндегі толық ақпаратқа апарады.']},
+    {sel:'#bynumbers',
+     title:['Масштаб ЦЦР','DDC at scale','ЦЦР ауқымы'],
+     text:['Живые цифры: виртуальные машины, пользователи портала закупок, объём закупок и команда мониторинга 24/7.',
+       'Live figures: virtual machines, procurement portal users, procurement volume and a 24/7 monitoring team.',
+       'Нақты сандар: виртуалды машиналар, сатып алу порталының пайдаланушылары, сатып алу көлемі және 24/7 мониторинг тобы.']},
+    {sel:'#facts',
+     title:['Главное о компании','About the company','Компания туралы қысқаша'],
+     text:['Коротко: основан в 1995 году, 30+ лет опыта, 50 разработанных ИС, единственный акционер — Национальный Банк РК.',
+       'In short: founded in 1995, 30+ years of experience, 50 systems developed, sole shareholder — the National Bank of Kazakhstan.',
+       'Қысқаша: 1995 жылы құрылған, 30+ жыл тәжірибе, 50 әзірленген АЖ, жалғыз акционер — ҚР Ұлттық Банкі.']},
+    {sel:'#botFab',
+     title:['ИИ-ассистент','AI assistant','ЖИ-ассистент'],
+     text:['Задайте мне любой вопрос о ЦЦР в чате — отвечу в любое время. Приятного знакомства с сайтом!',
+       'Ask me anything about DDC in the chat — I answer any time. Enjoy the site!',
+       'Чатта ЦЦР туралы кез келген сұрақ қойыңыз — кез келген уақытта жауап беремін. Сайтпен танысу сәтті өтсін!']}
   ];
+  var BTN={back:['Назад','Back','Артқа'],exit:['Выход','Exit','Шығу'],next:['Далее','Next','Келесі'],done:['Готово','Done','Дайын']};
   var idx=0,spot,pop,active=false;
   function q(s){return document.querySelector(s);}
-  function steps(){return STEPS.filter(function(s){return q(s.sel);});}
+  function vis(el){return !!el&&(el.offsetWidth>0||el.offsetHeight>0);}
+  function steps(){return STEPS.filter(function(s){return vis(q(s.sel));});}
   function build(){spot=document.createElement('div');spot.className='tour-spot';
     pop=document.createElement('div');pop.className='tour-pop';
     document.body.appendChild(spot);document.body.appendChild(pop);}
   function clear(){active=false;if(spot)spot.remove();if(pop)pop.remove();spot=pop=null;
     window.removeEventListener('resize',onR);}
   function place(t,S,i){
-    var r=t.getBoundingClientRect(),pad=8;
+    var r=t.getBoundingClientRect(),pad=8,l=li();
     spot.style.top=(r.top+scrollY-pad)+'px';spot.style.left=(r.left+scrollX-pad)+'px';
     spot.style.width=(r.width+pad*2)+'px';spot.style.height=(r.height+pad*2)+'px';
-    pop.innerHTML='<h4>'+S[i].title+'</h4><p>'+S[i].text+'</p>'+
+    pop.innerHTML='<h4>'+S[i].title[l]+'</h4><p>'+S[i].text[l]+'</p>'+
       '<div class="tour-bar"><span class="tour-dots">'+(i+1)+' / '+S.length+'</span>'+
-      '<div class="tour-btns">'+(i>0?'<button class="tour-btn" data-prev>Назад</button>':'')+
-      '<button class="tour-btn" data-skip>Выход</button>'+
-      '<button class="tour-btn primary" data-next>'+(i===S.length-1?'Готово':'Далее')+'</button></div></div>';
+      '<div class="tour-btns">'+(i>0?'<button class="tour-btn" data-prev>'+BTN.back[l]+'</button>':'')+
+      '<button class="tour-btn" data-skip>'+BTN.exit[l]+'</button>'+
+      '<button class="tour-btn primary" data-next>'+(i===S.length-1?BTN.done[l]:BTN.next[l])+'</button></div></div>';
     var pr=pop.getBoundingClientRect();
     var popTop=(r.bottom+pr.height+24<innerHeight)?(r.bottom+scrollY+12):(r.top+scrollY-pr.height-12);
     if(popTop<scrollY+8)popTop=scrollY+8;
@@ -1801,9 +1843,47 @@ document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
     var t=q(S[i].sel);t.scrollIntoView({behavior:'smooth',block:'center'});
     setTimeout(function(){if(active)place(t,S,i);},430);}
   function onR(){if(active)show(idx);}
-  window.startSiteTour=function(){if(active)return;active=true;if(!spot)build();
-    window.addEventListener('resize',onR);show(0);};
+  window.startSiteTour=function(){if(active)return;active=true;
+    try{localStorage.setItem('ddc_tour_seen','1');}catch(e){}
+    var inv=document.querySelector('.tour-invite');if(inv)inv.remove();
+    if(!spot)build();window.addEventListener('resize',onR);show(0);};
   document.addEventListener('keydown',function(e){if(active&&e.key==='Escape')clear();});
+})();
+
+// ════════════ TOUR INVITE (first-visit welcome card) ════════════
+(function(){
+  var seen=false;try{seen=localStorage.getItem('ddc_tour_seen')==='1';}catch(e){}
+  if(seen)return;
+  var LIDX={ru:0,en:1,kz:2};
+  function li(){return LIDX[window.__lang||'ru']||0;}
+  var TXT={
+    h:['Добро пожаловать','Welcome','Қош келдіңіз'],
+    p:['Впервые на сайте ЦЦР? Покажем основные разделы за минуту.',
+       'First time on the DDC website? Let us show you the key sections in a minute.',
+       'ЦЦР сайтында алғаш рет пе? Негізгі бөлімдерді бір минутта көрсетеміз.'],
+    start:['Начать тур','Start tour','Турды бастау'],
+    later:['Позже','Later','Кейінірек']};
+  var card=null;
+  function render(){var l=li();
+    card.innerHTML='<h4>'+TXT.h[l]+'</h4><p>'+TXT.p[l]+'</p>'+
+      '<div class="tour-invite-btns"><button class="tour-btn" data-later>'+TXT.later[l]+'</button>'+
+      '<button class="tour-btn primary" data-start>'+TXT.start[l]+'</button></div>';
+    card.querySelector('[data-start]').onclick=function(){dismiss();if(window.startSiteTour)startSiteTour();};
+    card.querySelector('[data-later]').onclick=dismiss;}
+  function dismiss(){try{localStorage.setItem('ddc_tour_seen','1');}catch(e){}
+    if(!card)return;var c=card;card=null;c.classList.remove('on');
+    setTimeout(function(){c.remove();},500);
+    document.removeEventListener('keydown',onKey);}
+  function onKey(e){if(e.key==='Escape')dismiss();}
+  setTimeout(function(){
+    var s2=false;try{s2=localStorage.getItem('ddc_tour_seen')==='1';}catch(e){}
+    if(s2||document.querySelector('.tour-spot')||document.querySelector('.bot.open'))return;
+    card=document.createElement('div');card.className='tour-invite';render();
+    document.body.appendChild(card);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){if(card)card.classList.add('on');});});
+    document.addEventListener('keydown',onKey);
+    document.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){if(card)render();});});
+  },1200);
 })();
 
 // ════════════ CAREERS — vacancy detail + apply form ════════════

@@ -1,0 +1,24 @@
+<svg viewBox="0 0 420 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<defs><radialGradient id="bg6" cx="62%" cy="30%" r="80%">
+<stop offset="0%" stop-color="#16382a"/><stop offset="100%" stop-color="#0a1a12"/></radialGradient></defs>
+<rect width="420" height="150" fill="url(#bg6)"/>
+<g opacity="0.12" stroke="#e6c274" fill="none" stroke-width="0.6"><circle cx="130" cy="76" r="74"/><circle cx="130" cy="76" r="54"/></g>
+<g opacity="0.12" stroke="#3fc98a" fill="none" stroke-width="0.6"><path d="M300,20 V130 M332,20 V130 M364,20 V130 M396,20 V130 M272,56 H414 M272,96 H414"/></g>
+<!-- headset -->
+<g fill="none" stroke="#e6c274" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M96,86 v-8 a34,34 0 0 1 68,0 v8"/>
+<rect x="88" y="84" width="16" height="26" rx="5"/>
+<rect x="156" y="84" width="16" height="26" rx="5"/>
+<path d="M164,110 v6 a10,10 0 0 1 -10,10 h-16"/>
+</g>
+<circle cx="138" cy="126" r="4" fill="none" stroke="#3fc98a" stroke-width="2.2"/>
+<!-- signal / routing to the right -->
+<g stroke="#3fc98a" stroke-width="2" fill="none" stroke-linecap="round">
+<path d="M188,95 H236"/>
+<path d="M236,95 l26,-20 M236,95 l26,20"/>
+</g>
+<circle cx="188" cy="95" r="4.5" fill="#e6c274"/>
+<circle cx="236" cy="95" r="4" fill="#3fc98a"/>
+<circle cx="264" cy="74" r="4.5" fill="none" stroke="#3fc98a" stroke-width="2"/>
+<circle cx="264" cy="116" r="4.5" fill="none" stroke="#3fc98a" stroke-width="2"/>
+</svg>
